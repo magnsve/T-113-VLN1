@@ -1,0 +1,79 @@
+1. Hlutar tölvu
+https://www.youtube.com/watch?v=Ck8NaqF9tDg&feature=youtu.be
+
+2. Tölvunarfræði og Python
+https://www.youtube.com/watch?v=GryINgkhEtI&feature=youtu.be
+
+3. Grunnatriði
+https://www.youtube.com/watch?v=qQ-WD1IBukg&feature=youtu.be
+
+4. If setningar/bool segðir
+https://www.youtube.com/watch?v=tgjzg87C_Ds&feature=youtu.be
+
+5. VS Code og Python
+https://www.youtube.com/watch?v=1B7gIRjChIk&feature=youtu.be
+
+6. While setningar
+https://www.youtube.com/watch?v=fSvR_xBUZeE&feature=youtu.be
+
+7. For-lykkjur
+https://www.youtube.com/watch?v=5vJr5_9Q4oA&feature=youtu.be
+
+8. Algrím og þróun forrita
+https://www.youtube.com/watch?v=5Wb32C24wvk&feature=youtu.be
+
+9. Git crash course
+https://www.youtube.com/watch?v=SWYqp7iY_Tc
+Understanding Git: https://hackernoon.com/understanding-git-fcffd87c15a3
+
+10. Aflúsun
+https://www.youtube.com/watch?v=y8jlDt9lUzA&feature=youtu.be
+
+11. Strengir
+https://www.youtube.com/watch?v=zsuluUq2Mhs&feature=youtu.be
+
+12. Föll: kynning
+https://www.youtube.com/watch?v=7oarg_eAuyk&feature=youtu.be
+
+13. Föll: hlutverkefni
+https://www.youtube.com/watch?v=ULFjTDKaLP0&feature=youtu.be
+
+14. Textaskrár
+https://www.youtube.com/watch?v=s3c9CfWbWls&feature=youtu.be
+
+15. Frábrigði
+https://www.youtube.com/watch?v=36xC9nCNM9k&feature=youtu.be
+
+16. Listar
+https://www.youtube.com/watch?v=VaioN7YowoQ&feature=youtu.be
+
+17. Verkefni: Demo (hvernig Hrafn hugsar þegar hann vinnur verkefni)
+https://www.youtube.com/watch?v=67cBfJvA1QA&feature=youtu.be
+
+18. Meira um föll
+https://www.youtube.com/watch?v=wYJ8e5_3idQ&feature=youtu.be
+
+19. Læsileiki
+https://www.youtube.com/watch?v=3lEJwRusq6c&feature=youtu.be
+
+20. Uppflettitöflur
+https://www.youtube.com/watch?v=bTXoAqm9wFI&feature=youtu.be
+
+21. Mengi og refactoring
+https://www.youtube.com/watch?v=0OcVhMx5t5c&feature=youtu.be
+
+21. Klasar: kynning
+https://www.youtube.com/watch?v=jjRqAMPGWqA&feature=youtu.be
+
+22. Meira um klasa
+https://www.youtube.com/watch?v=94oX2s3lyS8&feature=youtu.be
+
+23. Klasar erfðir
+https://www.youtube.com/watch?v=KslLIJ8etUo&feature=youtu.be
+
+24. Prófdæmi 2018: Uppflettitafla
+https://www.youtube.com/watch?v=T_a0-2kRv5E&feature=youtu.be
+
+25. Prófdæmi 2018: Klasar
+https://www.youtube.com/watch?v=-FUD-IwEZ0A&feature=youtu.be
+

@@ -1,0 +1,21 @@
+MIT courses in Python:
+1. What is Computation?
+https://www.youtube.com/watch?v=nykOeWgQcHM&list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA&index=1
+
+2. Branching and Iteration
+https://www.youtube.com/watch?v=0jljZRnHwOI&list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA&index=5
+
+3. String Manipulation, Guess and Check, Approximations, Bisection
+https://www.youtube.com/watch?v=SE4P7IVCunE&list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA&index=11
+
+4. Decomposition, Abstraction, and Functions
+https://www.youtube.com/watch?v=MjbuarJ7SE0&index=14&list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA
+
+5. Tuples, Lists, Aliasing, Mutability, and Cloning
+https://www.youtube.com/watch?v=RvRKT-jXvko&index=17&list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA
+
+6. Recursion and Dictionaries
+https://www.youtube.com/watch?v=WPSeyjX1-4s&list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA&index=22
+
+8. Object Oriented Programming
+https://www.youtube.com/watch?v=-DP1i2ZU9gk&list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA&index=27
