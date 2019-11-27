@@ -1,0 +1,59 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+skinparam class {
+	BackgroundColor #2c05f0
+	ArrowColor Black
+	BorderColor Black
+}
+skinparam stereotypeCBackgroundColor Grey
+
+class DL_Trips {
+  + tripFilename
+  + read_file(tripFilename)
+  + close(tripFilename)
+  + createOutput(tripFilename)
+}
+
+class DL_Planes {
+  + planeFilename
+  + read_file(planeFilename)
+  + close(planeFilename)
+  + createOutput(planeFilename)
+}
+
+class DL_Destinations {
+  + destinationFilename
+  + read_file(destinationFilename)
+  + close(destinationFilename)
+  + createOutput(destinationFilename)
+}
+
+class DL_Employee {
+  + employeeFilename
+  + read_file(employeeFilename)
+  + close(employeeFilename)
+  + createOutput(employeeFilename)
+}
+
+DL_API .. DL_Trips
+DL_API .. DL_Destinations
+DL_API .. DL_Employee
+DL_API .. DL_Planes
+
+class DL_API {
+  + read_file(tripFilename)
+  + close(tripFilename)
+  + createOutput(tripFilename)
+  + read_file(planeFilename)
+  + close(planeFilename)
+  + createOutput(planeFilename)
+  + read_file(destinationFilename)
+  + close(destinationFilename)
+  + createOutput(destinationFilename)
+  + read_file(employeeFilename)
+  + close(employeeFilename)
+  + createOutput(employeeFilename)
+  }
+
+@enduml

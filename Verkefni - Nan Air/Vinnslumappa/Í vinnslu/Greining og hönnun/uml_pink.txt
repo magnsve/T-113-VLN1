@@ -1,0 +1,81 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+skinparam class {
+	BackgroundColor #ed1882
+	ArrowColor Black
+	BorderColor Black
+}
+skinparam stereotypeCBackgroundColor YellowGreen
+
+class IL_MainMenu {
+  + mainMenu_options: [str]
+  + get_mainMenu_Input()
+  + go_back()
+  }
+
+class IL_EmployeeMenu {
+  + employeeMenu_options: [str]
+  + searchForm_details: [str]
+  + changeForm_details: [str]
+  + createForm_details: [str]
+  + get_employeeMenu_input()
+}
+
+class IL_TripsMenu {
+  + tripsMenu_options: [str]
+  + searchForm_details: [str]
+  + changeForm_details: [str]
+  + createForm_details: [str]
+  + get_tripsMenu_Input()
+  }
+
+class IL_DestinationMenu {
+  + destinationMenu_options: [str]
+  + searchForm_details: [str]
+  + changeForm_details: [str]
+  + createForm_details: [str]
+  + get_destinationMenu_Input()
+  }
+
+class IL_PlanesMenu {
+  + planesMenu_options: [str]
+  + searchForm_details: [str]
+  + changeForm_details: [str]
+  + createForm_details: [str]
+  + get_planesMenu_Input()
+  }
+
+class IL_SearchForm {
+  + get_searchform_Details()
+  }
+
+class IL_ChangeForm {
+  + get_changeForm_details()
+  }
+
+class IL_CreateForm {
+  + get_createForm_details()  
+}
+
+IL_MainMenu <|-- IL_PlanesMenu
+IL_MainMenu <|-- IL_TripsMenu
+IL_MainMenu <|-- IL_EmployeeMenu
+IL_MainMenu <|-- IL_DestinationMenu
+IL_DestinationMenu -- IL_SearchForm
+IL_DestinationMenu -- IL_ChangeForm
+IL_DestinationMenu -- IL_CreateForm
+IL_EmployeeMenu -- IL_SearchForm
+IL_EmployeeMenu -- IL_ChangeForm
+IL_EmployeeMenu -- IL_CreateForm
+IL_TripsMenu -- IL_SearchForm
+IL_TripsMenu -- IL_CreateForm
+IL_TripsMenu -- IL_ChangeForm
+IL_PlanesMenu -- IL_SearchForm
+IL_PlanesMenu -- IL_ChangeForm
+IL_PlanesMenu -- IL_CreateForm
+
+
+
+
+@enduml
