@@ -23,8 +23,6 @@ for i in range(1, 3):
     print( v + " " * 78 + v)
 print( c + h * 78 + c)
 
-c = "+"
-h = "-"
-print( c + h*78 + c)
 inputa = input(" "*32 + "Your choice: ")
-print( c + h*78 + c)
+
+sys.stdin.read(1)
