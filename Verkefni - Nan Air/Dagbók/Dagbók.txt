@@ -26,3 +26,25 @@ Ofurhetja dagsins: Stefán - Dr. Strange
 Þriðjudagur 26.11.2019 - 21:00
 Hvað gerðist í dag:
 Kláruðum kröfulistann og notkunartilvikin. Byrjuðum á wireframes og klasaritum. Notuðum nafnorðagreiningu til að greina klasa.
+	Miðvikudagur 27.11.2019 - 17:30
+Hópur 7 
+
+Fundarstjóri - Stefán Ingi Árnason
+
+Fyrsti hluti: So far
+Hópurinn kláraði notkunartilvik og nafnorðagreiningu. Byrjuðum á Wireframes og Klasaritum. 
+
+Annar hluti: What now
+Jón og Lilja - kröfulisti
+Stefán, Magnús og Guðmundur - Klasarit
+
+Ofurhetja dagsins : Guðmundur - Hulk
+
+Ef tími gefst þá byrjum við á stöðuritum og höldum áfram með wireframes.
+
+Þriðji hluti: Challenges
+Okkur vantar nánari útskýringu á stöðuritum.
+
+	Miðvikudagur 21.11.2019 - 21:10
+Hvað gerðist í dag:
+Kláruðum kröfulista og Klasarit. Gerðum stöðurit fyrir trip.
