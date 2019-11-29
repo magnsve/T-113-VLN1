@@ -24,10 +24,13 @@ Stefán - Wireframes
 Ofurhetja dagsins: Stefán - Dr. Strange
 
 Þriðjudagur 26.11.2019 - 21:00
+
 Hvað gerðist í dag:
 Kláruðum kröfulistann og notkunartilvikin. Byrjuðum á wireframes og klasaritum. Notuðum nafnorðagreiningu til að greina klasa.
-	Miðvikudagur 27.11.2019 - 17:30
-Hópur 7 
+
+
+
+Miðvikudagur 27.11.2019 - 17:30
 
 Fundarstjóri - Stefán Ingi Árnason
 
@@ -51,6 +54,8 @@ Kláruðum kröfulista og Klasarit. Gerðum stöðurit fyrir trip.
 
 
 
+Fimmtudagur 28.11.2019 - 17:20
+
 Fundarstjóri - Jón Ísak Jóhannesson
 
 Fyrsti hluti: So far
@@ -63,11 +68,26 @@ Byrja að undirbúa skýrslu
 
 Ofurhetja dagsins : Lilja - Thor 
 
-
-
 Þriðji hluti: Challenges
 Ákveða strax öll nöfn á aðgerðum í viðmóti.
 
-	Fimmtudagur 28.11.2019 - 21:10
+Fimmtudagur 28.11.2019 - 21:10
 Hvað gerðist í dag: Unnum í skýrslunni og gerðum þónokkur wireframes og spjölluðum mikið saman um hönnun.
 
+
+
+Föstudagur 29.11.2019 - 17:45
+
+Fundarstjóri: Lilja Björk Sigmundsdóttir
+
+Fyrsti hluti: So far
+Hópurinn vann í wireframes, vann í þarfagreiningarskýrslu og skoðaði hönnunarhugmyndir.
+
+
+Annar hluti: What now
+Hópurinn ætlar að klára wireframes og Happy Path. Einnig að klára og skila skýrslu.
+
+Þriðji hluti: Challenges
+Ekki búist við neinu sérstöku challenge í dag.
+
+Ofurhetja dagsins: Jón - Steven Seagal
