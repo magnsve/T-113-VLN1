@@ -1,32 +1,43 @@
+import sys
+import shutil
+
+
 c = '+'
 v = '|'
 h = '-'
 s = ' '
 
-input_raw(test)
+def get_terminal_size():
+    return shutil.get_terminal_size()
 
 filestream = open('Header.txt','r')
 header = []
 for line in filestream:
     header.append(line.strip('\n'))
 
-for i in range(20):
-    print()
-print(c + h*78 + c)
-for line in header:
-    print(c + line.center(78,h) + c)
-print(c + h * 78 + c)
-print(v + "Welcome to your NaN Air Managers home page.".center(78) + v)
-print(v+" ".center(78)+v)
-print(v + "To continue, please select an option from the menu.".center(78) + v)
-print( c + h * 78 + c)
-print( v + s * 5 + "1 - Employee management".ljust(73) + v)
-print( v + s * 5 + "2 - Airplane management".ljust(73) + v)
-print( v + s * 5 + "3 - Destination management".ljust(73) + v)
-print( v + s * 5 + "4 - Trip management".ljust(73) + v)
-for i in range(1, 3):
-    print( v + s * 78 + v)
-print(v + "Type 'Quit' to exit.".rjust(73) + s * 5 + v)
-print( c + h * 78 + c)
+window_width = get_terminal_size()[0] - 10
+window_height = get_terminal_size()[1] - 10
+os.system("clear")
 
-inputa = input(" "*32 + "Your choice: ")
+for i in range(window_height):
+    print()
+print(s*5 +c + h*window_width + c)
+for line in header:
+    print(s*5 +c + line.center(window_width,h) + c)
+print(s*5 + c + h * window_width + c)
+print(s*5 + v + "Welcome to your NaN Air Managers home page.".center(window_width) + v)
+print(s*5 + v+" ".center(window_width)+v)
+print(s*5 + v + "To continue, please select an option from the menu.".center(window_width) + v)
+print(s*5 + c + h * window_width + c)
+print(s*5 + v + s * 5 + "1 - Employee management".ljust(window_width-5) + v)
+print(s*5 +v + s * 5 + "2 - Airplane management".ljust(window_width-5) + v)
+print(s*5 +v + s * 5 + "3 - Destination management".ljust(window_width-5) + v)
+print(s*5 +v + s * 5 + "4 - Trip management".ljust(window_width-5) + v)
+for i in range(window_height-20):
+    print(s*5 + v + s * window_width + v)
+print(s*5 + v + "Type 'Quit' to exit.".rjust(window_width-5) + s * 5 + v)
+print(s*5 + c + h * window_width + c)
+
+# inputa = input(" "*32 + "Your choice: ")
+
+
