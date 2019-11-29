@@ -6,7 +6,7 @@ skinparam class {
 	ArrowColor Black
 	BorderColor Black
 }
-skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBackgroundColor Grey
 
 class IL_MainMenu {
   + mainMenu_options: [str]
