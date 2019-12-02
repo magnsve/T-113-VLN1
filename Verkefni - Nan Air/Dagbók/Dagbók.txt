@@ -116,3 +116,5 @@ Samhæfa rithátt á kóða og vangaveltur um hvort megi importa librarys í pyt
 
 
 Ofurhetja dagsins: Magnús - Antman
+
+Hvað gerðist í dag? Hópurinn setti upp main menu fyrir NAN-air. Byrjuðum að skipuleggja klasa út frá klasariti í skilaskýrslu. 
