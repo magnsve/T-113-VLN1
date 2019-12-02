@@ -98,3 +98,21 @@ Föstudagur 29.11.2019 - 21:14
 Hvað gerðist í dag: 
 Hópurinn kláraði wireframes og Happy Path. Kláraði einnig þarfagreiningarskýrsluna og
 skilaði skýrslunni. 
+
+
+
+Mánudagur 02.12.2019 - 17:30
+
+Fundarstjóri: Guðmundur Árni Magnússon
+
+Fyrsti hluti: So Far
+Hópurinn skilaði af sér hönnunarskýrslu sl. föstudag. Hefur helgin farið í að hugsa um verkefni komandi viku og fá innblástur. 
+
+Annar hluti: What now
+Setja upp klasa og skissa upp interface layer, byrja vinna klasa í data layer
+
+Þriðji hluti: Challenges
+Samhæfa rithátt á kóða og vangaveltur um hvort megi importa librarys í pythons. 
+
+
+Ofurhetja dagsins: Magnús - Antman
