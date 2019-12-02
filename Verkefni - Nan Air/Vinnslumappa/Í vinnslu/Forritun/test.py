@@ -17,7 +17,6 @@ for line in filestream:
 
 window_width = get_terminal_size()[0] - 10
 window_height = get_terminal_size()[1] - 10
-os.system("clear")
 
 for i in range(window_height):
     print()
