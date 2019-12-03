@@ -118,3 +118,29 @@ Samhæfa rithátt á kóða og vangaveltur um hvort megi importa librarys í pyt
 Ofurhetja dagsins: Magnús - Antman
 
 Hvað gerðist í dag? Hópurinn setti upp main menu fyrir NAN-air. Byrjuðum að skipuleggja klasa út frá klasariti í skilaskýrslu. 
+
+
+
+Þriðjudagur 03.12.2019 - 17:45
+
+Fundarstjóri: Magnús Sveinsson
+
+Fyrsti hluti: So Far 
+Erum byrjuð á interface layernum, erum komin með kóða sem prentar út windows. Byrjuðum á datalayernum. Fórum í stofu 309 og fengum ráðleggingar.
+
+Annar hluti: What now
+Höldum áfram með interface layerinn, höldum áfram með datalayerinn. Ætlum að búa til "model" klasa sem búa til instance af plane, trip, employee og destination.
+Magnús - interface
+Lilja og Guðmundur - Logic layer destination model klasi
+Jón - Logic layer employee model klasi
+Stefán - Logic layer plane model klasi
+
+Þriðji hluti: Challenges
+Ekkert sem við sjáum fyrir.
+
+Ofurhetja dagsins: Stefán - Linus Torvalds
+
+Þriðjudagur 03.12.2019 21:00
+
+Fundarstjóri:
+Model klasarnir eru að mestu komnir, byrjuð á api klösunum og komin langleiðina með dataleyerinn. Interfaceið er komið í útgáfu sem virkar menu navigation, næsta verkefni þar er að geta birt leitar form og nýskráningar. Á morgun mun hópurinn vinna áfram í sömu verkefnum hver í sínu lagi.
