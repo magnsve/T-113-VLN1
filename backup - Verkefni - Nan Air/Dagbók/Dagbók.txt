@@ -1,0 +1,146 @@
+ _   _       _   _            _____ _____  
+| \ | |     | \ | |     /\   |_   _|  __ \ 
+|  \| | __ _|  \| |    /  \    | | | |__) |
+| . ` |/ _` | . ` |   / /\ \   | | |  _  / 
+| |\  | (_| | |\  |  / ____ \ _| |_| | \ \ 
+|_| \_|\__,_|_| \_| /_/    \_\_____|_|  \_\
+                                           
+Þriðjudagur 26.11.2019 - 17:00
+
+Fundarstjóri - Magnús Sveinsson
+
+Fyrsti hluti: So far
+Hópurinn vann að greiningu notendahópa, að skilgreiningu kröfulista og byrjuðum að gera notkunartilvik. 
+Bjuggum til Github repository og stofnuðum Team fyrir hópinn. Bjuggum til beinagrind fyrir hönnunarskýrsluna.
+
+Annar hluti: What now
+Jón og Magnús - Kröfulistar og notkunartilvik
+Guðmundur og Lilja - Kröfulistar og notkunartilvik
+Stefán - Wireframes
+
+Þriðji hluti: Challenges
+Þar sem klasar eru ekki endanlega útfærðir verður ekki hægt að klára wireframes, en við byrjum að stilla þeim upp.
+
+Ofurhetja dagsins: Stefán - Dr. Strange
+
+Þriðjudagur 26.11.2019 - 21:00
+
+Hvað gerðist í dag:
+Kláruðum kröfulistann og notkunartilvikin. Byrjuðum á wireframes og klasaritum. Notuðum nafnorðagreiningu til að greina klasa.
+
+
+
+Miðvikudagur 27.11.2019 - 17:30
+
+Fundarstjóri - Stefán Ingi Árnason
+
+Fyrsti hluti: So far
+Hópurinn kláraði notkunartilvik og nafnorðagreiningu. Byrjuðum á Wireframes og Klasaritum. 
+
+Annar hluti: What now
+Jón og Lilja - kröfulisti
+Stefán, Magnús og Guðmundur - Klasarit
+
+Ofurhetja dagsins : Guðmundur - Hulk
+
+Ef tími gefst þá byrjum við á stöðuritum og höldum áfram með wireframes.
+
+Þriðji hluti: Challenges
+Okkur vantar nánari útskýringu á stöðuritum.
+
+	Miðvikudagur 27.11.2019 - 21:10
+Hvað gerðist í dag:
+Kláruðum kröfulista og Klasarit. Gerðum stöðurit fyrir trip.
+
+
+
+Fimmtudagur 28.11.2019 - 17:20
+
+Fundarstjóri - Jón Ísak Jóhannesson
+
+Fyrsti hluti: So far
+Hópurinn kláraði Kröfulistann með viðbættum virknikröfum, nytsemis og notendaupplifunarkröfum. Einnig kláraði hópurinn klasarit og gerðum stöðurit fyrir trips.
+
+Annar hluti: What now
+Hópurinn í heild að skipuleggja wireframes 
+Byrja að undirbúa skýrslu
+
+
+Ofurhetja dagsins : Lilja - Thor 
+
+Þriðji hluti: Challenges
+Ákveða strax öll nöfn á aðgerðum í viðmóti.
+
+Fimmtudagur 28.11.2019 - 21:10
+Hvað gerðist í dag: Unnum í skýrslunni og gerðum þónokkur wireframes og spjölluðum mikið saman um hönnun.
+
+
+
+Föstudagur 29.11.2019 - 17:45
+
+Fundarstjóri: Lilja Björk Sigmundsdóttir
+
+Fyrsti hluti: So far
+Hópurinn vann í wireframes, vann í þarfagreiningarskýrslu og skoðaði hönnunarhugmyndir.
+
+
+Annar hluti: What now
+Hópurinn ætlar að klára wireframes og Happy Path. Einnig að klára og skila skýrslu.
+
+Þriðji hluti: Challenges
+Ekki búist við neinu sérstöku challenge í dag.
+
+Ofurhetja dagsins: Jón - Steven Seagal
+
+
+Föstudagur 29.11.2019 - 21:14
+
+Hvað gerðist í dag: 
+Hópurinn kláraði wireframes og Happy Path. Kláraði einnig þarfagreiningarskýrsluna og
+skilaði skýrslunni. 
+
+
+
+Mánudagur 02.12.2019 - 17:30
+
+Fundarstjóri: Guðmundur Árni Magnússon
+
+Fyrsti hluti: So Far
+Hópurinn skilaði af sér hönnunarskýrslu sl. föstudag. Hefur helgin farið í að hugsa um verkefni komandi viku og fá innblástur. 
+
+Annar hluti: What now
+Setja upp klasa og skissa upp interface layer, byrja vinna klasa í data layer
+
+Þriðji hluti: Challenges
+Samhæfa rithátt á kóða og vangaveltur um hvort megi importa librarys í pythons. 
+
+
+Ofurhetja dagsins: Magnús - Antman
+
+Hvað gerðist í dag? Hópurinn setti upp main menu fyrir NAN-air. Byrjuðum að skipuleggja klasa út frá klasariti í skilaskýrslu. 
+
+
+
+Þriðjudagur 03.12.2019 - 17:45
+
+Fundarstjóri: Magnús Sveinsson
+
+Fyrsti hluti: So Far 
+Erum byrjuð á interface layernum, erum komin með kóða sem prentar út windows. Byrjuðum á datalayernum. Fórum í stofu 309 og fengum ráðleggingar.
+
+Annar hluti: What now
+Höldum áfram með interface layerinn, höldum áfram með datalayerinn. Ætlum að búa til "model" klasa sem búa til instance af plane, trip, employee og destination.
+Magnús - interface
+Lilja og Guðmundur - Logic layer destination model klasi
+Jón - Logic layer employee model klasi
+Stefán - Logic layer plane model klasi
+
+Þriðji hluti: Challenges
+Ekkert sem við sjáum fyrir.
+
+Ofurhetja dagsins: Stefán - Linus Torvalds
+
+Þriðjudagur 03.12.2019 21:00
+
+Fundarstjóri:
+Model klasarnir eru að mestu komnir, byrjuð á api klösunum og komin langleiðina með dataleyerinn. Interfaceið er komið í útgáfu sem virkar menu navigation, næsta verkefni þar er að geta birt leitar form og nýskráningar. Á morgun mun hópurinn vinna áfram í sömu verkefnum hver í sínu lagi.

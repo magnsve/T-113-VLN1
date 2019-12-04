@@ -1,0 +1,66 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+skinparam class {
+	BackgroundColor #04d44d
+	ArrowColor Black
+	BorderColor Black
+}
+skinparam stereotypeCBackgroundColor Grey
+
+class LL_Trips {
+  + createTrip()
+  + changeTrip()
+  + searchTrip()
+  + removeTrip()  
+}
+
+class LL_Planes {
+  + createPlane()
+  + changePlane()
+  + searchPlane()
+  + removePlane()
+}
+
+class LL_Destinations {
+  + createDestination()
+  + changeDestination()
+  + searchDestination()
+  + removeDestination()
+  }
+
+class LL_Employee {
+  + createEmployee()
+  + changeEmployee()
+  + searchEmployee()
+  + removeEmployee()
+  }
+
+LL_Trips -right- LL_Planes
+LL_Trips -down- LL_Destinations
+LL_Trips -- LL_Employee
+LL_Planes -- LL_Destinations
+LL_Planes -down- LL_Employee
+LL_Destinations -right- LL_Employee
+
+  
+class LL_API {
+  + createTrip()
+  + changeTrip()
+  + searchTrip()
+  + removeTrip()
+  + createPlane()
+  + changePlane()
+  + searchPlane()
+  + removePlane()
+  + createDestination()
+  + changeDestination()
+  + searchDestination()
+  + removeDestination()
+  + createEmployee()
+  + changeEmployee()
+  + searchEmployee()
+  + removeEmployee()
+  }
+
+@enduml
