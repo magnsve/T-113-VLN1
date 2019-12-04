@@ -1,0 +1,8 @@
+--sep--
+--sep--
+--cen--Thank you for using NaN Air Manager.
+--emp--
+--cen--Your compliance has been noted.
+--spa--
+--sep--
+--sep--

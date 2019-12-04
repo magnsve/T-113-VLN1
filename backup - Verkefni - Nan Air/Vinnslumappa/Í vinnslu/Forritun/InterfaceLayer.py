@@ -18,18 +18,25 @@ SPACING = '--spa--'
 EMPTY_LINE = '--emp--'
 BREAD_CRUMBS = '--bre--'
 SECOND_INDENT = '--sec--'
-MENUS = {'M': 'IL_MainMenu', 'M_1': 'IL_EmployeeMenu', 'M_1_1':'IL_EmployeeCreateMenu', 'M_1_2': 'IL_EmployeeSearchMenu','M_2': 'IL_AirplaneMenu', 'M_2_1': 'IL_AirplaneCreateMenu', 'Q':'IL_QuitScreen'}
+OPTION1 = '--o01--'
+OPTION2 = '--o02--'
+OPTION3 = '--o03--'
+OPTION4 = '--o04--'
+OPTION5 = '--o05--'
+OPTION6 = '--o06--'
+OPTION7 = '--o07--'
+MENUS = {'M': 'IL_MainMenu', 'M_1': 'IL_EmployeeMenu', 'M_1_1':'IL_EmployeeCreateMenu', 'M_1_2': 'IL_EmployeeSearchMenu', 'Q':'IL_QuitScreen'}
 
 # Classes
 class IL_MainMenu():
     ''' '''
 
-    FILE = 'InterfaceLayer/UI_MetaData/MainMenu.txt'
-    GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/MainMenu_graphics.txt'
+    FILE = 'UI_MetaData/MainMenu.txt'
+    GRAPHICS_FILE = 'UI_MetaData/MainMenu_graphics.txt'
     ADDRESS = 'Main Menu'
     PARENT = 'IL_MainMenu'
     YOU_ARE_HERE = 'IL_MainMenu'
-    QUITSCREEN = 'InterfaceLayer/UI_MetaData/QuitScreen.txt'
+    QUITSCREEN = 'UI_MetaData/QuitScreen.txt'
     OPTIONS = [('1','M_1'),('2','M_2'),('3','M_3'),('4','M_4'),('r','M'),('q','Q'),('b','M')]
 
     def __init__(self):
@@ -70,6 +77,8 @@ class IL_MainMenu():
                 self.print_emptyline()
             elif BREAD_CRUMBS in line:
                 self.print_breadcrumbs(self.ADDRESS)
+            elif INDENT in line:
+                self.print_secondIndent()
                 
     def print_spaceing(self, file = '', graphics = ''):
         counter = 3
@@ -81,6 +90,9 @@ class IL_MainMenu():
                 counter += 1
         for _ in range(self.__window_height - counter):
             print((SPACE * 4) + VERTICAL + (SPACE * (self.__window_width - 10)) + VERTICAL)
+    
+    def print_secondIndent(self):
+        print()
             
     def print_centerJust(self, line):
         print((SPACE * 4) + VERTICAL + line.replace(CENTER_JUST, '').center(self.__window_width - 10) + VERTICAL)
@@ -147,57 +159,34 @@ class IL_MainMenu():
     def validate_selection(self):        
         print('Enter your selction:')
         user_input = self.select_fromMenu()
-        if user_input == 'q':
-            return 'q'
-        elif user_input:
+        while not user_input == 'q':
+            print(user_input[0])    
+            while not user_input[1]:
+                self.print_window()
+                print('Invalid selection, please try again:')
+                user_input = self.select_fromMenu()
+                print(user_input[0])
             return user_input
         else:
-            return False 
+            return 'q'
     
     def quitscreen(self):
         self.print_window(self.QUITSCREEN)        
 
-class IL_EmployeeMenu(IL_MainMenu):
-    ''' '''
-    FILE = 'InterfaceLayer/UI_MetaData/EmployeeMenu.txt'
-    GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/EmployeeMenu_graphics.txt'
-    ADDRESS = 'Main Menu -> Employee Menu'
-    PARENT = 'IL_MainMenu'
-    YOU_ARE_HERE = 'IL_EmployeeMenu'    
-    OPTIONS = [('1','M_1_1'),('2','M_1_2'),('r','M_1'),('q','Q'),('b','M')]
-
-class IL_EmployeeCreateMenu(IL_EmployeeMenu):
-    ''' '''
-    FILE = 'InterfaceLayer/UI_MetaData/EmployeeCreateMenu.txt'
-    GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/EmployeeCreate_graphics.txt'
-    ADDRESS = 'Main Menu -> Employee Menu -> New Employee'
-    PARENT = 'IL_EmployeeMenu'
-    YOU_ARE_HERE = 'IL_EmployeeCreateMenu'
-    OPTIONS = [('1','M_1_1_1'),('2','M_1_1_2'),('3','M_1_1_3'),('4','M_1_1_4'),('r','M_1_1'),('q','Q'),('b','M_1')]
-
-class IL_EmployeeSearchMenu(IL_EmployeeMenu):
-    ''' '''
-    FILE = 'InterfaceLayer/UI_MetaData/EmployeeSearchMenu.txt'
-    GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/EmployeeSearch_graphics.txt'
-    ADDRESS = 'Main Menu -> Employee Menu -> Find Employee'
-    PARENT = 'IL_EmployeeMenu'
-    YOU_ARE_HERE = 'IL_EmployeeSearchMenu'
-    OPTIONS = [('1','M_1_2_1'),('2','M_1_2_2'),('3','M_1_2_3'),('4','M_1_2_4'),('5','M_1_2_5'),('6','M_1_2_6'),('r','M_1_2'),('q','Q'),('b','M_1')]
-
-class IL_AirplaneMenu(IL_MainMenu):
-    ''' '''
-    FILE = 'InterfaceLayer/UI_MetaData/AirplaneMenu.txt'
-    GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/AirplaneMenu_graphics.txt'
-    ADDRESS = 'Main Menu -> Airplane Menu'
-    PARENT = 'IL_MainMenu'
-    YOU_ARE_HERE = 'IL_AirplaneMenu'    
-    OPTIONS = [('1','M_2_1'),('2','M_2_2'),('r','M_2'),('q','Q'),('b','M')]
-
-class IL_AirplaneCreateMenu(IL_AirplaneMenu):
-    ''' '''
-    FILE = 'InterfaceLayer/UI_MetaData/AirplaneCreateMenu.txt'
-    GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/AirplaneCreate_graphics.txt'
-    ADDRESS = 'Main Menu -> Airplane Menu -> New Airplane'
-    PARENT = 'IL_AirplaneMenu'
-    YOU_ARE_HERE = 'IL_AirplaneCreateMenu'    
-    OPTIONS = [('1','M_2_1_1'),('2','M_2_1_2'),('3','M_2_1_3'),('4','M_2_1_4'),('5','M_2_1_5'),('r','M_2_1'),('q','Q'),('b','M_2')]
+# Functions
+def main():
+    current_pos = IL_MainMenu()
+    current_pos.print_window(current_pos.FILE,current_pos.GRAPHICS_FILE)    
+    user_input = current_pos.validate_selection()        
+    while user_input != 'q':
+        new_pos = current_pos.variable_class(user_input[1])
+        cleanup = current_pos.YOU_ARE_HERE
+        del cleanup        
+        new_pos.print_window(new_pos.FILE,new_pos.GRAPHICS_FILE)
+        user_input = new_pos.validate_selection()
+        current_pos = new_pos
+    else:
+        current_pos.quitscreen()
+    
+# Main program
+main()

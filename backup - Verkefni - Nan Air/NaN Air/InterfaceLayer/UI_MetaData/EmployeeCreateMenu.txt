@@ -1,0 +1,19 @@
+--sep--
+--gra--
+--sep--
+--cen--Select the relevant field to add information.
+--sep--
+--bre--
+--emp--
+--lju----ind--1 - SSN
+--lju----ind--2 - Name
+--lju----ind--3 - Title
+--lju----ind--4 - Licence
+--lju----ind--5 - Address
+--lju----ind--6 - Phonenumber
+--emp--
+--lju----ind--B - Back to Main menu
+--spa-- 
+--rju----ind--Type 'r' to refresh screen
+--rju----ind--Type 'q' to exit
+--sep--
