@@ -1,5 +1,5 @@
 # Imports and constants
-from IL_EmployeeMenu import IL_EmployeeMenu
+from .IL_EmployeeMenu import IL_EmployeeMenu
 
 # Classes
 class IL_EmployeeSearchMenu(IL_EmployeeMenu):

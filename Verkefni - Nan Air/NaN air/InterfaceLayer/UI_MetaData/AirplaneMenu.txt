@@ -10,6 +10,5 @@
 --emp--
 --lju----ind--B - Back to Main menu
 --spa-- 
---rju----ind--Type 'r' to refresh screen
---rju----ind--Type 'q' to exit
+--rju----ind--R - Refresh Screen    Q - Exit
 --sep--

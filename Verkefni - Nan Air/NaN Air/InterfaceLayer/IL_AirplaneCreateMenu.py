@@ -1,5 +1,5 @@
 # Imports and constants
-from IL_AirplaneMenu import IL_AirplaneMenu
+from .IL_AirplaneMenu import IL_AirplaneMenu
 
 # Classes
 class IL_AirplaneCreateMenu(IL_AirplaneMenu):
