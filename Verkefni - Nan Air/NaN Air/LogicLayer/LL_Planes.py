@@ -1,10 +1,10 @@
 class LL_Planes():
 
-    def changePlane():
+    def changePlane(self):
         pass
 
-    def searchPlane():
+    def searchPlane(self):
         pass
 
-    def removePlane():
+    def removePlane(self):
         pass
