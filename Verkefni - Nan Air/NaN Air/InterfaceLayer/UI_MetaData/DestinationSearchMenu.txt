@@ -1,0 +1,14 @@
+--sep--
+--gra--
+--sep--
+--cen--Fill in the search criteria using the menu.
+--sep--
+--bre--
+--emp--
+--lju----ind--1 - Destination Designation     --ssn--
+--lju----ind--2 - Destination Name     --name--
+--emp--
+--lju----ind--B - Back to Destinations
+--spa-- 
+--rju----ind--R - Refresh Screen    Q - Exit
+--sep--

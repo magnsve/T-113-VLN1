@@ -1,0 +1,16 @@
+--sep--
+--gra--
+--sep--
+--cen--Select the relevant field to add information.
+--sep--
+--bre--
+--emp--
+--lju----ind--1 - option 1
+--lju----ind--2 - option 2
+--lju----ind--3 - option 3
+--lju----ind--4 - option 4
+--emp--
+--lju----ind--B - Back to Employee menu
+--spa-- 
+--rju----ind--R - Refresh Screen    Q - Exit
+--sep--

@@ -12,7 +12,7 @@
 --lju----ind--5 - Address     --address--
 --lju----ind--6 - Phonenumber     --phonenumber--
 --emp--
---lju----ind--B - Back to Employee Menu
+--lju----ind--B - Back to Employees
 --spa-- 
 --rju----ind--R - Refresh Screen    Q - Exit
 --sep--

@@ -1,7 +1,7 @@
 --sep--
 --gra--
 --sep--
---cen--Select the relevant field to add information.
+--cen--Fill in the search criteria using the menu.
 --sep--
 --bre--
 --emp--
