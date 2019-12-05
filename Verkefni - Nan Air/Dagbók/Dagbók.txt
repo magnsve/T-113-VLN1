@@ -144,3 +144,31 @@ Ofurhetja dagsins: Stefán - Linus Torvalds
 
 Fundarstjóri:
 Model klasarnir eru að mestu komnir, byrjuð á api klösunum og komin langleiðina með dataleyerinn. Interfaceið er komið í útgáfu sem virkar menu navigation, næsta verkefni þar er að geta birt leitar form og nýskráningar. Á morgun mun hópurinn vinna áfram í sömu verkefnum hver í sínu lagi.
+
+
+
+
+
+
+Fimmtudagur 05.12.2019 - 17:37
+
+Fundarstjóri: Jón Ísak Jóhannesson	
+
+Fyrsti hluti: So Far 
+Unnum öll í sitthvoru lagi í gær miðvikudaginn 04.12, Náðum að skipta interfacelayernum upp í nokkrar skrár.Magnús fékk import til að virka á milli skrána
+og lagaði nokkur bug sem voru að hrjá interface. Héldum áfram að vinna í data layer og einnig kominn með grunn í logic layer.
+
+Annar hluti: What now
+Ætlum að halda áfram að vinna í datalayer og logiclayer, einnig að byrja að gera api.
+Magnús - finishing touch á interface
+Lilja - Splitta upp klösum í sérstakar skrár og halda áfram með logiclayer
+Guðmundur - vinna í datalayter
+Jón - Halda áfram að vinna í employee datalayer og logiclayer, reyna láta tala saman
+Stefán -  vinna í planes klasa og útfæra hann
+
+Þriðji hluti: Challenges
+Fá importin til að virka eins og við viljum.
+
+Ofurhetja dagsins: Lilja - Deadpool
+
+Hvað gerðist í dag: Hópurinn náði að klára interface að mestu leyti og bíður nú eftir að datalayer og logiclayer séu tilbúin. Einnig náðum við að vinna töluvert í DL LL og LL_API
