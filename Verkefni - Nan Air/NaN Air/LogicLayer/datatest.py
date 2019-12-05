@@ -1,4 +1,5 @@
 import csv
+from LogicLayer import LL_API
 
 dataBase = "prufaverklegt.csv"
 ssn = "170194-3069"
@@ -25,8 +26,20 @@ def testing(Data, filepath = dataBase):
     input_file = csv.DictReader(open(dataBase))
     for row in input_file:
         if row['ssn'] == Data.get_ssn():
-            csv.DictWriter
-            return row
+            try:
+                csv.DictWriter
+                return True
+            except errro:
+                return False
+
+def read_Employees():
+    input_file = csv.DictReader(open(dataBase))
+    output = []
+    for row in input_file:
+        data = Employee(row)
+        output.append(data)
+    return output
+
 
 
 findindex = find_index(ssn)
