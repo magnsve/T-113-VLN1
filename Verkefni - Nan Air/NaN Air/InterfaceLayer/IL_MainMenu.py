@@ -73,8 +73,7 @@ class IL_MainMenu():
             print((IL_Constants.SPACE * 4) + IL_Constants.CROSS + line.center(self.__window_width - 10, IL_Constants.HORIZONTAL) + IL_Constants.CROSS)
         
     def print_fact(self, facts):        
-        _facts = self.get_file(facts)
-        fact = _facts[random.randint(0,len(_facts)+1)]
+        fact = self.get_file(facts)[random.randint(0,19)]        
         print((IL_Constants.SPACE * 4) + IL_Constants.VERTICAL + ('...'+fact).rjust(self.__window_width-15) + (IL_Constants.SPACE * 5) + IL_Constants.VERTICAL)        
             
     def print_centerJust(self, line):

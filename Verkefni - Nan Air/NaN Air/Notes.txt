@@ -1,0 +1,5 @@
+Klasar taki "type" sem segir hvort það sé "Menu", "New" eða "Search"
+
+New og search taki inn object sem er með self.prepare_for_output() og kemur út á streng
+
+Nota strenginn og for each element saman með print föllunum
