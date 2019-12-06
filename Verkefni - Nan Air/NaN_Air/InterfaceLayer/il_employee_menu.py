@@ -7,6 +7,11 @@ class IL_EmployeeMenu(IL_MainMenu):
     FILE = 'InterfaceLayer/UI_MetaData/EmployeeMenu.txt'
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/EmployeeMenu_graphics.txt'
     ADDRESS = 'Main Menu -> Employees'
-    PARENT = 'IL_MainMenu'
-    YOU_ARE_HERE = 'IL_EmployeeMenu'    
     OPTIONS = [('1','M_1_1'),('2','M_1_2'),('r','M_1'),('q','Q'),('b','M')]
+
+    def __init__(self):
+        self.__parent_class = 'IL_MainMenu'
+        self.__module = 'il_employee_menu'
+        self.__class_name = 'IL_EmployeeMenu'
+        super().__init__()
+        

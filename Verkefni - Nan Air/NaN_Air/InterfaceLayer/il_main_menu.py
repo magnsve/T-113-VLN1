@@ -11,18 +11,18 @@ class IL_MainMenu():
     FILE = 'InterfaceLayer/UI_MetaData/MainMenu.txt'
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/MainMenu_graphics.txt'
     ADDRESS = 'Main Menu'
-    PARENT = 'IL_MainMenu'
-    YOU_ARE_HERE = 'IL_MainMenu'
-    QUITSCREEN = 'InterfaceLayer/UI_MetaData/QuitScreen.txt'
     OPTIONS = [('1','M_1'),('2','M_2'),('3','M_3'),('4','M_4'),('r','M'),('q','Q'),('b','M')]
 
     def __init__(self):
         self.__window_width = self.get_window_size()[0]
-        self.__window_height = self.get_window_size()[1]    
+        self.__window_height = self.get_window_size()[1]
+        self.__parent_class = 'IL_MainMenu'
+        self.__module = 'il_main_menu'
+        self.__class_name = 'IL_MainMenu'
     
-    def variable_class(self, string = ''):
-        module_name = 'InterfaceLayer.'+string
-        class_name = string
+    def variable_class(self, from_menu = ('','')):
+        module_name = 'InterfaceLayer.'+ from_menu[0]
+        class_name = from_menu[1]
         module = import_module(module_name)
         class_ = getattr(module, class_name)        
         return class_()
