@@ -172,3 +172,30 @@ Fá importin til að virka eins og við viljum.
 Ofurhetja dagsins: Lilja - Deadpool
 
 Hvað gerðist í dag: Hópurinn náði að klára interface að mestu leyti og bíður nú eftir að datalayer og logiclayer séu tilbúin. Einnig náðum við að vinna töluvert í DL LL og LL_API
+
+
+Föstudagur 06.12.2019- 17:30
+
+Fundarstjóri: Lilja Björk Sigmundsdóttir
+
+Fyrsti hluti: So Far 
+Halda áfram að vinna með datalayer, logiclayer og API.
+
+Annar hluti: What now
+Verkefni dagsins er að fá layerin til að virka saman.
+
+Þriðji hluti: Challenges
+Fá öll layerin til að virka saman og importin.
+
+Ofurhetja dagsins: Jón - Catwoman/Halle Barry 
+
+Hvað gerðist í dag:
+Hópurinn er kominn mjög langt með að fá layerin til að virka saman.
+
+
+
+
+
+
+
+
