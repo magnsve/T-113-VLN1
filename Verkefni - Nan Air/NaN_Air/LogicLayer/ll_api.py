@@ -8,6 +8,9 @@ from .ll_trips import LL_Trips
 class LL_API():
     ''' '''
 
+    def inactivate_employee(self, employee_object, index):
+        return LL_Employee().inactivateEmployee(employee_object, index)
+
     # def change_destination(self):
     #     return LL_Destination.changeDestination()
 

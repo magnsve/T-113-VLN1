@@ -36,17 +36,14 @@ class DL_API():
     def read_file_EmployeeFilename(self):
         pass
 
-    def get_employees(self):
-        temp = DL_Employee()
-        return temp.getEmployees()
+    def get_employees(self):        
+        return DL_Employee().getEmployees()
 
-    def append_employee(self, employee_object):
-        temp = DL_Employee()
-        return temp.appendEmployee(employee_object)
+    def append_employee(self, employee_object):        
+        return DL_Employee().appendEmployee(employee_object)
     
     def modify_employee(self, employee_object, index):
-        temp = DL_Employee()
-        return temp.modifyEmployee(employee_object, index)
+        return DL_Employee().modifyEmployee(employee_object, index)
 
     def close_file_EmployeeFilename(self):
         pass

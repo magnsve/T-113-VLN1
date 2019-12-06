@@ -12,6 +12,5 @@ class LL_Employee():
         pass
 
     def inactivateEmployee(self, employee_object, index):
-        api_instance = DL_API()
-        employee_object.set_status()
-        api_instance.modify_employee(employee_object, index)
+        employee_object.set_status('inactive')        
+        DL_API().modify_employee(employee_object, index)

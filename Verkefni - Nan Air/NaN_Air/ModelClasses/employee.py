@@ -3,70 +3,115 @@
 # Classes
 class Employee():
     ''' '''
-    def __init__(self, employeeDict = {}):
-        self.set_ssn(employeeDict)
-        self.set_name(employeeDict)
-        self.set_role(employeeDict)
-        self.set_rank(employeeDict)
-        self.set_licence(employeeDict)
-        self.set_address(employeeDict)
-        self.set_phonenumber(employeeDict)
-        self.set_status(employeeDict)
-        self.set_history(employeeDict)
+    def __init__(self, input_data = None):
+        self.set_ssn(input_data)
+        self.set_name(input_data)
+        self.set_role(input_data)
+        self.set_rank(input_data)
+        self.set_licence(input_data)
+        self.set_address(input_data)
+        self.set_phonenumber(input_data)
+        self.set_status(input_data)
+        self.set_history(input_data)
     
-    def set_ssn(self, employeeDict):
-        try:
-            self.__ssn = employeeDict["ssn"]
-        except KeyError:
+    def set_ssn(self, input_data):
+        if isinstance(input_data, dict):            
+            try:
+                self.__ssn = input_data["ssn"]
+            except KeyError:
+                self.__ssn = ''
+        elif not input_data:
             self.__ssn = ''
+        else:
+            self.__ssn = input_data
     
-    def set_name(self, employeeDict):
-        try:
-            self.__name = employeeDict["name"]
-        except KeyError:
+    def set_name(self, input_data):
+        if isinstance(input_data, dict):            
+            try:
+                self.__name = input_data["name"]
+            except KeyError:
+                self.__name = ''
+        elif not input_data:
             self.__name = ''
+        else:
+            self.__name = input_data
     
-    def set_role(self, employeeDict):
-        try:
-            self.__role = employeeDict["role"]
-        except KeyError:
+    def set_role(self, input_data):
+        if isinstance(input_data, dict):            
+            try:
+                self.__role = input_data["role"]
+            except KeyError:
+                self.__role = ''
+        elif not input_data:
             self.__role = ''
+        else:
+            self.__role = input_data        
     
-    def set_rank(self, employeeDict):
-        try:
-            self.__rank = employeeDict["rank"]
-        except KeyError:
+    def set_rank(self, input_data):
+        if isinstance(input_data, dict):            
+            try:
+                self.__rank = input_data["rank"]
+            except KeyError:
+                self.__rank = ''
+        elif not input_data:
             self.__rank = ''
+        else:
+            self.__rank = input_data   
     
-    def set_licence(self, employeeDict):
-        try:
-            self.__licence = employeeDict["licence"]
-        except KeyError:
+    def set_licence(self, input_data):
+        if isinstance(input_data, dict):            
+            try:
+                self.__licence = input_data["licence"]
+            except KeyError:
+                self.__licence = ''
+        elif not input_data:
             self.__licence = ''
+        else:
+            self.__licence = input_data   
     
-    def set_address(self, employeeDict):
-        try:
-            self.__address = employeeDict["address"]
-        except KeyError:
+    def set_address(self, input_data):
+        if isinstance(input_data, dict):            
+            try:
+                self.__address = input_data["address"]
+            except KeyError:
+                self.__address = ''
+        elif not input_data:
             self.__address = ''
+        else:
+            self.__address = input_data
     
-    def set_phonenumber(self, employeeDict):
-        try:
-            self.__phonenumber = employeeDict["phonenumber"]
-        except KeyError:
+    def set_phonenumber(self, input_data):
+        if isinstance(input_data, dict):
+            try:
+                self.__phonenumber = input_data["phonenumber"]
+            except KeyError:
+                self.__phonenumber = ''
+        elif not input_data:
             self.__phonenumber = ''
+        else:
+            self.__phonenumber = input_data
     
-    def set_status(self, employeeDict):
-        try:
-            self.__status = employeeDict["status"]
-        except KeyError:
+    def set_status(self, input_data):
+        if isinstance(input_data, dict):
+            try:
+                self.__status = input_data["status"]
+            except KeyError:
+                self.__status = 'incomplete'
+        elif not input_data:
             self.__status = 'incomplete'
-    
-    def set_history(self, employeeDict):
-        try:
-            self.__history = employeeDict["history"]
-        except KeyError:
+        else: 
+            self.__status = input_data
+
+    def set_history(self, input_data):
+        if isinstance(input_data, dict):
+            try:
+                self.__history = input_data["history"]
+            except KeyError:
+                self.__history = ''
+        elif not input_data:
             self.__history = ''
+        else:
+            self.__history = input_data
 
     def __str__(self):
         return '{},{},{},{},{},{},{},{}'.format(self.__ssn, self.__name, self.__role, self.__rank, self.__licence, self.__address, self.__phonenumber, self.__status)
