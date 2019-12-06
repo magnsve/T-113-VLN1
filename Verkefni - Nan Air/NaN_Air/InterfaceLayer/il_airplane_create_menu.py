@@ -13,4 +13,6 @@ class IL_AirplaneCreateMenu(IL_AirplaneMenu):
         self.__parent_class = 'IL_AirplaneMenu'
         self.__module = 'il_airplane_create_menu'
         self.__class_name = 'IL_AirplaneCreateMenu'
+        self.__screen_type = 'Create'
+        self.__category = 'Planes'
         super().__init__()

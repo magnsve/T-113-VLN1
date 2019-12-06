@@ -13,4 +13,6 @@ class IL_DestinationSearchMenu(IL_DestinationMenu):
         self.__parent_class = 'IL_DestinationMenu'
         self.__module = 'il_destination_search_menu'
         self.__class_name = 'IL_DestinationSearchMenu'
+        self.__screen_type = 'Search'
+        self.__category = 'Destination'
         super().__init__()

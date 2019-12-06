@@ -13,5 +13,7 @@ class IL_EmployeeMenu(IL_MainMenu):
         self.__parent_class = 'IL_MainMenu'
         self.__module = 'il_employee_menu'
         self.__class_name = 'IL_EmployeeMenu'
+        self.__screen_type = 'Menu'
+        self.__category = 'Employee'
         super().__init__()
         

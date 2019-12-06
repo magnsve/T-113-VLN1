@@ -13,4 +13,6 @@ class IL_DestinationCreateMenu(IL_DestinationMenu):
         self.__parent_class = 'IL_DestinationMenu'
         self.__module = 'il_destination_create_menu'
         self.__class_name = 'IL_DestinationCreateMenu'
+        self.__screen_type = 'Create'
+        self.__category = 'Destination'
         super().__init__()

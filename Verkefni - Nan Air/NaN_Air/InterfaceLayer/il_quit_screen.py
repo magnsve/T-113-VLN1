@@ -12,4 +12,6 @@ class IL_QuitScreen(IL_MainMenu):
         self.__parent_class = 'IL_MainMenu'
         self.__module = 'il_quit_screen'
         self.__class_name = 'IL_QuitScreen'
+        self.__screen_type = 'Menu'
+        self.__category = 'Quit'
         super().__init__()

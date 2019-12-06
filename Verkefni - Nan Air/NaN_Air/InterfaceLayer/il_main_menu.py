@@ -19,6 +19,14 @@ class IL_MainMenu():
         self.__parent_class = 'IL_MainMenu'
         self.__module = 'il_main_menu'
         self.__class_name = 'IL_MainMenu'
+        self.__screen_type = 'Menu'
+        self.__category = 'Main'
+    
+    def get_screen_type(self):
+        return self.__screen_type
+    
+    def get_category(self):
+        return self.__category
     
     def variable_class(self, from_menu = ('','')):
         module_name = 'InterfaceLayer.'+ from_menu[0]

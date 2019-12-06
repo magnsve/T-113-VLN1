@@ -13,4 +13,6 @@ class IL_EmployeeSearchMenu(IL_EmployeeMenu):
         self.__parent_class = 'IL_EmployeeMenu'
         self.__module = 'il_employee_search_menu'
         self.__class_name = 'IL_EmployeeSearchMenu'
+        self.__screen_type = 'Search'
+        self.__category = 'Employee'
         super().__init__()

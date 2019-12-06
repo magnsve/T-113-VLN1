@@ -13,4 +13,6 @@ class IL_TripsCreateMenu(IL_TripsMenu):
         self.__parent_class = 'IL_TripsMenu'
         self.__module = 'il_trips_create_menu'
         self.__class_name = 'IL_TripsCreateMenu'
+        self.__screen_type = 'Create'
+        self.__category = 'Trips'
         super().__init__()
