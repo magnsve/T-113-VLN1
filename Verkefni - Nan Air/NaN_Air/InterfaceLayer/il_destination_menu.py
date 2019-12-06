@@ -1,5 +1,5 @@
 # Imports and constants
-from .IL_MainMenu import IL_MainMenu
+from .il_main_menu import IL_MainMenu
 
 # Classes
 class IL_DestinationMenu(IL_MainMenu):

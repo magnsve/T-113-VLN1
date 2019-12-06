@@ -1,18 +1,18 @@
 #imports and constants
 import csv
-from LogicLayer.ll_api import LL_API
+from ModelClasses.employee import Employee
 
 #Classes
 
 class DL_Employee():
     ''' '''
-    FILE_NAME = 'Employees.csv'
+    FILE_NAME = 'DataLayer\\DL_Database\\Employees.csv'
 
     def getEmployees(self):
         _file = csv.DictReader(open(self.FILE_NAME))
         output = []
         for row in _file:
-            data = LL_API.createEmployee(self, row)
+            data = Employee(row)
             output.append(data)
         return output
 
@@ -21,5 +21,10 @@ class DL_Employee():
             _file.write(employee_object.__str__())
         return True        
 
-    def modifyDestinations(self, destination_object, index):
-        pass
+    def modifyEmployee(self, employee_object, index):
+        lines = open(self.FILE_NAME).read().splitlines()
+        print(lines)
+        print(employee_object.__str__())
+        lines[index] = employee_object.__str__()
+        open(self.FILE_NAME,'w').write('\n'.join(lines))
+        return True

@@ -1,31 +1,12 @@
 # Imports and constants
-from .destination import Destination
-from .plane import Plane
-from .trip import Trip
-from .employee import Employee
 from .ll_destinations import LL_Destinations
 from .ll_employee import LL_Employee
-from .ll_lanes import LL_Planes
+from .ll_planes import LL_Planes
 from .ll_trips import LL_Trips
 
 # Classes
 class LL_API():
     ''' '''
-    # Destinations Model class
-    def createDestination(self, __dict):
-        return Destination(__dict)
-    
-    # Employee Model Class
-    def createEmployee(self, __dict):
-        return Employee(__dict)
-
-    # Airplane Model Class
-    def createPlane(self, __dict):
-        return Plane(__dict)
-
-    # Trip Model class
-    def createTrip(self, __dict):
-        return Trip(__dict)
 
     # def change_destination(self):
     #     return LL_Destination.changeDestination()

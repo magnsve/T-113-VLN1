@@ -1,5 +1,5 @@
 # Classes and Constants
-from DataLayer import *
+from .dl_employee import DL_Employee
 
 
 
@@ -35,6 +35,18 @@ class DL_API():
 
     def read_file_EmployeeFilename(self):
         pass
+
+    def get_employees(self):
+        temp = DL_Employee()
+        return temp.getEmployees()
+
+    def append_employee(self, employee_object):
+        temp = DL_Employee()
+        return temp.appendEmployee(employee_object)
+    
+    def modify_employee(self, employee_object, index):
+        temp = DL_Employee()
+        return temp.modifyEmployee(employee_object, index)
 
     def close_file_EmployeeFilename(self):
         pass

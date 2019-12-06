@@ -11,30 +11,8 @@ class Employee():
         self.set_licence(employeeDict)
         self.set_address(employeeDict)
         self.set_phonenumber(employeeDict)
-
-    def __str__(self):
-        return '{},{},{},{},{},{},{}'.format(self.__ssn, self.__name, self.__role, self.__rank, self.__licence, self.__address, self.__phonenumber)
-
-    def get_ssn(self):        
-        return self.__ssn
-
-    def get_name(self):
-        return self.__name
-    
-    def get_role(self):
-        return self.__role
-
-    def get_rank(self):
-        return self.__rank
-
-    def get_licence(self):
-        return self.__licence
-
-    def get_address(self):
-        return self.__address
-
-    def get_phonenumber(self):
-        return self.__phonenumber
+        self.set_status(employeeDict)
+        self.set_history(employeeDict)
     
     def set_ssn(self, employeeDict):
         try:
@@ -77,3 +55,42 @@ class Employee():
             self.__phonenumber = employeeDict["phonenumber"]
         except KeyError:
             self.__phonenumber = ''
+    
+    def set_status(self, employeeDict):
+        try:
+            self.__status = employeeDict["status"]
+        except KeyError:
+            self.__status = 'incomplete'
+    
+    def set_history(self, employeeDict):
+        try:
+            self.__history = employeeDict["history"]
+        except KeyError:
+            self.__history = ''
+
+    def __str__(self):
+        return '{},{},{},{},{},{},{},{}'.format(self.__ssn, self.__name, self.__role, self.__rank, self.__licence, self.__address, self.__phonenumber, self.__status)
+
+    def get_ssn(self):        
+        return self.__ssn
+
+    def get_name(self):
+        return self.__name
+    
+    def get_role(self):
+        return self.__role
+
+    def get_rank(self):
+        return self.__rank
+
+    def get_licence(self):
+        return self.__licence
+
+    def get_address(self):
+        return self.__address
+
+    def get_phonenumber(self):
+        return self.__phonenumber
+    
+    def get_status(self):
+        return self.__status
