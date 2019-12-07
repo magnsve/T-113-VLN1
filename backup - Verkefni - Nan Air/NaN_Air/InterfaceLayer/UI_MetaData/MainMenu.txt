@@ -1,0 +1,18 @@
+--sep--
+--gra--
+--sep--
+--emp--
+--cen--Welcome to NaN Air Manager
+--emp--
+--cen--Please select an option from the menu.
+--emp--
+--sep--
+--bre--
+--emp--
+--lju----ind--1 - Employees
+--lju----ind--2 - Airplanes
+--lju----ind--3 - Destinations
+--lju----ind--4 - Trips
+--spa--
+--rju----ind--R - Refresh Screen    Q - Exit
+--sep--

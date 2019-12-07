@@ -1,0 +1,18 @@
+--sep--
+--gra--
+--sep--
+--cen--Fill in the search criteria using the menu.
+--sep--
+--bre--
+--emp--
+--lju----ind--1 - SSN     --ssn--
+--lju----ind--2 - Name     --name--
+--lju----ind--3 - Title     --title--
+--lju----ind--4 - Licence     --licence--
+--lju----ind--5 - Address     --address--
+--lju----ind--6 - Phonenumber     --phonenumber--
+--emp--
+--lju----ind--B - Back to Employees
+--spa-- 
+--rju----ind--R - Refresh Screen    Q - Exit
+--sep--

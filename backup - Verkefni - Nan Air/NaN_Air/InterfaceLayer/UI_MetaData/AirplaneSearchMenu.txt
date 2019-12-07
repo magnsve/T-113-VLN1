@@ -1,0 +1,17 @@
+--sep--
+--gra--
+--sep--
+--cen--Fill in the search criteria using the menu.
+--sep--
+--bre--
+--emp--
+--lju----ind--1 - Plane insignia
+--lju----ind--2 - Plane type ID
+--lju----ind--3 - Plane manufacturer
+--lju----ind--4 - Plane model
+--lju----ind--5 - Plane capacity
+--emp--
+--lju----ind--B - Back to Airplanes
+--spa-- 
+--rju----ind--R - Refresh Screen    Q - Exit
+--sep--

@@ -47,7 +47,7 @@ class LL_API():
     def remove_destination():
         return LL_Employee.removeEmployee()
 
-    
+
 
 
 
