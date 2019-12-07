@@ -3,9 +3,7 @@ from ModelClasses.trip import Trip
 
 
 class LL_Trips():
-    a flugvél og svo starfsmenn, destination,Flugnúmer beggja flugferða.
-– Sætaupplýsingar, s.s. fjöldi sæta sem eru laus og fjöldi sæta sem voru seld
-
+    
     def searchDestination(self, trip_object):
         # okkur vantar fleiri upplýsingar hér
         list_of_trips = DL_API().get_trips
@@ -14,7 +12,9 @@ class LL_Trips():
         cabincrew_search = self.search_cabincrew(trip_object, pilot_search)
         sold_seats_search = self.search_sold_seats(trip_object, cabincrew_search)
         available_seats_search = self.search_available_seats(trip_object, sold_seats_search)
-        status_search = self.search_status(trip_object, available_seats_search)
+        first_trip_search = self.search_first_trip(trip_object, available_seats_search)
+        second_trip_search = self.search_second_trip(trip_object, first_trip_search)
+        status_search = self.search_status(trip_object, second_trip_search)
         history_search = self.search_history(trip_object, status_search)
         return history_search
 
@@ -80,6 +80,32 @@ def search_available_seats(self, trip_object, list_of_trips):
             for seats_available in list_of_trips:
                 if seats_available in trips.get_available_seats():
                     output.append(seats_available)
+            return output
+        else:
+            return list_of_trips
+
+    def search_first_trip(self, trip_object, list_of_trips):
+        first_trip = trip_object.get_first_trip()
+        output = []
+        if not first_trip:
+            return list_of_trips
+        elif first_trip != '':
+            for trip in list_of_trips:
+                if first_trip in trip.get_first_trip():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
+
+    def search_second_trip(self, trip_object, list_of_trips):
+        second_trip = trip_object.get_second_trip()
+        output = []
+        if not second_trip:
+            return list_of_trips
+        elif second_trip != '':
+            for trip in list_of_trips:
+                if second_trip in trip.get_second_trip():
+                    output.append(trip)
             return output
         else:
             return list_of_trips
