@@ -5,12 +5,7 @@
 --sep--
 --bre--
 --emp--
---lju----ind--1 - SSN
---lju----ind--2 - Name
---lju----ind--3 - Title
---lju----ind--4 - Licence
---lju----ind--5 - Address
---lju----ind--6 - Phonenumber
+--cre--
 --emp--
 --lju----ind--B - Back to Employees
 --spa-- 

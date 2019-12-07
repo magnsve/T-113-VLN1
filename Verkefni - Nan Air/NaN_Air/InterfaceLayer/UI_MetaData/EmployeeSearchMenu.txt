@@ -5,14 +5,11 @@
 --sep--
 --bre--
 --emp--
---lju----ind--1 - SSN     --ssn--
---lju----ind--2 - Name     --name--
---lju----ind--3 - Title     --title--
---lju----ind--4 - Licence     --licence--
---lju----ind--5 - Address     --address--
---lju----ind--6 - Phonenumber     --phonenumber--
+--inf--
+--sea--
 --emp--
---lju----ind--B - Back to Employees
---spa-- 
---rju----ind--R - Refresh Screen    Q - Exit
+--spa--
+--lju----ind--Select an employee by entering the line number
+--emp-- 
+--rju----ind--Z - previous 10    X - next 10    B - Back to Employees    R - Refresh Screen    Q - Exit
 --sep--

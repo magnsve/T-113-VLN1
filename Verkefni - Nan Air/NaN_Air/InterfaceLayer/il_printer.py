@@ -27,6 +27,9 @@ class IL_Printer():
         self.__bread_crumbs = '--bre--'
         self.__second_indent = '--sec--'
         self.__facts = '--fact--'
+        self.__create = '--cre--'
+        self.__search = '--sea--'
+        self.__info = '--inf--'
         self.__menus = {'M':        ('il_main_menu',                'IL_MainMenu'),             \
                         'M_1':      ('il_employee_menu',            'IL_EmployeeMenu'),         \
                         'M_1_1':    ('il_employee_create_menu',     'IL_EmployeeCreateMenu'),   \
@@ -49,7 +52,7 @@ class IL_Printer():
         class_ = getattr(module, class_name)        
         return class_()
     
-    def prep_window(self, file = FILE, graphics = GRAPHICS_FILE):
+    def prep_window(self, file = FILE, graphics = GRAPHICS_FILE, object_argument = None):
         output = ''
         for _ in range(self.__window_height*3):
             output += '\n'
@@ -72,21 +75,31 @@ class IL_Printer():
                 else:
                     output += self.get_leftJust(line) +'\n'
             elif self.__spacing in line:
-                output += self.get_spaceing(file, graphics)
+                output += self.get_spaceing(file, graphics, object_argument)
             elif self.__empty_line in line:
                 output += self.get_emptyline() + '\n'
             elif self.__bread_crumbs in line:
                 output += self.get_breadcrumbs(self.ADDRESS) + '\n'
             elif self.__facts in line:
                 output += self.get_fact(self.FACTS) + '\n'
+            elif self.__create in line:
+                output += self.get_create(object_argument)
+            elif self.__search in line:
+                output += self.get_search(object_argument)
         return output
                 
-    def get_spaceing(self, file = '', graphics = ''):
+    def get_spaceing(self, file = '', graphics = '', object_argument = ''):
         counter = 3
         output = ''
         for line in self.get_file(file):
             if self.__graphics in line:
                 for line in self.get_file(graphics):
+                    counter += 1
+            elif self.__create in line:
+                for line in self.get_create(object_argument).splitlines():
+                    counter += 1
+            elif self.__search in line:
+                for line in self.get_search(object_argument).splitlines():
                     counter += 1
             else:
                 counter += 1
@@ -96,6 +109,30 @@ class IL_Printer():
             right_border = self.__vertical
             output += '{}{}{}'.format(left_border, contents, right_border) + '\n'
         return output
+    
+    def get_create(self, model_object):
+        output = ''      
+        temp = self.display_model_object(model_object)
+        for line in temp:
+            left_border = (self.__space * 4) + self.__vertical
+            contents = (self.__space * 5) + line.ljust(self.__window_width - 15)
+            right_border = self.__vertical
+            output += '{}{}{}'.format(left_border, contents, right_border) + '\n'
+        return output
+    
+    def get_search(self, list_of_objects):
+        output = ''      
+        temp = self.search_model_object(list_of_objects).splitlines()
+        for line in temp:
+            left_border = (self.__space * 4) + self.__vertical
+            contents = (self.__space * 5) + line.ljust(self.__window_width - 15)
+            right_border = self.__vertical
+            output += '{}{}{}'.format(left_border, contents, right_border) + '\n'
+        return output
+    
+    def get_info(self, list_of_objects):
+        output = ''
+        
 
     def get_file_contents(self, file):
         output = ''

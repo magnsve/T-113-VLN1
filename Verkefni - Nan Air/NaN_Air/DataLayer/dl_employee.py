@@ -28,3 +28,8 @@ class DL_Employee():
         lines[index] = employee_object.__str__()
         open(self.FILE_NAME,'w').write('\n'.join(lines))
         return True
+    
+    def getHeaders(self):
+        with open(self.FILE_NAME) as _file:
+            dict_reader = csv.DictReader(_file)
+            return dict_reader.fieldnames

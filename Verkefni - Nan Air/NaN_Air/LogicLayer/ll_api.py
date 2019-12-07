@@ -10,6 +10,12 @@ class LL_API():
 
     def inactivate_employee(self, employee_object, index):
         return LL_Employee().inactivateEmployee(employee_object, index)
+    
+    def get_employee_header(self):
+        return LL_Employee().get_headers()
+    
+    def search_employee(self, employee_object):
+        return LL_Employee().searchEmployee(employee_object)
 
     # def change_destination(self):
     #     return LL_Destination.changeDestination()

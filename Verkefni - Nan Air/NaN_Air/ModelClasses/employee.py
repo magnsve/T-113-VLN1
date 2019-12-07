@@ -15,103 +15,112 @@ class Employee():
         self.set_history(input_data)
     
     def set_ssn(self, input_data):
-        if isinstance(input_data, dict):            
-            try:
-                self.__ssn = input_data["ssn"]
-            except KeyError:
-                self.__ssn = ''
-        elif not input_data:
+        if not input_data:
             self.__ssn = ''
         else:
-            self.__ssn = input_data
+            if isinstance(input_data, dict):            
+                try:
+                    self.__ssn = input_data["ssn"]
+                except KeyError:
+                    self.__ssn = ''        
+            else:
+                self.__ssn = input_data
     
     def set_name(self, input_data):
-        if isinstance(input_data, dict):            
-            try:
-                self.__name = input_data["name"]
-            except KeyError:
-                self.__name = ''
-        elif not input_data:
+        if not input_data:
             self.__name = ''
         else:
-            self.__name = input_data
+            if isinstance(input_data, dict):            
+                try:
+                    self.__name = input_data["name"]
+                except KeyError:
+                    self.__name = ''
+            else:
+                self.__name = input_data
     
     def set_role(self, input_data):
-        if isinstance(input_data, dict):            
-            try:
-                self.__role = input_data["role"]
-            except KeyError:
-                self.__role = ''
-        elif not input_data:
+        if not input_data:
             self.__role = ''
         else:
-            self.__role = input_data        
+            if isinstance(input_data, dict):            
+                try:
+                    self.__role = input_data["role"]
+                except KeyError:
+                    self.__role = ''
+            else:
+                self.__role = input_data        
     
     def set_rank(self, input_data):
-        if isinstance(input_data, dict):            
-            try:
-                self.__rank = input_data["rank"]
-            except KeyError:
-                self.__rank = ''
-        elif not input_data:
+        if not input_data:
             self.__rank = ''
         else:
-            self.__rank = input_data   
+            if isinstance(input_data, dict):            
+                try:
+                    self.__rank = input_data["rank"]
+                except KeyError:
+                    self.__rank = ''
+            else:
+                self.__rank = input_data   
     
     def set_licence(self, input_data):
-        if isinstance(input_data, dict):            
-            try:
-                self.__licence = input_data["licence"]
-            except KeyError:
-                self.__licence = ''
-        elif not input_data:
+        if not input_data:
             self.__licence = ''
         else:
-            self.__licence = input_data   
+            if isinstance(input_data, dict):            
+                try:
+                    self.__licence = input_data["licence"]
+                except KeyError:
+                    self.__licence = ''
+            else:
+                self.__licence = input_data   
     
     def set_address(self, input_data):
-        if isinstance(input_data, dict):            
-            try:
-                self.__address = input_data["address"]
-            except KeyError:
-                self.__address = ''
-        elif not input_data:
+        if not input_data:
             self.__address = ''
         else:
-            self.__address = input_data
+            if isinstance(input_data, dict):            
+                try:
+                    self.__address = input_data["address"]
+                except KeyError:
+                    self.__address = ''
+            else:
+                self.__address = input_data
     
     def set_phonenumber(self, input_data):
-        if isinstance(input_data, dict):
-            try:
-                self.__phonenumber = input_data["phonenumber"]
-            except KeyError:
-                self.__phonenumber = ''
-        elif not input_data:
+        if not input_data:
             self.__phonenumber = ''
         else:
-            self.__phonenumber = input_data
+            if isinstance(input_data, dict):
+                try:
+                    self.__phonenumber = input_data["phonenumber"]
+                except KeyError:
+                    self.__phonenumber = ''
+            else:
+                self.__phonenumber = input_data
     
     def set_status(self, input_data):
-        if isinstance(input_data, dict):
-            try:
-                self.__status = input_data["status"]
-            except KeyError:
-                self.__status = 'incomplete'
-        elif not input_data:
-            self.__status = 'incomplete'
-        else: 
-            self.__status = input_data
+        if not input_data:
+            self.__status = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__status = input_data["status"]
+                except KeyError:
+                    self.__status = 'incomplete'
+            else: 
+                self.__status = input_data
 
     def set_history(self, input_data):
-        if isinstance(input_data, dict):
-            try:
-                self.__history = input_data["history"]
-            except KeyError:
-                self.__history = ''
-        elif not input_data:
+        if not input_data:
             self.__history = ''
         else:
-            self.__history = input_data
+            if isinstance(input_data, dict):
+                try:
+                    self.__history = input_data["history"]
+                except KeyError:
+                    self.__history = ''
+            else:
+                self.__history = input_data
 
     def __str__(self):
         return '{},{},{},{},{},{},{},{}'.format(self.__ssn, self.__name, self.__role, self.__rank, self.__licence, self.__address, self.__phonenumber, self.__status)
@@ -139,3 +148,6 @@ class Employee():
     
     def get_status(self):
         return self.__status
+    
+    def get_history(self):
+        return self.__history
