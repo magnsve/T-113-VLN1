@@ -1,22 +1,34 @@
 #imports and constants
 import csv
-
+from ModelClasses.plane import Plane
 #Classes
 
 class DL_Planes():
 
-    def __init__(self):
-        self.__getPlanes = getPlanes
-        self.__appendPlanes = appendPlanes
-        self.__modifyPlanes = modifyPlanes
-
+FILE_NAME = ""
 
     def getPlanes(self):
-        return [getPlanes()]
+        _file = csv.DictReader(open(self.FILE_NAME))
+        output = []
+        for row in _file:
+            data = Plane(row)
+            output.append(data)
+        return output
 
-    def appendPlanes(self, DL_Planes):
-        #append to CSV
-        pass
+    def appendPlanes(self, plane_object):
+        with open(self.FILE_NAME, 'a') as _file:
+            _file.write(plane_object.__str__())
+        return True 
 
-    def modifyPlanes(self, DL_Planes, index):
-        pass
+    def modifyPlanes(self, plane_object, index):
+        lines = open(self.FILE_NAME).read().splitlines()
+        print(lines)
+        print(plane_object.__str__())
+        lines[index] = plane_object.__str__()
+        open(self.FILE_NAME,'w').write('\n'.join(lines))
+        return True
+
+    def get_headers_plane(self):
+        with open(self.FILE_NAME) as _file:
+            dict_reader = csv.DictReader(_file)
+            return dict_reader.fieldnames

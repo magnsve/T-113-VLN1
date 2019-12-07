@@ -1,22 +1,31 @@
-
-
-
+import csv
+from ModelClasses.trip import Trip
 class DL_Trips():
 
-    def __init__(self):
-        self.__getTrips = getTrips
-        self.__appendTrips = appendTrips
-        self.__modifyTrips = modifyTrips
+FILE_NAME = ""
 
+   def getTrips(self):
+        _file = csv.DictReader(open(self.FILE_NAME))
+        output = []
+        for row in _file:
+            data = Trip(row)
+            output.append(data)
+        return output
 
-    def getTrips(self):
-        return [getTrips()]
+    def appendTrips(self, trip_object):
+        with open(self.FILE_NAME, 'a') as _file:
+            _file.write(trip_object.__str__())
+        return True 
 
-    def appendTrips(self, DL_Trips):
-        #append to CSV
-        pass
+    def modifyTrips(self, trip_object, index):
+        lines = open(self.FILE_NAME).read().splitlines()
+        print(lines)
+        print(trip_object.__str__())
+        lines[index] = trip_object.__str__()
+        open(self.FILE_NAME,'w').write('\n'.join(lines))
+        return True
 
-    def modifyTrips(self, DL_Trips, index):
-        pass
-
-    
+    def get_headers_trips(self):
+        with open(self.FILE_NAME) as _file:
+            dict_reader = csv.DictReader(_file)
+            return dict_reader.fieldnames
