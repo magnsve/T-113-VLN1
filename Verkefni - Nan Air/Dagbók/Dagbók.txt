@@ -192,7 +192,23 @@ Ofurhetja dagsins: Jón - Catwoman/Halle Barry
 Hvað gerðist í dag:
 Hópurinn er kominn mjög langt með að fá layerin til að virka saman.
 
+Sunnudagur 08.12.2019- 13:30
 
+Fundarstjóri: Jón Ísak Jóhannesson		
+
+Fyrsti hluti: So Far.
+kominn með grunninn í öllum datalayer og logic layer, forritið byrjar að virka að einhverju leyti og interface byrjað að tengjast við DL og LL.
+
+Annar hluti: What now
+Verkefni dagsins er að klára datalayer og logic layer og fá methodin til að virka í interface
+
+Þriðji hluti: Challenges
+Fá öll layerin til að virka saman og importin.
+
+Ofurhetja dagsins: Magnús - guy fiery
+
+Hvað gerðist í dag:
+Fórum yfir datalayer og logic layer, datalayer or 95% kominn og logiclayer kominn langleiðina, interface kominn langt á leið.
 
 
 
