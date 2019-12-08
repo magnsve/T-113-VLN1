@@ -7,7 +7,8 @@ class LL_Trips():
     def searchDestination(self, trip_object):
         # okkur vantar fleiri upplýsingar hér
         list_of_trips = DL_API().get_trips
-        plane_search = self.search_plane(trip_object, list_of_trips)        
+        destination_search = self.search_destination(trip_object, list_of_trips)
+        plane_search = self.search_plane(trip_object, destination_search)        
         pilot_search = self.search_pilot(trip_object, plane_search)
         cabincrew_search = self.search_cabincrew(trip_object, pilot_search)
         sold_seats_search = self.search_sold_seats(trip_object, cabincrew_search)
@@ -18,6 +19,18 @@ class LL_Trips():
         history_search = self.search_history(trip_object, status_search)
         return history_search
 
+    def search_destination(self, trip_object, list_of_trips):
+        destination = trip_object.get_destination()
+        output = []
+        if not destination:
+            return list_of_trips
+        elif destination != '':
+            for destinations in list_of_trips:
+                if destinations in trip.get_destination():
+                    output.append(destinations)
+            return output
+        else:
+            return list_of_trips
 
     def search_plane(self, trip_object, list_of_trips):
         plane = trip_object.get_plane()
@@ -39,7 +52,7 @@ class LL_Trips():
             return list_of_trips
         elif pilot != '':
             for pilots in list_of_trips:
-                if pilots in trips.get_pilot():
+                if pilots in trip.get_pilot():
                     output.append(pilots)
             return output
         else:
