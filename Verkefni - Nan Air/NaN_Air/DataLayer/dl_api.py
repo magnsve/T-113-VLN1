@@ -51,16 +51,16 @@ class DL_API():
 
 
     def get_destinations(self):        
-        return DL_Destinations().get_destinations()
+        return DL_Destinations().getDestinations()
 
     def append_destinations(self, destination_object):        
-        return DL_Destinations().append_destinations(destination_object)
+        return DL_Destinations().appendDestinations(destination_object)
     
     def modify_destinations(self, destination_object, index):
-        return DL_Destinations().modify_destinations(destination_object, index)
+        return DL_Destinations().modifyDestinations(destination_object, index)
     
     def get_headers_destinations(self):
-        return DL_Destinations().get_headers_destinations()
+        return DL_Destinations().getHeaders()
 
 #_______________________________________________________________________
 
