@@ -1,0 +1,14 @@
+--sep--
+--gra--
+--sep--
+--cen--Please select an option from the menu.
+--sep--
+--bre--
+--emp--
+--lju----ind--1 - New Employee
+--lju----ind--2 - Find Employee
+--emp--
+--lju----ind--B - Back to Main menu
+--spa-- 
+--rju----ind--R - Refresh Screen    Q - Exit
+--sep--

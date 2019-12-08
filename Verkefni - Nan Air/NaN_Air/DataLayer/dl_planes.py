@@ -1,11 +1,11 @@
 #imports and constants
 import csv
 from ModelClasses.plane import Plane
+
 #Classes
-
 class DL_Planes():
-
-FILE_NAME = ""
+    ''' '''
+    FILE_NAME = 'DataLayer\\DL_Database\\Aircraft.csv'
 
     def getPlanes(self):
         _file = csv.DictReader(open(self.FILE_NAME))

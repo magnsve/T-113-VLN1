@@ -71,7 +71,7 @@ class LL_Trips():
         else:
             return list_of_trips
 
-def search_available_seats(self, trip_object, list_of_trips):
+    def search_available_seats(self, trip_object, list_of_trips):
         available_seats = trip_object.get_available_seats()
         output = []
         if not available_seats:

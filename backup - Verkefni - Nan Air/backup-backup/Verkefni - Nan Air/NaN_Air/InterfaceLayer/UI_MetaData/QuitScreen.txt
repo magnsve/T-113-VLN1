@@ -1,0 +1,21 @@
+--sep--
+--sep--
+--cen--Thank you for using NaN Air Manager.               
+--emp--
+--cen--           Your compliance has been noted.
+--emp--
+--sep--
+--gra--
+--sep--
+--emp--
+--emp--
+--emp--
+--emp--
+--emp--
+--fact--
+--emp--
+--spa--
+--cen--Press any key to close the window.
+--emp--
+--sep--
+--sep--

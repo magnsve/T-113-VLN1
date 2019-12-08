@@ -8,7 +8,7 @@ class DL_Destinations():
     ''' '''
     FILE_NAME = ''
 
-   def getDestinations(self):
+    def getDestinations(self):
         _file = csv.DictReader(open(self.FILE_NAME))
         output = []
         for row in _file:

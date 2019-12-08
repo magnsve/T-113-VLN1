@@ -2,7 +2,7 @@
 from .dl_employee import DL_Employee
 from .dl_planes import DL_Planes
 from .dl_trips import DL_Trips
-from .dl_api import DL_Destinations
+from .dl_destinations import DL_Destinations
 
 
 #Classes 
@@ -37,30 +37,30 @@ class DL_API():
 
 
     def get_trips(self):        
-        return DL_Trips.get_trips()
+        return DL_Trips().get_trips()
 
     def append_trips(self, trip_object):        
-        return DL_Trips.append_trips(trip_object)
+        return DL_Trips().append_trips(trip_object)
     
     def modify_trips(self, trip_object, index):
-        return DL_Trips.modify_trips(trip_object, index)
+        return DL_Trips().modify_trips(trip_object, index)
     
     def get_headers_trips(self):
-        return DL_Trips.get_headers_trips()
+        return DL_Trips().get_headers_trips()
 
 
 
     def get_destinations(self):        
-        return DL_Destinations.get_destinations()
+        return DL_Destinations().get_destinations()
 
     def append_destinations(self, destination_object):        
-        return DL_Destinations.append_destinations(destination_object)
+        return DL_Destinations().append_destinations(destination_object)
     
     def modify_destinations(self, destination_object, index):
-        return DL_Destinations.modify_destinations(destination_object, index)
+        return DL_Destinations().modify_destinations(destination_object, index)
     
     def get_headers_destinations(self):
-        return DL_Destinations.get_headers_destinations()
+        return DL_Destinations().get_headers_destinations()
 
 #_______________________________________________________________________
 

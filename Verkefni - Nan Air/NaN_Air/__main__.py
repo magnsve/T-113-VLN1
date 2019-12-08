@@ -21,9 +21,39 @@ def main():
             if new_pos.CATEGORY == 'Employee':
                 model_class_object = Employee()
                 print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, model_class_object))
+            elif new_pos.CATEGORY == 'Planes':
+                model_class_object = Plane()
+                print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, model_class_object))
+            elif new_pos.CATEGORY == 'Destination':
+                model_class_object = Destination()
+                print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, model_class_object))
+            elif new_pos.CATEGORY == 'Trips':
+                model_class_object = Trip()
+                print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, model_class_object))
         elif new_pos.SCREEN_TYPE == 'Search':
             if new_pos.CATEGORY == 'Employee':
                 model_class_object = Employee()
+                list_of_objects = LL_API().search_employee(model_class_object)
+                if len(list_of_objects) > 10:
+                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects[0:10]))
+                else:
+                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects))
+            elif new_pos.CATEGORY == 'Planes':
+                model_class_object = Plane()
+                list_of_objects = LL_API().search_employee(model_class_object)
+                if len(list_of_objects) > 10:
+                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects[0:10]))
+                else:
+                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects))
+            elif new_pos.CATEGORY == 'Destination':
+                model_class_object = Destination()
+                list_of_objects = LL_API().search_employee(model_class_object)
+                if len(list_of_objects) > 10:
+                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects[0:10]))
+                else:
+                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects))
+            elif new_pos.CATEGORY == 'Trips':
+                model_class_object = Trip()
                 list_of_objects = LL_API().search_employee(model_class_object)
                 if len(list_of_objects) > 10:
                     print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects[0:10]))

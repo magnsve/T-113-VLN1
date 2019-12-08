@@ -1,0 +1,15 @@
+--sep--
+--gra--
+--sep--
+--cen--Fill in the search criteria using the menu.
+--sep--
+--bre--
+--emp--
+--inf--
+--sea--
+--emp--
+--spa--
+--lju----ind--Select a destination by entering the line number, then hit enter.
+--emp-- 
+--rju----ind--Z - previous 10    X - next 10    B - Back to Employees    R - Refresh Screen    Q - Exit
+--sep--

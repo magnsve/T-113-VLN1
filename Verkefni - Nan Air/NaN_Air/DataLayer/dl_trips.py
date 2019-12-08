@@ -1,10 +1,13 @@
+# Imports and constants
 import csv
 from ModelClasses.trip import Trip
+
+# Classes
 class DL_Trips():
+    ''' '''
+    FILE_NAME = ""
 
-FILE_NAME = ""
-
-   def getTrips(self):
+    def getTrips(self):
         _file = csv.DictReader(open(self.FILE_NAME))
         output = []
         for row in _file:

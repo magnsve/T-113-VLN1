@@ -2,17 +2,128 @@
 
 # Classes
 class Destination():
-    def __init__(self, destinationDict):
-        self.__airportId = destinationDict["airportID"]
-        self.__destination = destinationDict["destination"]
-        self.__country = destinationDict["country"]
-        self.__flightTime = destinationDict["flightTime"]
-        self.__distance = destinationDict["distance"]
-        self.__emergencyContact = destinationDict["emergencyContact"]
-        self.__emergencyContactNumber = destinationDict["emergencyContactNumber"]
+    ''' '''
+    def __init__(self, input_data = None):
+        self.set_airportId(input_data)
+        self.set_destination(input_data)
+        self.set_country(input_data)
+        self.set_flightTime(input_data)
+        self.set_distance(input_data)
+        self.set_emergencyContact(input_data)
+        self.set_emergencyContactNumber(input_data)
+        self.set_status(input_data)
+        self.set_history(input_data)
+    
+    def set_emergencyContactNumber(self, input_data):
+        if not input_data:
+            self.__emergencyContactNumber = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__emergencyContactNumber = input_data['emergencyContactNumber']
+                except KeyError:
+                    self.__emergencyContactNumber = ''
+            else:
+                self.__emergencyContactNumber = input_data
+    
+    def set_emergencyContact(self, input_data):
+        if not input_data:
+            self.__emergencyContact = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__emergencyContact = input_data['emergencyContact']
+                except KeyError:
+                    self.__emergencyContact = ''
+            else:
+                self.__emergencyContact = input_data
+    
+    def set_distance(self, input_data):
+        if not input_data:
+            self.__distance = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__distance = input_data['distance']
+                except KeyError:
+                    self.__distance = ''
+            else:
+                self.__distance = input_data
+    
+    def set_flightTime(self, input_data):
+        if not input_data:
+            self.__flightTime = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__flightTime = input_data['flightTime']
+                except KeyError:
+                    self.__flightTime = ''
+            else:
+                self.__flightTime = input_data
+
+    def set_country(self, input_data):
+        if not input_data:
+            self.__country = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__country = input_data["country"]
+                except KeyError:
+                    self.__country = ''
+            else:
+                self.__country = input_data
+
+    def set_destination(self, input_data):
+        if not input_data:
+            self.__destination = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__destination = input_data["destination"]
+                except KeyError:
+                    self.__destination = ''    
+            else:
+                self.__destination = input_data
+
+    def set_airportId(self, input_data):
+        if not input_data:
+            self.__airportID = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__airportID = input_data["airportID"]
+                except KeyError:
+                    self.__airportID = ''
+            else:
+                self.__airportID = input_data
+
+    def set_status(self, input_data):
+        if not input_data:
+            self.__status = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__status = input_data["status"]
+                except KeyError:
+                    self.__status = 'incomplete'
+            else: 
+                self.__status = input_data
+    
+    def set_history(self, input_data):
+        if not input_data:
+            self.__history = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__history = input_data["history"]
+                except KeyError:
+                    self.__history = ''
+            else:
+                self.__history = input_data
 
     def get_airportID(self):        
-        return self.__airportId
+        return self.__airportID
 
     def get_destination(self):
         return self.__destination
@@ -31,3 +142,9 @@ class Destination():
 
     def get_emergencyContactNumber(self):
         return self.__emergencyContactNumber
+    
+    def get_status(self):
+        return self.__status
+    
+    def get_history(self):
+        return self.__history

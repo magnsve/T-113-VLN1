@@ -17,6 +17,15 @@ class LL_API():
     def search_employee(self, employee_object):
         return LL_Employee().searchEmployee(employee_object)
 
+    def inactivate_destination(self, destination_object, index):
+        return LL_Destinations().inactivateDestination(destination_object, index)
+    
+    def get_destination_header(self):
+        return LL_Destinations().get_headers()
+    
+    def search_destination(self, destination_object):
+        return LL_Destinations().search_destination(destination_object)
+
     # def change_destination(self):
     #     return LL_Destination.changeDestination()
 

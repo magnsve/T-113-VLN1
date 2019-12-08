@@ -1,7 +1,6 @@
 from DataLayer.dl_api import DL_API
 from ModelClasses.destination import Destination
 
-
 class LL_Destinations():
 
     def searchDestination(self, destination_object):
@@ -64,7 +63,6 @@ class LL_Destinations():
             return output
         else:
             return list_of_destinations
-
 
     def inactivateDestination(self, destination_object, index):
         destination_object.set_status('inactive')        
