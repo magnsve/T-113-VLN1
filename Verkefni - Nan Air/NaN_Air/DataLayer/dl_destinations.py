@@ -6,7 +6,8 @@ from ModelClasses.destination import Destination
 
 class DL_Destinations():
     ''' '''
-    FILE_NAME = ''
+    FILE_NAME = "DataLayer\\DL_Database\\Destinations.csv"
+
 
     def getDestinations(self):
         _file = csv.DictReader(open(self.FILE_NAME))

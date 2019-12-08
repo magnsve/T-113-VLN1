@@ -6,6 +6,7 @@ from ModelClasses.trip import Trip
 class DL_Trips():
     ''' '''
     FILE_NAME = ""
+    #Þarf að bæta við skrá sem heldur utan um Trips. 
 
     def getTrips(self):
         _file = csv.DictReader(open(self.FILE_NAME))
