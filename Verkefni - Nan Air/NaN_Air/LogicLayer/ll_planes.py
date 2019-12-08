@@ -8,22 +8,22 @@ class LL_Planes():
     #nafn, tegund, framleiðandi og fjöldi farþegasæta.
     def searchPlane(self, plane_object):
         list_of_planes = DL_API().get_planes    
-        name_search = self.search_name(plane_object, list_of_planes)        
+        insignia_search = self.search_insignia(plane_object, list_of_planes)        
         type_search = self.search_type(plane_object, name_search)
         manufacturer_search = self.search_manufacturer(plane_object, type_search)
-        no_seats_search = self.search_no_seats(plane_object, manufacturer_search)
+        capacity_search = self.search_capacity(plane_object, manufacturer_search)
         status_search = self.search_status(plane_object, no_seats_search)
         history_search = self.search_history(plane_object, status_search)
         return history_search
 
-    def search_name(self, plane_object, list_of_planes):
-        name = plane_object.get_name()
+    def search_insignia(self, plane_object, list_of_planes):
+        insignia = plane_object.get_insignia()
         output = []
-        if not name:
+        if not insignia:
             return list_of_planes
-        elif name != '':
+        elif insignia != '':
             for plane in list_of_planes:
-                if name in plane.get_name():
+                if insignia in plane.get_insignia():
                     output.append(plane)
             return output
         else:
@@ -43,19 +43,18 @@ class LL_Planes():
         else:
             return list_of_planes
     
-    def search_no_seats(self, plane_object, list_of_planes):
-        no_seats = plane_object.get_no_seats()
+    def search_capacity(self, plane_object, list_of_planes):
+        capacity = plane_object.get_capacity()
         output = []
-        if not no_seats:
+        if not capacity:
             return list_of_planes
-        elif no_seats != '':
+        elif capacity != '':
             for plane in list_of_planes:
-                if no_seats in plane.get_no_seats():
+                if capacity in plane.capacity():
                     output.append(plane)
             return output
         else:
             return list_of_planes
-
 
 
     def search_manufacturer(self, plane_object, list_of_planes):
@@ -100,9 +99,12 @@ class LL_Planes():
     def inactivatePlane(self, plane_object, index):
         plane_object.set_status('inactive')        
         DL_API().modify_planes(plane_object, index)
+
+    def get_headers(self):
+        return DL_API().get_headers()
     
     def removePlane(self):
         pass
 
-    def changeEmployee():
+    def changePlane():
         pass
