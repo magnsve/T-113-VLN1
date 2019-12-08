@@ -16,18 +16,22 @@ class IL_EmployeeCreateMenu(IL_EmployeeMenu):
         super().__init__()        
         self.__parent_class = 'IL_EmployeeMenu'
         self.__module = 'il_employee_create_menu'
-        self.__class_name = 'IL_EmployeeCreateMenu'               
+        self.__class_name = 'IL_EmployeeCreateMenu'
+        
+    def display_model_object(self, employee_object = None):
+        output = ''
+        header_row = LL_API().get_employee_header()
+        item_values = employee_object.__dict__.values()
+        column_width = 65
+        counter = 0
+        for index, item in enumerate(item_values):            
+            if header_row[index] == 'history':
+                continue
+            else:
+                output += '{} - {}: {}'.format(index+1,header_row[index].capitalize(),item).ljust(column_width)
+                counter += 1
+                if counter == 2:
+                    output += '\n'
+                    counter = 0
+        return output
     
-    def display_model_object(self, employee_object = None):        
-        if employee_object:            
-            ssn = '1 - SSN: {}'.format(employee_object.get_ssn())
-            name = '2 - Name: {}'.format(employee_object.get_name())
-            role = '3 - Role: {}'.format(employee_object.get_role())
-            rank = '4 - Rank: {}'.format(employee_object.get_rank())
-            licence = '5 - Licence: {}'.format(employee_object.get_licence())
-            address = '6 - Address: {}'.format(employee_object.get_address())
-            phonenumber = '7 - Phonenumber: {}'.format(employee_object.get_phonenumber())
-            status = '8 - Status: {}'.format(employee_object.get_status())
-            return [ssn, name, role, rank, licence, address, phonenumber, status]
-        else:
-            return ''

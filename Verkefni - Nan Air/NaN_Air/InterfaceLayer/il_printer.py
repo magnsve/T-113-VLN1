@@ -52,7 +52,7 @@ class IL_Printer():
         class_ = getattr(module, class_name)        
         return class_()
     
-    def prep_window(self, file = FILE, graphics = GRAPHICS_FILE, object_argument = None):
+    def prep_window(self, file = FILE, graphics = GRAPHICS_FILE, model_object = None, list_of_objects = None):
         output = ''
         for _ in range(self.__window_height*3):
             output += '\n'
@@ -75,7 +75,7 @@ class IL_Printer():
                 else:
                     output += self.get_leftJust(line) +'\n'
             elif self.__spacing in line:
-                output += self.get_spaceing(file, graphics, object_argument)
+                output += self.get_spaceing(file, graphics, model_object, list_of_objects)
             elif self.__empty_line in line:
                 output += self.get_emptyline() + '\n'
             elif self.__bread_crumbs in line:
@@ -83,12 +83,14 @@ class IL_Printer():
             elif self.__facts in line:
                 output += self.get_fact(self.FACTS) + '\n'
             elif self.__create in line:
-                output += self.get_create(object_argument)
+                output += self.get_create(model_object)
             elif self.__search in line:
-                output += self.get_search(object_argument)
+                output += self.get_search(list_of_objects)
+            elif self.__info in line:
+                output += self.get_info(model_object)
         return output
                 
-    def get_spaceing(self, file = '', graphics = '', object_argument = ''):
+    def get_spaceing(self, file = '', graphics = '', model_object = '', list_of_objects = ''):
         counter = 3
         output = ''
         for line in self.get_file(file):
@@ -96,10 +98,13 @@ class IL_Printer():
                 for line in self.get_file(graphics):
                     counter += 1
             elif self.__create in line:
-                for line in self.get_create(object_argument).splitlines():
+                for line in self.get_create(model_object).splitlines():
                     counter += 1
             elif self.__search in line:
-                for line in self.get_search(object_argument).splitlines():
+                for line in self.get_search(list_of_objects).splitlines():
+                    counter += 1
+            elif self.__info in line:
+                for line in self.get_info(model_object).splitlines():
                     counter += 1
             else:
                 counter += 1
@@ -109,10 +114,20 @@ class IL_Printer():
             right_border = self.__vertical
             output += '{}{}{}'.format(left_border, contents, right_border) + '\n'
         return output
+
+    def get_info(self, model_object):
+        output = ''
+        temp = self.display_search_object(model_object).splitlines()        
+        for line in temp:
+            left_border = (self.__space * 4) + self.__vertical
+            contents = (self.__space * 5) + line.ljust(self.__window_width - 15)
+            right_border = self.__vertical
+            output += '{}{}{}'.format(left_border, contents, right_border) + '\n'
+        return output
     
     def get_create(self, model_object):
         output = ''      
-        temp = self.display_model_object(model_object)
+        temp = self.display_model_object(model_object).splitlines()
         for line in temp:
             left_border = (self.__space * 4) + self.__vertical
             contents = (self.__space * 5) + line.ljust(self.__window_width - 15)
@@ -129,10 +144,6 @@ class IL_Printer():
             right_border = self.__vertical
             output += '{}{}{}'.format(left_border, contents, right_border) + '\n'
         return output
-    
-    def get_info(self, list_of_objects):
-        output = ''
-        
 
     def get_file_contents(self, file):
         output = ''
@@ -216,7 +227,8 @@ class IL_Printer():
             return 'z'
     
     def multi_input(self):
-        return input()
+        _input = input()
+        return (_input, _input)
 
     def select_fromMenu(self):                
         _input = self.single_input()                                  

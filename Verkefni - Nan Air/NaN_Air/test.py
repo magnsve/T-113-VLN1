@@ -8,18 +8,23 @@ employee1 = Employee(my_dict)
 employee2 = Employee()
 employee3 = Employee("test")
 
-search_dict = {'ssn':'', 'name':'', 'role':'', 'rank':'', 'licence':'','address':'', 'phonenumber':'', 'status':'', 'history':''}
+search_dict = {'ssn':'', 'name':'John', 'role':'', 'rank':'', 'licence':'','address':'', 'phonenumber':'', 'status':'', 'history':''}
+test = Employee()
+test.set_name('John')
 search_criteria = Employee(search_dict)
 #set1 = LL_API().search_employee(employee1)
 #for i in set1:
 #    print(set1)
-set2 = LL_API().search_employee(search_criteria)
+set2 = LL_API().search_employee(test)
 print(len(set2))
-if len(set2) > 20:
-    set4 = set2[0:20]
-    print(len(set4))
-for i in set4:
+for i in set2:
     print(i)
+
+# if len(set2) > 20:
+#     set4 = set2[0:20]
+#     print(len(set4))
+# for i in set4:
+#     print(i)
 
 
 
