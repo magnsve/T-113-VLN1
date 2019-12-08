@@ -26,6 +26,25 @@ class LL_API():
     def search_destination(self, destination_object):
         return LL_Destinations().search_destination(destination_object)
 
+    def inactivate_trip(self, employee_object, index):
+        return LL_Trips().inactivateTrip(trip_object, index)
+    
+    def get_trip_header(self):
+        return LL_Trips().get_headers()
+    
+    def search_trip(self, employee_object):
+        return LL_Trips().searchTrip(trip_object)
+
+    def inactivate_plane(self, destination_object, index):
+        return LL_Planes().inactivateplane(plane_object, index)
+    
+    def get_plane_header(self):
+        return LL_Planes().get_headers()
+    
+    def search_plane(self, destination_object):
+        return LL_Planes().search_plane(plane_object)
+
+
     # def change_destination(self):
     #     return LL_Destination.changeDestination()
 

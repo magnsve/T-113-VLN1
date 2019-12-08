@@ -1,10 +1,11 @@
 from DataLayer.dl_api import DL_API
 from ModelClasses.trip import Trip
+from .ll_employee import LL_Employee
 
 
 class LL_Trips():
     
-    def searchDestination(self, trip_object):
+    def searchtrips(self, trip_object):
         # okkur vantar fleiri upplýsingar hér
         list_of_trips = DL_API().get_trips
         destination_search = self.search_destination(trip_object, list_of_trips)
@@ -15,7 +16,11 @@ class LL_Trips():
         available_seats_search = self.search_available_seats(trip_object, sold_seats_search)
         first_trip_search = self.search_first_trip(trip_object, available_seats_search)
         second_trip_search = self.search_second_trip(trip_object, first_trip_search)
-        status_search = self.search_status(trip_object, second_trip_search)
+        depart_time_home_search = self.search_depart_time_home
+        arrival_time_dest_search = self.search_arrival_time_dest
+        depart_time_dest_search = self.search_depart_time_dest
+        arrival_time_home = self.search_arrival_time_home
+        status_search = self.search_status(trip_object, second_trip_+search)
         history_search = self.search_history(trip_object, status_search)
         return history_search
 
@@ -123,6 +128,59 @@ class LL_Trips():
         else:
             return list_of_trips
 
+    
+    def search_depart_time_home(self, trip_object, list_of_trips):
+        depart_time_home = trip_object.get_depart_time_home()
+        output = []
+        if not depart_time_home:
+            return list_of_trips
+        elif depart_time_home != '':
+            for trip in list_of_trips:
+                if depart_time_home in trip.get_depart_time_home():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
+    
+    def search_arrival_time_dest(self, trip_object, list_of_trips):
+        arrival_time_dest = trip_object.get_arrival_time_dest()
+        output = []
+        if not arrival_time_dest:
+            return list_of_trips
+        elif arrival_time_dest != '':
+            for trip in list_of_trips:
+                if arrival_time_dest in trip.get_arrival_time_dest():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
+    
+    def search_depart_time_dest(self, trip_object, list_of_trips):
+        depart_time_dest = trip_object.get_depart_time_dest()
+        output = []
+        if not depart_time_dest:
+            return list_of_trips
+        elif depart_time_dest != '':
+            for trip in list_of_trips:
+                if depart_time_dest in trip.get_depart_time_dest():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
+    
+    def search_arrival_time_home(self, trip_object, list_of_trips):
+        arrival_time_home = trip_object.get_arrival_time_home()
+        output = []
+        if not arrival_time_home:
+            return list_of_trips
+        elif arrival_time_home != '':
+            for trip in list_of_trips:
+                if arrival_time_home in trip.get_arrival_time_home():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
+
     def search_history(self, trip_object, list_of_trips):
         history = trip_object.get_history()
         output = []
@@ -149,11 +207,6 @@ class LL_Trips():
         else:
             return list_of_trips
 
-    def changeTrip():
-        pass
-
-    def searchTrip():
-        pass
-
-    def removeTrip():
-        pass
+    def check_licence(trip_obj):
+        employees = DL_API().get_employees()
+        return LL_Employee().search_licence(trip_obj, employees)
