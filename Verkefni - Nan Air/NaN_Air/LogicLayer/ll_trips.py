@@ -26,7 +26,7 @@ class LL_Trips():
             return list_of_trips
         elif plane != '':
             for planes in list_of_trips:
-                if planes in trips.get_plane():
+                if planes in trip.get_plane():
                     output.append(planes)
             return output
         else:
@@ -52,7 +52,7 @@ class LL_Trips():
             return list_of_trips
         elif cabincrew != '':
             for cabin in list_of_trips:
-                if cabin in trips.get_cabincrew():
+                if cabin in trip.get_cabincrew():
                     output.append(cabin)
             return output
         else:
@@ -65,7 +65,7 @@ class LL_Trips():
             return list_of_trips
         elif sold_seats != '':
             for seats_sold in list_of_trips:
-                if seats_sold in trips.get_sold_seats():
+                if seats_sold in trip.get_sold_seats():
                     output.append(seats_sold)
             return output
         else:
@@ -78,7 +78,7 @@ class LL_Trips():
             return list_of_trips
         elif available_seats != '':
             for seats_available in list_of_trips:
-                if seats_available in trips.get_available_seats():
+                if seats_available in trip.get_available_seats():
                     output.append(seats_available)
             return output
         else:
