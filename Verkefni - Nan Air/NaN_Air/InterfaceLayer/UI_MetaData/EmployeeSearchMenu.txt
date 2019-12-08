@@ -6,6 +6,10 @@
 --bre--
 --emp--
 --inf--
+--emp--
+--lju----ind--Input the E-number to edit the corresponding search criteria, then hit enter.
+--emp--
+--cen--Search results
 --sea--
 --emp--
 --spa--

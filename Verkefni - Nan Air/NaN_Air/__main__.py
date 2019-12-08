@@ -31,13 +31,16 @@ def main():
                 model_class_object = Trip()
                 print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, model_class_object))
         elif new_pos.SCREEN_TYPE == 'Search':
-            if new_pos.CATEGORY == 'Employee':
+            if new_pos.CATEGORY == 'Employee':                
                 model_class_object = Employee()
+                new_pos.OPTIONS.append(new_pos.get_input_optins(model_class_object))
+                model_class_object.set_name('John')
+                model_class_object.set_licence('NA')
                 list_of_objects = LL_API().search_employee(model_class_object)
                 if len(list_of_objects) > 10:
-                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects[0:10]))
+                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, model_class_object, list_of_objects[0:10]))
                 else:
-                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects))
+                    print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, model_class_object, list_of_objects))
             elif new_pos.CATEGORY == 'Planes':
                 model_class_object = Plane()
                 list_of_objects = LL_API().search_employee(model_class_object)
@@ -61,7 +64,10 @@ def main():
                     print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE, list_of_objects))
         else: 
             print(new_pos.prep_window(new_pos.FILE,new_pos.GRAPHICS_FILE))
-        user_input = new_pos.validate_selection(new_pos)
+        if new_pos.SCREEN_TYPE == 'Menu':
+            user_input = new_pos.validate_selection(new_pos)
+        else:
+            user_input = new_pos.multi_input()
         current_pos = new_pos
     else:
         new_pos = current_pos.variable_class(user_input[1])
