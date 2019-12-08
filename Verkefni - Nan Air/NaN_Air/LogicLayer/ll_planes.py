@@ -3,16 +3,14 @@ from ModelClasses.plane import Plane
 
 class LL_Planes():
 
-    def changePlane(self):
-        pass
     #nafn, tegund, framleiðandi og fjöldi farþegasæta.
     def searchPlane(self, plane_object):
         list_of_planes = DL_API().get_planes    
         insignia_search = self.search_insignia(plane_object, list_of_planes)        
-        type_search = self.search_type(plane_object, name_search)
+        type_search = self.search_type(plane_object, insignia_search)
         manufacturer_search = self.search_manufacturer(plane_object, type_search)
         capacity_search = self.search_capacity(plane_object, manufacturer_search)
-        status_search = self.search_status(plane_object, no_seats_search)
+        status_search = self.search_status(plane_object, capacity_search)
         history_search = self.search_history(plane_object, status_search)
         return history_search
 

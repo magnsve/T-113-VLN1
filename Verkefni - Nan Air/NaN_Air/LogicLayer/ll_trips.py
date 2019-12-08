@@ -15,7 +15,7 @@ class LL_Trips():
         available_seats_search = self.search_available_seats(trip_object, sold_seats_search)
         first_trip_search = self.search_first_trip(trip_object, available_seats_search)
         second_trip_search = self.search_second_trip(trip_object, first_trip_search)
-        status_search = self.search_status(trip_object, second_trip_+search)
+        status_search = self.search_status(trip_object, second_trip_search)
         history_search = self.search_history(trip_object, status_search)
         return history_search
 
