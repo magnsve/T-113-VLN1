@@ -6,7 +6,7 @@ from ModelClasses.destination import Destination
 
 class DL_Destinations():
     ''' '''
-    FILE_NAME = ''
+    FILE_NAME = 'DataLayer\\Destinations.csv'
 
     def getDestinations(self):
         _file = csv.DictReader(open(self.FILE_NAME))
@@ -18,6 +18,7 @@ class DL_Destinations():
 
     def appendDestinations(self, destination_object):
         with open(self.FILE_NAME, 'a') as _file:
+            _file.write("\n")
             _file.write(destination_object.__str__())
         return True        
 
