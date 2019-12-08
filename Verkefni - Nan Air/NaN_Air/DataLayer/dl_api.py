@@ -7,7 +7,8 @@ from .dl_destinations import DL_Destinations
 
 #Classes 
 class DL_API():
-
+    ''' '''
+    # Employees
     def get_employees(self):        
         return DL_Employee().getEmployees()
 
@@ -20,8 +21,7 @@ class DL_API():
     def get_headers(self):
         return DL_Employee().getHeaders()
 
-
-
+    # Planes
     def get_planes(self):        
         return DL_Planes().get_planes()
 

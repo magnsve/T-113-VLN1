@@ -34,6 +34,7 @@ def main():
             if new_pos.CATEGORY == 'Employee':                
                 model_class_object = Employee()
                 new_pos.OPTIONS.append(new_pos.get_input_optins(model_class_object))
+                print(new_pos.OPTIONS)
                 model_class_object.set_name('John')
                 model_class_object.set_licence('NA')
                 list_of_objects = LL_API().search_employee(model_class_object)
@@ -67,7 +68,7 @@ def main():
         if new_pos.SCREEN_TYPE == 'Menu':
             user_input = new_pos.validate_selection(new_pos)
         else:
-            user_input = new_pos.multi_input()
+            user_input = new_pos.multi_select()
         current_pos = new_pos
     else:
         new_pos = current_pos.variable_class(user_input[1])

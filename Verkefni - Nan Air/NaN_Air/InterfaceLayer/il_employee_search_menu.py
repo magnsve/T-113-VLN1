@@ -10,19 +10,19 @@ class IL_EmployeeSearchMenu(IL_EmployeeMenu):
     ADDRESS = 'Main Menu -> Employees -> Find Employee'
     SCREEN_TYPE = 'Search'
     CATEGORY = 'Employee'
-    OPTIONS = [('1','M_1_2_1'),('2','M_1_2_2'),('3','M_1_2_3'),('4','M_1_2_4'),('5','M_1_2_5'),('6','M_1_2_6'),('r','M_1_2'),('q','Q'),('b','M_1')]
+    OPTIONS = [('r','M_1_2'),('q','Q'),('b','M_1')]
 
     def __init__(self):
         super().__init__()
         self.__parent_class = 'IL_EmployeeMenu'
         self.__module = 'il_employee_search_menu'
-        self.__class_name = 'IL_EmployeeSearchMenu'        
+        self.__class_name = 'IL_EmployeeSearchMenu'
 
     def get_input_optins(self, employee_object = None):        
         options_list = []
         options = LL_API().get_employee_header()
         for index, item in enumerate(options):
-            options_list.append(('E' + str(index), item))
+            options_list.append(('E' + str(index+1), 'set_' + item))
         return options_list
     
     def display_search_object(self, employee_object = None):
