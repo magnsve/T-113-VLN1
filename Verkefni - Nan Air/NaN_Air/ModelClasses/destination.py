@@ -14,6 +14,9 @@ class Destination():
         self.set_status(input_data)
         self.set_history(input_data)
     
+    def __str__(self):
+        return "{}, {}, {}, {}, {}, {}, {}, {}, {}".format(self.__airportId, self.__destination, self.__country, self.__flightTime, self.__distance, self.__emergencyContact, self.__emergencyContactNumber, self.__status, self.__history)
+
     def set_emergencyContactNumber(self, input_data):
         if not input_data:
             self.__emergencyContactNumber = ''
@@ -88,15 +91,15 @@ class Destination():
 
     def set_airportId(self, input_data):
         if not input_data:
-            self.__airportID = ''
+            self.__airportId = ''
         else:
             if isinstance(input_data, dict):
                 try:
-                    self.__airportID = input_data["airportID"]
+                    self.__airportId = input_data["airportId"]
                 except KeyError:
-                    self.__airportID = ''
+                    self.__airportId = ''
             else:
-                self.__airportID = input_data
+                self.__airportId = input_data
 
     def set_status(self, input_data):
         if not input_data:

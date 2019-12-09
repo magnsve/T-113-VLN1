@@ -1,7 +1,22 @@
 from DataLayer.dl_api import DL_API
 from LogicLayer.ll_api import LL_API
 from ModelClasses.employee import Employee
+from ModelClasses.destination import Destination
 
+search_dict = {'airportId':'11', 'destination':'1', 'country':'2', 'flightTime':'3', 'distance':'4','emergencyContact':'5', 'emergencyContactNumber':'6', 'status':'7', 'history':'8'}
+print(DL_API().get_headers_destinations())
+new_destination = Destination(search_dict)
+print(new_destination)
+DL_API().modify_destinations(new_destination, 8)
+
+destinations = DL_API().get_destinations()
+for i in destinations:
+    print(i)
+
+
+
+
+'''
 # test
 my_dict = {"ssn": "æaskfja"}
 employee1 = Employee(my_dict)
@@ -60,3 +75,6 @@ for i in set2:
 # employee = DL_API.get_employees()
 # for element in employees:
 #     print(element)
+
+'''
+

@@ -136,12 +136,12 @@ class LL_Employee():
         else:
             return list_of_employees            
 
-    def removeEmployee():
-        pass
-
     def inactivateEmployee(self, employee_object, index):
         employee_object.set_status('inactive')        
         DL_API().modify_employee(employee_object, index)
     
     def get_headers(self):
         return DL_API().get_headers()
+
+    def validate_ssn(self):
+        pass
