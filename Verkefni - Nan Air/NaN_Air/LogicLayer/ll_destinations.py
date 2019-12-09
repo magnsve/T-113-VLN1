@@ -2,7 +2,7 @@ from DataLayer.dl_api import DL_API
 from ModelClasses.destination import Destination
 
 class LL_Destinations():
-    ''' '''
+    ''' Destinations holds methods to be called upon by the interface layer. '''
     
     def searchDestination(self, destination_object):
         #okkur vantar fleiri upplýsingar hér 

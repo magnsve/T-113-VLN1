@@ -6,7 +6,7 @@ from .ll_trips import LL_Trips
 
 # Classes
 class LL_API():
-    ''' '''
+    ''' Logic layer calls on methods in it's subclasses and returns them over to the interface layer'''
 
     def inactivate_employee(self, employee_object, index):
         return LL_Employee().inactivateEmployee(employee_object, index)

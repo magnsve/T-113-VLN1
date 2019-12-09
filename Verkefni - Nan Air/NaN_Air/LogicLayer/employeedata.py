@@ -1,5 +1,5 @@
 class Employee:
-
+''' Initalises employee data with our template.  '''
     def __init__(self,employee):
         self.__name = employee["name"]
         self.__ssn = employee["ssn"]
