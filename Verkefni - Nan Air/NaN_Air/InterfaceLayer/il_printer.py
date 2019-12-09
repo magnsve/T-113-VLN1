@@ -230,15 +230,10 @@ class IL_Printer():
     def multi_input(self):
         return input().lower()
             
-    def multi_select(self, class_name, model_class_object, list_of_objects):        
+    def multi_select(self):        
         _input = self.multi_input()
-        output = False
-        print(class_name.__options)
-        class_name.reset_options()
-        class_name.get_edit_funcs(model_class_object)
-        class_name.get_list_options(list_of_objects)
-        print(class_name.__options)
-        for item in class_name.__options:
+        output = False        
+        for item in self.OPTIONS:
             if _input == item[0]:
                 output = item[1]
         for key, value in self.__menus.items():
@@ -248,13 +243,13 @@ class IL_Printer():
 
     def select_fromMenu(self):
         _input = self.single_input()
-        output = False        
+        output = False
         for item in self.OPTIONS:
             if _input == item[0]:
                 output = item[1]
         for key, value in self.__menus.items():
             if output == key:
-                output = value        
+                output = value
         return (_input, output)
 
     def validate_selection(self, class_name, model_class_object = None, list_of_objects = None):
@@ -264,12 +259,12 @@ class IL_Printer():
             user_input = self.select_fromMenu()
         else:
             print()
-            user_input = self.multi_select(class_name, model_class_object, list_of_objects)
+            user_input = self.multi_select()
         while not user_input[1]:
             print(self.prep_window(class_name.FILE, class_name.GRAPHICS_FILE, model_class_object, list_of_objects[0:10]))
             print('Invalid selection, please try again:')
             if _type == 'Menu':
                 user_input = self.select_fromMenu()
             else: 
-                user_input = self.multi_select(class_name, model_class_object, list_of_objects)
+                user_input = self.multi_select()
         return user_input

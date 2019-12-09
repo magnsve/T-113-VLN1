@@ -11,8 +11,7 @@ class IL_MainMenu(IL_Printer):
     ADDRESS = 'Main Menu'
     SCREEN_TYPE = 'Menu'
     CATEGORY = 'Main' 
-    OPTIONS = [('1','M_1'),('2','M_2'),('3','M_3'),('4','M_4'),('r','M'),('q','Q'),('b','M')]    
-    _OPTIONS = [('1','M_1'),('2','M_2'),('3','M_3'),('4','M_4'),('r','M'),('q','Q'),('b','M')]    
+    OPTIONS = [('1','M_1','Screen'),('2','M_2','Screen'),('3','M_3','Screen'),('4','M_4','Screen'),('r','M','Screen'),('q','Q','Screen'),('b','M','Screen')]
 
     def __init__(self):        
         super().__init__()
@@ -26,23 +25,20 @@ class IL_MainMenu(IL_Printer):
     def list_of_set_functions(self, model_class_object):
         return [func for func in dir(model_class_object) if callable(getattr(model_class_object, func)) and func.startswith("set")]
     
-    def reset_options(self):
-        self.OPTIONS = self._OPTIONS
-    
     def get_edit_funcs(self, model_class_object):
         options_list = []
         options = self.list_of_set_functions(model_class_object)
         for index, item in enumerate(options):
-            options_list.append(('e' + str(index + 1), item))
+            options_list.append(('e' + str(index + 1), item,'Func'))
         for item in options_list:
-            self.__options.append(item)
+            self.OPTIONS.append(item)
     
     def get_list_options(self, list_of_objects):
         options_list = []        
         for i in range(len(list_of_objects[:10])):
-            options_list.append((str(i+1),str(i)))
+            options_list.append((str(i+1),str(i),'Lists'))
         for item in options_list:
-            self.__options.append(item)        
+            self.OPTIONS.append(item)        
 
     def display_search_object(self, model_class_object = None):
         output = ''
@@ -77,5 +73,7 @@ class IL_MainMenu(IL_Printer):
                     string += (element[0:(column_width-5)] + '...').ljust(column_width)
                 else:
                     string += element.ljust(column_width)
-            output += string + '\n'        
+            output += string + '\n'
+        output += '\n'
+        output += 'Search returned {} results.\n'.format(len(list_of_objects)).center(130)
         return output

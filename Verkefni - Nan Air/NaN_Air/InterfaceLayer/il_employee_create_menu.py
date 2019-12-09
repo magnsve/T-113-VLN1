@@ -10,7 +10,8 @@ class IL_EmployeeCreateMenu(IL_EmployeeMenu):
     ADDRESS = 'Main Menu -> Employees -> New Employee'
     SCREEN_TYPE = 'Create'
     CATEGORY = 'Employee'
-    OPTIONS = [('1','M_1_1_1'),('2','M_1_1_2'),('3','M_1_1_3'),('4','M_1_1_4'),('r','M_1_1'),('q','Q'),('b','M_1')]
+    OPTIONS = [ ('1','M_1_1_1','Screen'),('2','M_1_1_2','Screen'),('3','M_1_1_3','Screen'),('4','M_1_1_4','Screen'),('r','M_1_1','Screen'),\
+                ('q','Q','Screen'),('b','M_1','Screen')]
 
     def __init__(self):
         super().__init__()        

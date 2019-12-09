@@ -10,8 +10,7 @@ class IL_EmployeeSearchMenu(IL_EmployeeMenu):
     ADDRESS = 'Main Menu -> Employees -> Find Employee'
     SCREEN_TYPE = 'Search'
     CATEGORY = 'Employee'
-    OPTIONS = [('r','M_1_2'),('q','Q'),('b','M_1'),('s','M_select')]
-    _OPTIONS = [('r','M_1_2'),('q','Q'),('b','M_1'),('s','M_select')]
+    OPTIONS = [('r','M_1_2','Screen'),('q','Q','Screen'),('b','M_1','Screen'),('s','M_select','Screen')]
 
     def __init__(self):
         super().__init__()

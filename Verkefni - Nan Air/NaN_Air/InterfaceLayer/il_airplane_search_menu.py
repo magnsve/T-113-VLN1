@@ -9,7 +9,8 @@ class IL_AirplaneSearchMenu(IL_AirplaneMenu):
     ADDRESS = 'Main Menu -> Airplanes -> Find Airplane'
     SCREEN_TYPE = 'Search'
     CATEGORY = 'Planes' 
-    OPTIONS = [('1','M_2_2_1'),('2','M_2_2_2'),('3','M_2_2_3'),('4','M_2_2_4'),('5','M_2_2_5'),('6','M_2_2_6'),('r','M_2_2'),('q','Q'),('b','M_2')]
+    OPTIONS = [ ('1','M_2_2_1','Screen'),('2','M_2_2_2','Screen'),('3','M_2_2_3','Screen'),('4','M_2_2_4','Screen'),('5','M_2_2_5','Screen'),('6','M_2_2_6','Screen'),\
+                ('r','M_2_2','Screen'),('q','Q','Screen'),('b','M_2','Screen')]
 
     def __init__(self):
         super().__init__()        

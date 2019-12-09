@@ -10,7 +10,7 @@ class IL_DestinationSearchMenu(IL_DestinationMenu):
     ADDRESS = 'Main Menu -> Destinations -> Find Destination'
     SCREEN_TYPE = 'Search'
     CATEGORY = 'Destination'
-    OPTIONS = [('1','M_3_2_1'),('2','M_3_2_1'),('r','M_3_2'),('q','Q'),('b','M_3')]
+    OPTIONS = [('1','M_3_2_1','Screen'),('2','M_3_2_1','Screen'),('r','M_3_2','Screen'),('q','Q','Screen'),('b','M_3','Screen')]
 
     def __init__(self):
         super().__init__()
