@@ -9,7 +9,7 @@ class DL_Employee():
     FILE_NAME = 'DataLayer\\DL_Database\\Employees.csv'
 
     def getEmployees(self):
-        _file = csv.DictReader(open(self.FILE_NAME))
+        _file = csv.DictReader(open(self.FILE_NAME,'r', encoding='utf-8-sig'))
         output = []
         for row in _file:
             data = Employee(row)

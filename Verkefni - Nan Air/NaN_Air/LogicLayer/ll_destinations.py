@@ -2,7 +2,7 @@ from DataLayer.dl_api import DL_API
 from ModelClasses.destination import Destination
 
 class LL_Destinations():
-
+    ''' '''
     
     def searchDestination(self, destination_object):
         #okkur vantar fleiri upplýsingar hér 
@@ -79,7 +79,7 @@ class LL_Destinations():
             return list_of_destinations
         elif distance != '':
             for destinations in list_of_destinations:
-                if destinations in destination.get_distance():
+                if destinations in destinations.get_distance():
                     output.append(destinations)
             return output
         else:

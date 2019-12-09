@@ -15,5 +15,5 @@
 --spa--
 --lju----ind--Select an employee by entering the line number, then hit enter.
 --emp-- 
---rju----ind--Z - previous 10    X - next 10    B - Back to Employees    R - Refresh Screen    Q - Exit
+--rju----ind--Z - previous 10    X - next 10    B - Back to Employees    R - Reset Search    Q - Exit
 --sep--

@@ -11,7 +11,7 @@ class IL_EmployeeMenu(IL_MainMenu):
     ADDRESS = 'Main Menu -> Employees'
     SCREEN_TYPE = 'Menu'
     CATEGORY = 'Employee'
-    OPTIONS = [('1','M_1_1'),('2','M_1_2'),('r','M_1'),('q','Q'),('b','M')]
+    OPTIONS = [('1','M_1_1','Screen'),('2','M_1_2','Screen'),('r','M_1','Screen'),('q','Q','Screen'),('b','M','Screen')]
 
     def __init__(self):
         super().__init__()

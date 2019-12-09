@@ -9,7 +9,7 @@ class IL_DestinationMenu(IL_MainMenu):
     ADDRESS = 'Main Menu -> Destinations'
     SCREEN_TYPE = 'Menu'
     CATEGORY = 'Destination' 
-    OPTIONS = [('1','M_3_1'),('2','M_3_2'),('r','M_3'),('q','Q'),('b','M')]
+    OPTIONS = [('1','M_3_1','Screen'),('2','M_3_2','Screen'),('r','M_3','Screen'),('q','Q','Screen'),('b','M','Screen')]
 
     def __init__(self):
         super().__init__()

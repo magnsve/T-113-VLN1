@@ -7,11 +7,11 @@ from importlib import import_module, invalidate_caches
 class IL_Printer():
     ''' '''
     FILE = ''
-    GRAPHICS_FILE =  ''    
+    GRAPHICS_FILE =  ''
     
     def __init__(self):
         self.__window_width = self.get_window_size()[0]
-        self.__window_height = self.get_window_size()[1]
+        self.__window_height = self.get_window_size()[1]        
         self.__cross = '+'
         self.__vertical = '|'    
         self.__horizontal = '-'
@@ -43,9 +43,10 @@ class IL_Printer():
                         'M_4':      ('il_trips_menu',               'IL_TripsMenu'),            \
                         'M_4_1':    ('il_trips_create_menu',        'IL_TripsCreateMenu'),      \
                         'M_4_2':    ('il_trips_search_menu',        'IL_TripsSearchMenu'),      \
-                        'Q':        ('il_quit_screen',              'IL_QuitScreen')}    
+                        'Q':        ('il_quit_screen',              'IL_QuitScreen'),           \
+                        'M_select': ('il_select_screen',            'IL_SelectScreen')}
     
-    def variable_class(self, from_menu = ('','')):
+    def variable_class(self, from_menu = ('','')):        
         module_name = 'InterfaceLayer.'+ from_menu[0]
         class_name = from_menu[1]
         module = import_module(module_name)
@@ -156,7 +157,7 @@ class IL_Printer():
         
     def get_fact(self, facts):        
         _facts = self.get_file(facts)
-        fact = _facts[random.randint(0,len(_facts))]
+        fact = _facts[random.randint(0,len(_facts)-1)]
         left_border = (self.__space * 4) + self.__vertical
         contents = ('...'+fact).rjust(self.__window_width-15) + (self.__space * 5)
         right_border = self.__vertical
@@ -227,25 +228,43 @@ class IL_Printer():
             return 'z'
     
     def multi_input(self):
-        _input = input()
-        return (_input, _input)
-
-    def select_fromMenu(self):                
-        _input = self.single_input()                                  
-        output = False                
+        return input().lower()
+            
+    def multi_select(self):        
+        _input = self.multi_input()
+        output = False        
         for item in self.OPTIONS:
             if _input == item[0]:
                 output = item[1]
         for key, value in self.__menus.items():
             if output == key:
-                output = value        
-        return (_input, output)        
+                output = value
+        return (_input, output)
 
-    def validate_selection(self, class_name):
+    def select_fromMenu(self):
+        _input = self.single_input()
+        output = False
+        for item in self.OPTIONS:
+            if _input == item[0]:
+                output = item[1]
+        for key, value in self.__menus.items():
+            if output == key:
+                output = value
+        return (_input, output)
+
+    def validate_selection(self, class_name, model_class_object = None, list_of_objects = None):
         print('Enter your selction:')
-        user_input = self.select_fromMenu()                
+        _type = self.SCREEN_TYPE
+        if _type == 'Menu':
+            user_input = self.select_fromMenu()
+        else:
+            print()
+            user_input = self.multi_select()
         while not user_input[1]:
-            print(self.prep_window(class_name.FILE, class_name.GRAPHICS_FILE))
+            print(self.prep_window(class_name.FILE, class_name.GRAPHICS_FILE, model_class_object, list_of_objects[0:10]))
             print('Invalid selection, please try again:')
-            user_input = self.select_fromMenu()        
+            if _type == 'Menu':
+                user_input = self.select_fromMenu()
+            else: 
+                user_input = self.multi_select()
         return user_input

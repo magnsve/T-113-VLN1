@@ -9,7 +9,8 @@ class IL_AirplaneCreateMenu(IL_AirplaneMenu):
     ADDRESS = 'Main Menu -> Airplanes -> New Airplane'
     SCREEN_TYPE = 'Create'
     CATEGORY = 'Planes' 
-    OPTIONS = [('1','M_2_1_1'),('2','M_2_1_2'),('3','M_2_1_3'),('4','M_2_1_4'),('5','M_2_1_5'),('r','M_2_1'),('q','Q'),('b','M_2')]
+    OPTIONS = [ ('1','M_2_1_1','Screen'),('2','M_2_1_2','Screen'),('3','M_2_1_3','Screen'),('4','M_2_1_4','Screen'),('5','M_2_1_5','Screen'),\
+                ('r','M_2_1','Screen'),('q','Q','Screen'),('b','M_2','Screen')]
 
     def __init__(self):
         super().__init__()
