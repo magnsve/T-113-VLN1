@@ -1,5 +1,5 @@
 #imports and constants
-import csv
+import csv, codecs
 from ModelClasses.employee import Employee
 
 #Classes
@@ -7,29 +7,38 @@ from ModelClasses.employee import Employee
 class DL_Employee():
     ''' '''
     FILE_NAME = 'DataLayer\\DL_Database\\Employees.csv'
+    ENCODING = 'utf-8'
 
     def getEmployees(self):
-        _file = csv.DictReader(open(self.FILE_NAME,'r', encoding='utf-8-sig'))
         output = []
-        for row in _file:
-            data = Employee(row)
-            output.append(data)
+        with codecs.open(self.FILE_NAME, 'r', self.ENCODING) as _file:
+            reader = csv.reader(_file)
+            headers = next(reader)
+            for row in reader:
+                row_dict = dict(zip(headers,row))
+                employee_from_row = Employee(row_dict)
+                output.append(employee_from_row)
         return output
 
     def appendEmployee(self, employee_object):
-        with open(self.FILE_NAME, 'a') as _file:
+        with codecs.open(self.FILE_NAME, 'a', self.ENCODING) as _file:
             _file.write(employee_object.__str__())
-        return True        
+        return True   
 
     def modifyEmployee(self, employee_object, index):
-        lines = open(self.FILE_NAME).read().splitlines()
-        print(lines)
-        print(employee_object.__str__())
-        lines[index] = employee_object.__str__()
-        open(self.FILE_NAME,'w').write('\n'.join(lines))
-        return True
-    
-    def getHeaders(self):
-        with open(self.FILE_NAME) as _file:
-            dict_reader = csv.DictReader(_file)
+        list_of_employees = self.getEmployees()
+        headers = self.getEmployeeHeaders()
+        with codecs.open(self.FILE_NAME, 'w', self.ENCODING) as _file:
+            writer = csv.writer(_file)
+            list_of_employees[index] = employee_object
+            output = [headers]
+            for employee in list_of_employees:
+                value_list = employee.__str__().split(',')
+                output.append(value_list)
+            for row in output:
+                writer.writerow(row)
+
+    def getEmployeeHeaders(self):
+        with open(self.FILE_NAME, encoding="utf-8-sig") as _file:
+            dict_reader = csv.DictReader(_file)            
             return dict_reader.fieldnames

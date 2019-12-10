@@ -5,7 +5,7 @@ class Plane():
         self.set_typeID(input_data)
         self.set_manufacturer(input_data)
         self.set_model(input_data)
-        self.capacity(input_data)
+        self.set_capacity(input_data)
         self.set_status(input_data)
         self.set_history(input_data)
 

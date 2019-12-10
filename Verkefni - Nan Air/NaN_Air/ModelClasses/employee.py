@@ -48,7 +48,7 @@ class Employee():
                 except KeyError:
                     self.__role = ''
             else:
-                self.__role = input_data        
+                self.__role = input_data
     
     def set_rank(self, input_data):
         if not input_data:
@@ -60,7 +60,7 @@ class Employee():
                 except KeyError:
                     self.__rank = ''
             else:
-                self.__rank = input_data   
+                self.__rank = input_data
     
     def set_licence(self, input_data):
         if not input_data:
@@ -72,7 +72,7 @@ class Employee():
                 except KeyError:
                     self.__licence = ''
             else:
-                self.__licence = input_data   
+                self.__licence = input_data
     
     def set_address(self, input_data):
         if not input_data:
@@ -106,7 +106,7 @@ class Employee():
                 try:
                     self.__status = input_data["status"]
                 except KeyError:
-                    self.__status = 'incomplete'
+                    self.__status = ''
             else: 
                 self.__status = input_data
 
@@ -123,7 +123,10 @@ class Employee():
                 self.__history = input_data
 
     def __str__(self):
-        return '{},{},{},{},{},{},{},{}'.format(self.__ssn, self.__name, self.__role, self.__rank, self.__licence, self.__address, self.__phonenumber, self.__status)
+        output = ''
+        for attr in self.__dict__.values():
+            output += '{},'.format(attr)
+        return output
 
     def get_ssn(self):        
         return self.__ssn

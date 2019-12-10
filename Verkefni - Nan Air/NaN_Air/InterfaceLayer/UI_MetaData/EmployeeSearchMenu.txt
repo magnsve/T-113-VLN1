@@ -13,7 +13,9 @@
 --sea--
 --emp--
 --spa--
---lju----ind--Select an employee by entering the line number, then hit enter.
+--lju----ind--To update the search criteria with an entry from the list, select the entry using its line number. Then hit enter.
+--emp--
+--lju----ind--To select an employee from the list and edit him, type 'S' followed by the line number. Then hit enter.
 --emp-- 
---rju----ind--Z - previous 10    X - next 10    B - Back to Employees    R - Reset Search    Q - Exit
+--rju----ind--X - Reset Search Parameters    B - Back to Employees    R - Refresh Screen   Q - Exit
 --sep--

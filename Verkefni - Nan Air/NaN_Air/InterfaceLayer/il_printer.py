@@ -2,6 +2,7 @@
 import sys, os, shutil, random
 from msvcrt import getch
 from importlib import import_module, invalidate_caches
+from LogicLayer.ll_api import LL_API
 
 # Classes
 class IL_Printer():
@@ -10,8 +11,8 @@ class IL_Printer():
     GRAPHICS_FILE =  ''
     
     def __init__(self):
-        self.__window_width = self.get_window_size()[0]
-        self.__window_height = self.get_window_size()[1]        
+        self.__window_width = shutil.get_terminal_size()[0]
+        self.__window_height = shutil.get_terminal_size()[1]        
         self.__cross = '+'
         self.__vertical = '|'    
         self.__horizontal = '-'
@@ -44,9 +45,9 @@ class IL_Printer():
                         'M_4_1':    ('il_trips_create_menu',        'IL_TripsCreateMenu'),      \
                         'M_4_2':    ('il_trips_search_menu',        'IL_TripsSearchMenu'),      \
                         'Q':        ('il_quit_screen',              'IL_QuitScreen'),           \
-                        'M_select': ('il_select_screen',            'IL_SelectScreen')}
+                        'M_1_2_1':  ('il_employee_edit_menu',       'IL_EmployeeEditMenu')}
     
-    def variable_class(self, from_menu = ('','')):        
+    def variable_class(self, from_menu = ('','')):
         module_name = 'InterfaceLayer.'+ from_menu[0]
         class_name = from_menu[1]
         module = import_module(module_name)
@@ -103,7 +104,7 @@ class IL_Printer():
                     counter += 1
             elif self.__search in line:
                 for line in self.get_search(list_of_objects).splitlines():
-                    counter += 1
+                    counter += 1                
             elif self.__info in line:
                 for line in self.get_info(model_object).splitlines():
                     counter += 1
@@ -118,7 +119,7 @@ class IL_Printer():
 
     def get_info(self, model_object):
         output = ''
-        temp = self.display_search_object(model_object).splitlines()        
+        temp = self.display_model_object(model_object).splitlines()        
         for line in temp:
             left_border = (self.__space * 4) + self.__vertical
             contents = (self.__space * 5) + line.ljust(self.__window_width - 15)
@@ -217,9 +218,6 @@ class IL_Printer():
         output += [line.strip('\n') for line in filestream]
         filestream.close()
         return output
-
-    def get_window_size(self):
-        return shutil.get_terminal_size()
     
     def single_input(self):        
         try:
@@ -230,7 +228,7 @@ class IL_Printer():
     def multi_input(self):
         return input().lower()
             
-    def multi_select(self):        
+    def multi_select(self, list_of_objects= None):
         _input = self.multi_input()
         output = False        
         for item in self.OPTIONS:
@@ -239,6 +237,13 @@ class IL_Printer():
         for key, value in self.__menus.items():
             if output == key:
                 output = value
+        try:
+            if list_of_objects == None:
+                pass
+            elif not 0 < int(_input) <= len(list_of_objects):            
+                output = False
+        except ValueError:
+            pass
         return (_input, output)
 
     def select_fromMenu(self):
@@ -257,14 +262,90 @@ class IL_Printer():
         _type = self.SCREEN_TYPE
         if _type == 'Menu':
             user_input = self.select_fromMenu()
-        else:
-            print()
-            user_input = self.multi_select()
+        else:            
+            user_input = self.multi_select(list_of_objects)
         while not user_input[1]:
-            print(self.prep_window(class_name.FILE, class_name.GRAPHICS_FILE, model_class_object, list_of_objects[0:10]))
+            print(self.prep_window(class_name.FILE, class_name.GRAPHICS_FILE, model_class_object, list_of_objects))
             print('Invalid selection, please try again:')
             if _type == 'Menu':
                 user_input = self.select_fromMenu()
             else: 
-                user_input = self.multi_select()
+                user_input = self.multi_select(list_of_objects)
         return user_input
+
+    def reset_object(self, model_class_object):
+        return model_class_object.__init__()
+
+    def list_of_get_functions(self, model_class_object):
+        return [func for func in dir(model_class_object) if callable(getattr(model_class_object, func)) and func.startswith("get")]
+    
+    def list_of_set_functions(self, model_class_object):
+        return [func for func in dir(model_class_object) if callable(getattr(model_class_object, func)) and func.startswith("set")]
+    
+    def get_edit_funcs(self, model_class_object):
+        ''' This function adds options to the self.OPTIONS of the class that calls it. 
+        The options correspond to the available 'set' functions for the model_class_object. '''
+        options_list = []
+        options = self.list_of_set_functions(model_class_object)
+        for index, item in enumerate(options):
+            options_list.append(('e' + str(index + 1), item,'Func'))
+        for item in options_list:
+            self.OPTIONS.append(item)
+    
+    def get_list_options(self, list_of_objects):
+        ''' This function adds options to the self.OPTIONS of the class that calls it. 
+        The options correspond to the number of items in the list_of_objects. '''
+        options_list = []        
+        for i in range(len(list_of_objects[:10])):
+            options_list.append((str(i+1),str(i),'Lists'))
+        for item in options_list:
+            self.OPTIONS.append(item)
+    
+    def get_select_options(self, list_of_objects):
+        ''' This function adds options to the self.OPTIONS of the class that calls it. 
+        The options correspond to the available objects in the list_of_objects. '''
+        options_list = []
+        for i in range(len(list_of_objects[:10])):
+            options_list.append(('s'+str(i+1),'s'+str(i),'Select'))
+        for item in options_list:
+            self.OPTIONS.append(item)    
+
+    def display_model_object(self, model_class_object = None):
+        ''' This function creates a string to display the values in the model_class_object. '''
+        output = ''
+        method_ = getattr(LL_API(), "get_"+self.CATEGORY.lower()+"_header")
+        header_row = method_()
+        header_row.sort()
+        item_values = model_class_object.__dict__
+        sorted(item_values)
+        column_width = 40
+        counter = 0
+        for index, item in enumerate(header_row):
+            output += 'E{} {}: {}'.format(index+1,item.upper(),item_values['_'+self.CATEGORY+"__"+item]).ljust(column_width)
+            counter += 1
+            if counter == 3:
+                output += '\n'
+                counter = 0
+        return output
+    
+    def search_model_object(self, list_of_objects = None):
+        ''' This function creates a string to display the search results from the list_of_objects. '''
+        method_ = getattr(LL_API(), "get_"+self.CATEGORY.lower()+"_header")
+        header_row = method_()
+        column_width = (self.__window_width - 30) // (len(header_row)+1)
+        output = 'No'.center(10)
+        for item in header_row:
+            output += item.upper().ljust(column_width)
+        output += '{}{}{}'.format('\n','-'*(self.__window_width - 20),'\n')
+        for index, item in enumerate(list_of_objects):
+            item_values = item.__dict__.values()            
+            string = '{}'.format(index+1).center(10)
+            for element in item_values:
+                if len(element) > (column_width - 1):
+                    string += (element[0:(column_width-5)] + '...').ljust(column_width)
+                else:
+                    string += element.ljust(column_width)
+            output += string + '\n'
+        output += '\n'
+        output += 'Search returned {} results.\n'.format(len(list_of_objects)).center(self.__window_width - 20)
+        return output

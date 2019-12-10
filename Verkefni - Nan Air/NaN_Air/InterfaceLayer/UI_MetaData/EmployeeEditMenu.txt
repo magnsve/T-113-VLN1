@@ -1,0 +1,13 @@
+--sep--
+--gra--
+--sep--
+--cen--Select the relevant field to edit information. Your changes are saved when you hit enter.
+--sep--
+--bre--
+--emp--
+--cre--
+--emp--
+--lju----ind--B - Back to Find Employees
+--spa-- 
+--rju----ind--R - Refresh Screen    Q - Exit
+--sep--
