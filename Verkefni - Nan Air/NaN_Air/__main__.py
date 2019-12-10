@@ -1,6 +1,6 @@
 # Imports and constants
 import os, sys, shutil
-from InterfaceLayer.il_main_menu import IL_MainMenu
+from InterfaceLayer.il_screens import Screens
 from LogicLayer.ll_api import LL_API
 from ModelClasses.destination import Destination
 from ModelClasses.employee import Employee
@@ -16,123 +16,152 @@ def check_if_int(tuple_object):
     except ValueError:
         return 100
     except TypeError:
-        return 200
+        return
 
 def model_class_objects():
     return (Employee(), Destination(), Plane(), Trip())
 
-def create_employee_loop(new_screen, newEmployee):
-    ''' This function performs the loop to handle creating new employees in the main program. '''
-    new_screen.get_edit_funcs(newEmployee)
-    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, newEmployee))
-    user_input = new_screen.validate_selection(new_screen, newEmployee)
-    has_input = True
-
-
-def call_edit_function():
-    ''' This function handles the steps needed to call a 'set' function in the main program. '''
-    
-
 def main():
-    # We start by forceing the shell into a specific size.
+    # We start by forcing the shell to predefined size.
     os.system('mode con: cols=180 lines=50')
-    # Create a search objects, this allows the user to not loose his search criteria if he has to return to a previous screen.
+    # We create an instance of all model classes that are dedicated for searching. This allows the user to go back to a previous screen and stil have the data he was working on.
     employeeSearchObject, destinationSearchObject, planeSearchObject, tripSearchObject = model_class_objects()
-    # Create a edit object, same reasons as before.
+    # Same here, only for editing entries.
     employeeEditObject, destinationEditObject, planeEditObject, tripEditObject = model_class_objects()
-    # Create a new object, same as before. This allows the user to jump back into the same object and continue from before.
-    newEmployee, newDestination, newPlane, newTrip = model_class_objects()
-    current_screen = IL_MainMenu()
+    # And again, now for creating new entries into the database.
+    newEmployee, newDestination, newPlane, newTrip = model_class_objects()    
+    all_screens = Screens()
+    current_screen = all_screens.main_menu
     print(current_screen.prep_window(current_screen.FILE,current_screen.GRAPHICS_FILE))
     user_input = current_screen.validate_selection(current_screen)
     while user_input[0] != 'q':
         has_input = False
-        # Force the shell again inside the loop incase the user has resized it.
-        os.system('mode con: cols=180 lines=50')        
+        # We force the shell again to resize it if the user has changed the size since the screen was last drawn.
+        os.system('mode con: cols=180 lines=50')
         new_screen = current_screen.variable_class(user_input[1])
-        # Delete the old screen instance to prevent functions accessing wrong data.
-        del current_screen        
+        del current_screen
+        # By using the SCREEN_TYPE arguments we can identify what the user wants to do.
         if new_screen.SCREEN_TYPE == 'Create':
-            if new_screen.CATEGORY == 'Employee':                
-                new_screen.get_edit_funcs(newEmployee)
-                print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, newEmployee))
-                user_input = new_screen.validate_selection(new_screen, newEmployee)
-                has_input = True
-                while user_input[0][:1].lower() == 'e' or user_input[1] == 'X':
-                    if user_input[0][:1].lower() == 'e':
-                        method_ = getattr(newEmployee, user_input[1])
-                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, newEmployee))
-                        input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))                                                    
-                        index = LL_API().find_employee_index(newEmployee)
-                        method_(input_)
-                        if index == None:
-                            LL_API().new_employee(newEmployee)
-                        else:
-                            LL_API().edit_employee(newEmployee, index)                    
-                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, newEmployee))
-                        user_input = new_screen.validate_selection(new_screen, newEmployee)
-                    elif user_input[1] == 'X':
-                        new_screen.reset_object(newEmployee)
-                        list_of_objects = LL_API().search_employee(newEmployee)[:10]
-                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, newEmployee, list_of_objects[0:10]))
-                        user_input = new_screen.validate_selection(new_screen, newEmployee, list_of_objects)
-                else:
-                    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, newEmployee))
+            if new_screen.CATEGORY == 'Employee':
+                new_object = newEmployee
+            elif new_screen.CATEGORY == 'Destination':
+                new_object = newDestination
+            elif new_screen.CATEGORY == 'Planes':
+                new_object = newPlane
+            elif new_screen.CATEGORY == 'Trips':
+                new_object = newTrip
+            # This function delves into the new_screen class instancee and adds valid options to it based on what 'set' functions are in the new_object model class instance. 
+            # This allows the input validation function to correctly identify valid vs. invalid input.
+            new_screen.get_edit_funcs(new_object)
+            print(new_screen.prep_window(new_screen.FILE, new_screen.GRAPHICS_FILE, new_object))
+            user_input = new_screen.validate_selection(new_screen, new_object)
+            has_input = True
+            while user_input[0][:1].lower() == 'e' or user_input[1] == 'X':
+                if user_input[0][:1].lower() == 'e':
+                    # Using getattr gives us the option to dynamically call the desired function instead of having to create the site map.
+                    method_ = getattr(new_object, user_input[1])
+                    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
+                    input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))
+                    # Here we find the index of the file in the database.
+                    index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
+                    index = index_func(new_object)                    
+                    method_(input_)
+                    # If the object is not found in the database the index is returned as 'None'. We then append the new object to the database instead of overwrite it.
+                    if index == None:
+                        new_func = getattr(LL_API(), "new_"+new_screen.CATEGORY.lower())
+                        new_func(new_object)
+                    else:
+                        edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
+                        edit_func(new_object, index)
+                    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
+                    user_input = new_screen.validate_selection(new_screen, new_object)
+                # Option for resetting the object, i.e. when the user wants to start a new entry.
+                elif user_input[1] == 'X':
+                    new_screen.reset_object(new_object)
+                    search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
+                    list_of_objects = search_func(new_object)[:10]                    
+                    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object, list_of_objects[0:10]))
+                    user_input = new_screen.validate_selection(new_screen, new_object, list_of_objects)
+            else:
+                print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))                        
         elif new_screen.SCREEN_TYPE == 'Search':
             if new_screen.CATEGORY == 'Employee':
-                list_of_objects = LL_API().search_employee(employeeSearchObject)[:10]
-                new_screen.get_edit_funcs(employeeSearchObject)
-                new_screen.get_list_options(list_of_objects)
-                new_screen.get_select_options(list_of_objects)
-                print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, employeeSearchObject, list_of_objects[0:10]))
-                user_input = new_screen.validate_selection(new_screen, employeeSearchObject, list_of_objects)
-                has_input = True
-                while user_input[0][:1].lower() == 'e' or check_if_int(user_input) < 10 or user_input[1] == 'X' or user_input[1][:1] == 's':
-                    if user_input[0][:1].lower() == 'e':
-                        if new_screen.SCREEN_TYPE == 'Edit':                            
-                            method_ = getattr(employeeEditObject, user_input[1])
-                            print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, employeeEditObject))
-                            input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))                            
-                            index = LL_API().find_employee_index(employeeEditObject)
-                            method_(input_)
-                            LL_API().edit_employee(employeeEditObject, index)
-                            print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, employeeEditObject),flush=True)
-                            user_input = new_screen.validate_selection(new_screen, employeeEditObject, list_of_objects)
-                        else:
-                            method_ = getattr(employeeSearchObject, user_input[1])
-                            list_of_objects = LL_API().search_employee(employeeSearchObject)[:10]
-                            print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, employeeSearchObject, list_of_objects[0:10]))
-                            input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))
-                            method_(input_)
-                            list_of_objects = LL_API().search_employee(employeeSearchObject)
-                            print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, employeeSearchObject, list_of_objects[0:10]))
-                            user_input = new_screen.validate_selection(new_screen, employeeSearchObject, list_of_objects)
-                    elif check_if_int(user_input) < 10:
-                        employeeSearchObject = list_of_objects[int(user_input[1])]
-                        list_of_objects = LL_API().search_employee(employeeSearchObject)[:10]
-                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, employeeSearchObject, list_of_objects[0:10]))
-                        user_input = new_screen.validate_selection(new_screen, employeeSearchObject, list_of_objects)
-                    elif user_input[1] == 'X':
-                        new_screen.reset_object(employeeSearchObject)
-                        list_of_objects = LL_API().search_employee(employeeSearchObject)[:10]
-                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, employeeSearchObject, list_of_objects[0:10]))
-                        user_input = new_screen.validate_selection(new_screen, employeeSearchObject, list_of_objects)
-                    elif user_input[1][:1] == 's':
-                        new_screen = all_screens.employee_edit
-                        employeeEditObject = list_of_objects[int(user_input[1][1:])]                        
-                        new_screen.get_edit_funcs(employeeEditObject)
-                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, employeeEditObject))
-                        user_input = new_screen.validate_selection(new_screen, employeeEditObject)                    
-        else: 
+                search_object = employeeSearchObject
+                edit_object = employeeEditObject
+            elif new_screen.CATEGORY == 'Destination':
+                search_object = destinationSearchObject
+                edit_object = destinationEditObject
+            elif new_screen.CATEGORY == 'Planes':
+                search_object = planeSearchObject
+                edit_object = planeEditObject
+            elif new_screen.CATEGORY == 'Trips':
+                search_object = tripSearchObject
+                edit_object = tripEditObject
+            search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
+            list_of_objects = search_func(search_object)[:10]
+            # Here we add options to the new_screen instance to allow for 'set' functions, to set an object from the search results as the current search parameters 
+            # and to select an item from the list to open in an edit window.
+            new_screen.get_edit_funcs(search_object)
+            new_screen.get_list_options(list_of_objects)
+            new_screen.get_select_options(list_of_objects)
+            print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
+            user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)
+            has_input = True
+            while user_input[0][:1].lower() == 'e' or check_if_int(user_input) < 10 or user_input[1] == 'X' or user_input[1][:1] == 's':
+                if user_input[0][:1].lower() == 'e':
+                    if new_screen.SCREEN_TYPE == 'Edit':
+                        method_ = getattr(edit_object, user_input[1])
+                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
+                        input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))                                                    
+                        index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
+                        index = index_func(edit_object)
+                        method_(input_)
+                        edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
+                        edit_func(new_object, index)                        
+                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
+                        user_input = new_screen.validate_selection(new_screen, edit_object, list_of_objects)
+                    else:
+                        method_ = getattr(search_object, user_input[1])
+                        search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
+                        list_of_objects = search_func(search_object)[:10]
+                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
+                        input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))
+                        method_(input_)
+                        list_of_objects = search_func(search_object)[:10]
+                        print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
+                        user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)
+                # This check is to determine if the user entered an intager.
+                elif check_if_int(user_input) < 10:
+                    search_object = list_of_objects[int(user_input[1])]
+                    search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
+                    list_of_objects = search_func(search_object)[:10]
+                    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
+                    user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)
+                elif user_input[1] == 'X':
+                    new_screen.reset_object(search_object)
+                    search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
+                    list_of_objects = search_func(search_object)[:10]                    
+                    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
+                    user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)
+                # Here we select an object from the list and open it in an edit screen.
+                elif user_input[1][:1] == 's':
+                    go_to_edit = getattr(all_screens, new_screen.CATEGORY.lower()+'_edit')
+                    new_screen = go_to_edit
+                    edit_object = list_of_objects[int(user_input[1][1:])]                        
+                    new_screen.get_edit_funcs(edit_object)
+                    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
+                    user_input = new_screen.validate_selection(new_screen, edit_object)                    
+        else:
             print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE))
         if not has_input:
             user_input = new_screen.validate_selection(new_screen)
         current_screen = new_screen
     else:
+        # Quitscreen
         new_screen = current_screen.variable_class(user_input[1])
         del current_screen
         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE))
-        new_screen.single_input()
+        new_screen.single_input()        
 
 # Main program
 if __name__ == '__main__':

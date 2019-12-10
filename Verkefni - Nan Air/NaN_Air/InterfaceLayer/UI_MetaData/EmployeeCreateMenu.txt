@@ -7,7 +7,6 @@
 --emp--
 --cre--
 --emp--
---lju----ind--B - Back to Employees
 --spa-- 
---rju----ind--X - Reset Search Parameters    B - Back to Employees    R - Refresh Screen   Q - Exit
+--rju----ind--X - Start new Employee    B - Back to Employees    R - Refresh Screen   Q - Exit
 --sep--

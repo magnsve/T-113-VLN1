@@ -1,6 +1,5 @@
 # Imports and constants
 from .il_employee_menu import IL_EmployeeMenu
-from LogicLayer.ll_api import LL_API
 
 # Classes
 class IL_EmployeeCreateMenu(IL_EmployeeMenu):

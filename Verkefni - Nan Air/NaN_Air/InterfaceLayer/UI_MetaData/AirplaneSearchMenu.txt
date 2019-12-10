@@ -5,13 +5,17 @@
 --sep--
 --bre--
 --emp--
---lju----ind--1 - Plane insignia
---lju----ind--2 - Plane type ID
---lju----ind--3 - Plane manufacturer
---lju----ind--4 - Plane model
---lju----ind--5 - Plane capacity
+--inf--
 --emp--
---lju----ind--B - Back to Airplanes
---spa-- 
---rju----ind--R - Refresh Screen    Q - Exit
+--lju----ind--Input the E-number to edit the corresponding search criteria, then hit enter.
+--emp--
+--cen--Search results
+--sea--
+--emp--
+--spa--
+--lju----ind--To update the search criteria with an entry from the list, select the entry using its line number. Then hit enter.
+--emp--
+--lju----ind--To select an airplane from the list and edit it, type 'S' followed by the line number. Then hit enter.
+--emp-- 
+--rju----ind--X - Reset Search Parameters    B - Back to Ariplanes    R - Refresh Screen   Q - Exit
 --sep--

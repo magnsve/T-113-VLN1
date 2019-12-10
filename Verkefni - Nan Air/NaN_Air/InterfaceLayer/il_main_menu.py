@@ -11,9 +11,3 @@ class IL_MainMenu(IL_Printer):
     SCREEN_TYPE = 'Menu'
     CATEGORY = 'Main' 
     OPTIONS = [('1','M_1','Screen'),('2','M_2','Screen'),('3','M_3','Screen'),('4','M_4','Screen'),('r','M','Screen'),('q','Q','Screen'),('b','M','Screen')]
-
-    def __init__(self):        
-        super().__init__()
-        self.__parent_class = 'IL_MainMenu'
-        self.__module = 'il_main_menu'
-        self.__class_name = 'IL_MainMenu'        

@@ -8,12 +8,5 @@ class IL_TripsCreateMenu(IL_TripsMenu):
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/TripsCreate_graphics.txt'
     ADDRESS = 'Main Menu -> Trips -> New Trip'
     SCREEN_TYPE = 'Create'
-    CATEGORY = 'Trips'
-    OPTIONS = [ ('1','M_4_1_1','Screen'),('2','M_4_1_2','Screen'),('3', 'M_4_1_3','Screen'),('4','M_4_1_4','Screen'),('r','M_4_1','Screen'),\
-                ('q','Q','Screen'),('b','M_4','Screen')]
-
-    def __init__(self):
-        super().__init__()
-        self.__parent_class = 'IL_TripsMenu'
-        self.__module = 'il_trips_create_menu'
-        self.__class_name = 'IL_TripsCreateMenu'
+    CATEGORY = 'Trips'    
+    OPTIONS = [('r','M_4_1','Screen'),('q','Q','Screen'),('b','M_3','Screen'),('x','X','Reset')]

@@ -8,5 +8,5 @@
 --cre--
 --emp--
 --spa-- 
---rju----ind--B - Back to Employees    R - Refresh Screen   Q - Exit
+--rju----ind--B - Back to Airplanes    R - Refresh Screen   Q - Exit
 --sep--

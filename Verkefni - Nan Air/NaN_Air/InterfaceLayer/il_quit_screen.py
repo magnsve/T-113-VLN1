@@ -9,9 +9,3 @@ class IL_QuitScreen(IL_MainMenu):
     FACTS = 'InterfaceLayer/UI_MetaData/FactsAboutOurFounder.txt'
     SCREEN_TYPE = 'Menu'
     CATEGORY = 'Quit'
-
-    def __init__(self):
-        super().__init__()
-        self.__parent_class = 'IL_MainMenu'
-        self.__module = 'il_quit_screen'
-        self.__class_name = 'IL_QuitScreen'

@@ -5,13 +5,8 @@
 --sep--
 --bre--
 --emp--
---lju----ind--1 - Plane insignia
---lju----ind--2 - Plane type ID
---lju----ind--3 - Plane manufacturer
---lju----ind--4 - Plane model
---lju----ind--5 - Plane capacity
+--cre--
 --emp--
---lju----ind--B - Back to Airplanes
---spa-- 
---rju----ind--R - Refresh Screen    Q - Exit
+--spa--
+--rju----ind--X - Start new Airplane    B - Back to Airplanes    R - Refresh Screen   Q - Exit
 --sep--

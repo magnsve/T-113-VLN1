@@ -7,7 +7,6 @@
 --emp--
 --cre--
 --emp--
---lju----ind--B - Back to Destinations
---spa-- 
---rju----ind--R - Refresh Screen    Q - Exit
+--spa--
+--rju----ind--X - Start new Destination    B - Back to Destinations    R - Refresh Screen   Q - Exit
 --sep--

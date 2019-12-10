@@ -10,9 +10,3 @@ class IL_TripsMenu(IL_MainMenu):
     SCREEN_TYPE = 'Menu'
     CATEGORY = 'Trips'
     OPTIONS = [('1','M_4_1','Screen'),('2','M_4_2','Screen'),('r','M_4','Screen'),('q','Q','Screen'),('b','M','Screen')]
-
-    def __init__(self):
-        super().__init__()
-        self.__parent_class = 'IL_MainMenu'
-        self.__module = 'il_trips_menu'
-        self.__class_name = 'IL_TripsMenu'

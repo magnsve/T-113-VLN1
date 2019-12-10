@@ -5,12 +5,17 @@
 --sep--
 --bre--
 --emp--
---lju----ind--1 - option 1
---lju----ind--2 - option 2
---lju----ind--3 - option 3
---lju----ind--4 - option 4
+--inf--
 --emp--
---lju----ind--B - Back to Trips
---spa-- 
---rju----ind--R - Refresh Screen    Q - Exit
+--lju----ind--Input the E-number to edit the corresponding search criteria, then hit enter.
+--emp--
+--cen--Search results
+--sea--
+--emp--
+--spa--
+--lju----ind--To update the search criteria with an entry from the list, select the entry using its line number. Then hit enter.
+--emp--
+--lju----ind--To select a trip from the list and edit it, type 'S' followed by the line number. Then hit enter.
+--emp-- 
+--rju----ind--X - Reset Search Parameters    B - Back to Trips    R - Refresh Screen   Q - Exit
 --sep--
