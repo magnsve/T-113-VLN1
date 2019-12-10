@@ -5,7 +5,7 @@ from .ll_employee import LL_Employee
 
 class LL_Trips():
     
-    def searchtrips(self, trip_object):
+    def search_trips(self, trip_object):
         # okkur vantar fleiri upplýsingar hér
         list_of_trips = DL_API().get_trips
         destination_search = self.search_destination(trip_object, list_of_trips)
@@ -194,19 +194,18 @@ class LL_Trips():
         else:
             return list_of_trips
 
-    def search_status(self, trip_object, list_of_trips):
-        status = trip_object.get_status()
-        output = []
-        if not status:
-            return list_of_trips
-        elif status != '':
-            for trip in list_of_trips:
-                if status in trip.get_status():
-                    output.append(trip)
-            return output
-        else:
-            return list_of_trips
+    def get_trips_file_headers(self):
+        return DL_API().get_trips_headers()
 
-    def check_licence(trip_obj):
-        employees = DL_API().get_employees()
-        return LL_Employee().search_licence(trip_obj, employees)
+    def find_index_in_database(self, trip_object):        
+        list_of_trips = DL_API().get_trips()
+        for index, trip in enumerate(list_of_trips):
+            if trip.__str__() == trip_object.__str__():
+                return index
+        return None
+    
+    def edit_trip_object(self, trip_object, index):
+        return DL_API().modify_trips(trip_object, index)
+        
+    def add_trip(self, trip_object):
+        return DL_API().append_trips(trip_object)

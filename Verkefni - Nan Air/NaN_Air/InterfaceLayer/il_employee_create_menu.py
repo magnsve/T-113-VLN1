@@ -10,9 +10,3 @@ class IL_EmployeeCreateMenu(IL_EmployeeMenu):
     SCREEN_TYPE = 'Create'
     CATEGORY = 'Employee'
     OPTIONS = [ ('r','M_1_1','Screen'),('q','Q','Screen'),('b','M_1','Screen'),('x','X','Reset')]
-
-    def __init__(self):
-        super().__init__()        
-        self.__parent_class = 'IL_EmployeeMenu'
-        self.__module = 'il_employee_create_menu'
-        self.__class_name = 'IL_EmployeeCreateMenu'

@@ -3,9 +3,14 @@ import csv, codecs
 from ModelClasses.employee import Employee
 
 #Classes
-
 class DL_Employee():
-    ''' '''
+    ''' This class handles the database for Employeea. It has four methods:
+        
+        1) getEmployees:       This method reads the database and returns each line as an Employee object.
+        2) appendEmployee:     This method appends an Employee object to the bottom of the database.
+        3) modifyEmployee:     This method writes over an entry in the database. 
+        4) getEmployeeHeaders: This method returns a list with the header row. '''
+
     FILE_NAME = 'DataLayer\\DL_Database\\Employees.csv'
     ENCODING = 'utf-8'
 

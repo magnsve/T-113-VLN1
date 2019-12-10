@@ -1,12 +1,25 @@
+# Imports and constants
 from DataLayer.dl_api import DL_API
-from ModelClasses.employee import Employee
 
+# Classes
 class LL_Employee():
+    ''' This Class handles the logic for employees. It has 5 main methods and a number of minor methods.
+        The difference is that the minor methods are only used within one of the main methods.
+        The main methods are:
+        1)  searchEmployee: This method takes in an Employee object and uses it's attributes to narrow down the 
+            database. It then returns the resulting list of objects. This method uses the minor methods to search 
+            for each attribute.
+        
+        2)  get_employee_file_headers: This method calls the DL_API directly to fetch the database column names.
+        
+        3)  find_index_in_database: This method compares an Employee object to the database, using the __str__ overload.
+            If it returns a match it gives the index number in the database, otherwise it returns None.
+        
+        4)  edit_employee_object: This method calls to the DL_API to replace an object in the database.
 
-    def changeEmployee():
-        pass
+        5)  add_employee: This method calls to the DL_API to append an object to the database. '''
 
-    def searchEmployee(self, employee_object):
+    def searchEmployee(self, employee_object):        
         list_of_employees = DL_API().get_employees()        
         ssn_search = self.search_ssn(employee_object, list_of_employees)        
         name_search = self.search_name(employee_object, ssn_search)
@@ -134,17 +147,10 @@ class LL_Employee():
                     output.append(employee)
             return output
         else:
-            return list_of_employees            
+            return list_of_employees
 
-    def inactivateEmployee(self, employee_object, index):
-        employee_object.set_status('inactive')        
-        DL_API().modify_employee(employee_object, index)
-    
     def get_employee_file_headers(self):
         return DL_API().get_employee_headers()
-
-    def validate_ssn(self):
-        pass
 
     def find_index_in_database(self, employee_object):        
         list_of_employees = DL_API().get_employees()

@@ -4,10 +4,11 @@ from .dl_planes import DL_Planes
 from .dl_trips import DL_Trips
 from .dl_destinations import DL_Destinations
 
-
 #Classes 
 class DL_API():
-    ''' '''
+    ''' This Class is a handler for all classes in the DataLayer. 
+        It has 16 methods, 4 from each; Employees, Planes, Trips and Destinations. '''
+
     # Employees
     def get_employees(self):        
         return DL_Employee().getEmployees()
@@ -22,34 +23,32 @@ class DL_API():
         return DL_Employee().getEmployeeHeaders()
 
     # Planes
-    def get_planes(self):        
-        return DL_Planes().get_planes()
+    def get_planes(self):
+        return DL_Planes().getPlanes()
 
     def append_planes(self, plane_object):        
-        return DL_Planes().append_planes(plane_object)
+        return DL_Planes().appendPlanes(plane_object)
     
     def modify_planes(self, plane_object, index):
-        return DL_Planes().modify_planes(plane_object, index)
+        return DL_Planes().modifyPlanes(plane_object, index)
     
-    def get_headers_plane(self):
-        return DL_Planes().get_headers_plane()
+    def get_plane_headers(self):
+        return DL_Planes().getPlanesHeaders()
 
-
-
+    # Trips
     def get_trips(self):        
-        return DL_Trips().get_trips()
+        return DL_Trips().getTrips()
 
     def append_trips(self, trip_object):        
-        return DL_Trips().append_trips(trip_object)
+        return DL_Trips().appendTrips(trip_object)
     
     def modify_trips(self, trip_object, index):
-        return DL_Trips().modify_trips(trip_object, index)
+        return DL_Trips().modifyTrip(trip_object, index)
     
-    def get_headers_trips(self):
-        return DL_Trips().get_headers_trips()
+    def get_trips_headers(self):
+        return DL_Trips().getTripsHeaders()
 
-
-
+    # Destinations
     def get_destinations(self):        
         return DL_Destinations().getDestinations()
 
@@ -59,42 +58,5 @@ class DL_API():
     def modify_destinations(self, destination_object, index):
         return DL_Destinations().modifyDestinations(destination_object, index)
     
-    def get_headers_destinations(self):
-        return DL_Destinations().getHeaders()
-
-#_______________________________________________________________________
-
-    def close_file_EmployeeFilename(self):
-        pass
-
-    def createOutput_EmployeeFilename(self):
-        pass
-    def read_file_TripFilename(self):
-        pass
-
-    def close_file_TripFilename(self):
-        pass
-
-    def createOutput_TripFilename(self):
-        pass
-
-    def read_file_PlaneFilename(self):
-        pass
-
-    def close_file_PlaneFilename(self):
-        pass
-
-    def createOutput_PlaneFilename(self):
-        pass
-
-    def read_file_DestinationFilename(self):
-        pass
-
-    def close_file_DestinationFilename(self):
-        pass
-
-    def createOutput_DestiantionFilename(self):
-        pass
-
-    def read_file_EmployeeFilename(self):
-        pass
+    def get_destinations_headers(self):
+        return DL_Destinations().getDestinationsHeaders()

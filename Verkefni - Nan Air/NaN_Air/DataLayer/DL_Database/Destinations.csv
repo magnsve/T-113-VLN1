@@ -1,4 +1,4 @@
-id,destination
+airportId,destination,country,flightTime,distance,emergencyContact,emergencyContactNumber,status,history
 LYR,Longyearbyean
 GOH,Nuuk
 KUS,Kulusuk

@@ -11,12 +11,12 @@ from ModelClasses.trip import Trip
 
 def check_if_int(tuple_object):
     try:
-        int(tuple_object[1])
+        int(tuple_object[1]) 
         return int(tuple_object[1])
     except ValueError:
         return 100
     except TypeError:
-        return
+        return 200
 
 def model_class_objects():
     return (Employee(), Destination(), Plane(), Trip())

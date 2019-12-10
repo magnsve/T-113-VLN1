@@ -15,7 +15,10 @@ class Destination():
         self.set_history(input_data)
     
     def __str__(self):
-        return "{}, {}, {}, {}, {}, {}, {}, {}, {}".format(self.__airportId, self.__destination, self.__country, self.__flightTime, self.__distance, self.__emergencyContact, self.__emergencyContactNumber, self.__status, self.__history)
+        output = ''
+        for attr in self.__dict__.values():
+            output += '{},'.format(attr)
+        return output
 
     def set_emergencyContactNumber(self, input_data):
         if not input_data:
@@ -125,10 +128,10 @@ class Destination():
             else:
                 self.__history = input_data
 
-    def get_airportID(self):        
-        return self.__airportID
+    def get_airportId(self):        
+        return self.__airportId
 
-    def get_destination(self):
+    def get_destinations(self):
         return self.__destination
     
     def get_country(self):

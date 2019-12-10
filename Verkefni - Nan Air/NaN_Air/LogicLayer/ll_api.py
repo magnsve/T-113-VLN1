@@ -9,9 +9,7 @@ from DataLayer.dl_api import DL_API
 class LL_API():
     ''' Logic layer calls on methods in it's subclasses and returns them over to the interface layer'''
 
-    def inactivate_employee(self, employee_object, index):
-        return LL_Employee().inactivateEmployee(employee_object, index)
-
+    # Emmployees
     def edit_employee(self, employeeEditObject, index):
         return LL_Employee().edit_employee_object(employeeEditObject, index)
     
@@ -26,76 +24,51 @@ class LL_API():
     
     def new_employee(self, employee_object):
         return LL_Employee().add_employee(employee_object)
-
-    def inactivate_destination(self, destination_object, index):
-        return LL_Destinations().inactivateDestination(destination_object, index)
     
+    # Destination
+    def edit_destination(self, destination_object, index):
+        return LL_Destinations().edit_employee_object(destination_object, index)
+
     def get_destination_header(self):
-        return LL_Destinations().get_headers()
+        return LL_Destinations().get_destination_file_headers()
     
     def search_destination(self, destination_object):
         return LL_Destinations().search_destination(destination_object)
+    
+    def find_destination_index(self, destination_object):
+        return LL_Destinations().find_index_in_database(destination_object)
+    
+    def new_destination(self, destination_object):
+        return LL_Destinations().add_destination(destination_object)
 
-    def inactivate_trip(self, employee_object, index):
-        return LL_Trips().inactivateTrip(trip_object, index)
+    # Trips
+    def edit_trips(self, trip_object, index):
+        return LL_Trips().edit_trip_object(trip_object, index)
     
-    def get_trip_header(self):
-        return LL_Trips().get_headers()
+    def get_trips_header(self):
+        return LL_Trips().get_trips_file_headers()
     
-    def search_trip(self, employee_object):
-        return LL_Trips().searchTrip(trip_object)
+    def search_trips(self, trip_object):
+        return LL_Trips().search_trips(trip_object)
 
-    def inactivate_plane(self, destination_object, index):
-        return LL_Planes().inactivateplane(plane_object, index)
+    def find_trips_index(self, trip_object):
+        return LL_Trips().find_index_in_database(trip_object)
     
-    def get_plane_header(self):
-        return LL_Planes().get_headers()
+    def new_trips(self, trip_object):
+        return LL_Trips().add_trip(trip_object)
+
+    # Planes
+    def edit_planes(self, plane_object, index):
+        return LL_Planes().edit_plane_object(plane_object, index)
     
-    def search_plane(self, destination_object):
+    def get_planes_header(self):
+        return LL_Planes().get_plane_file_headers()
+    
+    def search_planes(self, plane_object):
         return LL_Planes().search_plane(plane_object)
-
-
-    # def change_destination(self):
-    #     return LL_Destination.changeDestination()
-
-    # def search_destination(self):
-    #     return LL_Destination.searchDestination()
-
-    # def remove_destination(self):
-    #     return LL_Destination.removeDestination() 
-
-    # def create_trip(self, _dict):
-    #     return Trip(_dict)
-
-    # def change_trip(self):
-    #     return LL_Trips.changeTrip()
-
-    # def search_trip(self):
-    #     return LL_Trips.searchTrip()
-
-    # def remove_trip(self):
-    #     return LL_Trips.removeTrip()
     
-    # def create_plane(self, _dict):
-    #     return Planes(_dict)
-
-    # def change_plane(self):
-    #     return LL_Planes.changePlane()
-
-    # def search_trip(self):
-    #     return LL_Planes.searchPlane()
-
-    # def remove_trip(self):
-    #     return LL_Planes.removePlane()    
+    def find_planes_index(self, plane_object):
+        return LL_Planes().find_index_in_database(plane_object)
     
-    # def create_destination(self, _dict):
-    #     return Employee(_dict)
-
-    # def change_destination(self):
-    #     return LL_Employee.changeEmployee()
-
-    # def search_destination(self):
-    #     return LL_Employee.searchEmployee()
-
-    # def remove_destination(self):
-    #     return LL_Employee.removeEmployee()
+    def new_planes(self, plane_object):
+        return LL_Planes().add_plane(plane_object)

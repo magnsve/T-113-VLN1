@@ -4,7 +4,7 @@ from ModelClasses.plane import Plane
 class LL_Planes():
 
     #nafn, tegund, framleiðandi og fjöldi farþegasæta.
-    def searchPlane(self, plane_object):
+    def search_plane(self, plane_object):
         list_of_planes = DL_API().get_planes    
         insignia_search = self.search_insignia(plane_object, list_of_planes)        
         type_search = self.search_type(plane_object, insignia_search)
@@ -94,15 +94,18 @@ class LL_Planes():
         else:
             return list_of_planes
 
-    def inactivatePlane(self, plane_object, index):
-        plane_object.set_status('inactive')        
-        DL_API().modify_planes(plane_object, index)
+    def get_plane_file_headers(self):
+        return DL_API().get_plane_headers()
 
-    def get_headers(self):
-        return DL_API().get_headers()
+    def find_index_in_database(self, plane_object):
+        list_of_planes = DL_API().get_planes()
+        for index, plane in enumerate(list_of_planes):
+            if plane.__str__() == plane_object.__str__():
+                return index
+        return None
     
-    def removePlane(self):
-        pass
-
-    def changePlane():
-        pass
+    def edit_plane_object(self, plane_object, index):
+        return DL_API().modify_planes(plane_object, index)
+        
+    def add_plane(self, plane_object):
+        return DL_API().append_planes(plane_object)
