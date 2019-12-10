@@ -140,8 +140,21 @@ class LL_Employee():
         employee_object.set_status('inactive')        
         DL_API().modify_employee(employee_object, index)
     
-    def get_headers(self):
-        return DL_API().get_headers()
+    def get_employee_file_headers(self):
+        return DL_API().get_employee_headers()
 
     def validate_ssn(self):
         pass
+
+    def find_index_in_database(self, employee_object):        
+        list_of_employees = DL_API().get_employees()
+        for index, employee in enumerate(list_of_employees):
+            if employee.__str__() == employee_object.__str__():
+                return index
+        return None
+    
+    def edit_employee_object(self, employeeEditObject, index):               
+        return DL_API().modify_employee(employeeEditObject, index)
+        
+    def add_employee(self, employee_object):
+        return DL_API().append_employee(employee_object)

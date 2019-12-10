@@ -3,6 +3,7 @@ from .ll_destinations import LL_Destinations
 from .ll_employee import LL_Employee
 from .ll_planes import LL_Planes
 from .ll_trips import LL_Trips
+from DataLayer.dl_api import DL_API
 
 # Classes
 class LL_API():
@@ -10,12 +11,21 @@ class LL_API():
 
     def inactivate_employee(self, employee_object, index):
         return LL_Employee().inactivateEmployee(employee_object, index)
+
+    def edit_employee(self, employeeEditObject, index):
+        return LL_Employee().edit_employee_object(employeeEditObject, index)
     
     def get_employee_header(self):
-        return LL_Employee().get_headers()
+        return LL_Employee().get_employee_file_headers()
     
     def search_employee(self, employee_object):
         return LL_Employee().searchEmployee(employee_object)
+    
+    def find_employee_index(self, employee_object):
+        return LL_Employee().find_index_in_database(employee_object)
+    
+    def new_employee(self, employee_object):
+        return LL_Employee().add_employee(employee_object)
 
     def inactivate_destination(self, destination_object, index):
         return LL_Destinations().inactivateDestination(destination_object, index)

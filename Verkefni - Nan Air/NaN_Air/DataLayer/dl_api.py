@@ -18,8 +18,8 @@ class DL_API():
     def modify_employee(self, employee_object, index):
         return DL_Employee().modifyEmployee(employee_object, index)
     
-    def get_headers(self):
-        return DL_Employee().getHeaders()
+    def get_employee_headers(self):
+        return DL_Employee().getEmployeeHeaders()
 
     # Planes
     def get_planes(self):        
