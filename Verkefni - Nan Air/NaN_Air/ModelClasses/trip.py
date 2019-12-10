@@ -17,6 +17,12 @@ class Trip():
         self.set_status(input_data)
         self.set_history(input_data)
 
+    def __str__(self):
+        output = ''
+        for attr in self.__dict__.values():
+            output += '{},'.format(attr)
+        return output
+
     def set_destination(self, input_data):
         if not input_data:
             self.__destination = ''
@@ -123,7 +129,7 @@ class Trip():
                 except KeyError:
                     self.__depart_time_home = ''
             else:
-                self.__depart_Time_Home = input_data
+                self.__depart_time_Home = input_data
     
     def set_arrival_time_dest(self, input_data):
         if not input_data:
@@ -188,15 +194,42 @@ class Trip():
  
     def get_destination(self):
         return self.__destination
+    
+    def get_plane(self):
+        return self.__plane
 
-    def get_depart_Time_Home(self):
-        return self.__depart_Time_Home
-
-    def get_arrival_Time_Dest(self):
-        return self.__arrival_Time_Dest
-
-    def get_depart_Time_Abr(self):
-        return self.__depart_Time_Abr
-
-    def get_arrival_Time_Home(self):
-        return self.__arrival_Time_Home
+    def get_pilot(self):
+        return self.__pilot
+    
+    def get_cabincrew(self):
+        return self.__cabincrew
+    
+    def get_sold_seats(self):
+        return self.__sold_seats
+    
+    def get_available_seats(self):
+        return self.__available_seats
+    
+    def get_first_trip(self):
+        return self.__first_trip
+    
+    def get_second_trip(self):
+        return self.__second_trip
+    
+    def get_depart_time_home(self):
+        return self.__depart_time_home
+    
+    def get_arrival_time_dest(self):
+        return self.__arrival_time_dest
+    
+    def get_depart_time_dest(self):
+        return self.__depart_time_dest
+    
+    def get_arrival_time_home(self):
+        return self.__arrival_time_home
+    
+    def get_status(self):
+        return self.__status
+    
+    def get_history(self):
+        return self.__history

@@ -11,7 +11,7 @@ class DL_Trips():
         3) modifyTrip:      This method writes over an entry in the database. 
         4) getTripsHeaders: This method returns a list with the header row. '''
         
-    FILE_NAME = 'DataLayer\\DL_Database\\Employees.csv'
+    FILE_NAME = 'DataLayer\\DL_Database\\Trips.csv'
     ENCODING = 'utf-8'
 
     def getTrips(self):

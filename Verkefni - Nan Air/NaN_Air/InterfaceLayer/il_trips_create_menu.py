@@ -8,5 +8,5 @@ class IL_TripsCreateMenu(IL_TripsMenu):
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/TripsCreate_graphics.txt'
     ADDRESS = 'Main Menu -> Trips -> New Trip'
     SCREEN_TYPE = 'Create'
-    CATEGORY = 'Trips'    
+    CATEGORY = 'Trip'    
     OPTIONS = [('r','M_4_1','Screen'),('q','Q','Screen'),('b','M_3','Screen'),('x','X','Reset')]

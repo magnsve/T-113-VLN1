@@ -42,33 +42,33 @@ class LL_API():
         return LL_Destinations().add_destination(destination_object)
 
     # Trips
-    def edit_trips(self, trip_object, index):
+    def edit_trip(self, trip_object, index):
         return LL_Trips().edit_trip_object(trip_object, index)
     
-    def get_trips_header(self):
+    def get_trip_header(self):
         return LL_Trips().get_trips_file_headers()
     
-    def search_trips(self, trip_object):
+    def search_trip(self, trip_object):
         return LL_Trips().search_trips(trip_object)
 
-    def find_trips_index(self, trip_object):
+    def find_trip_index(self, trip_object):
         return LL_Trips().find_index_in_database(trip_object)
     
-    def new_trips(self, trip_object):
+    def new_trip(self, trip_object):
         return LL_Trips().add_trip(trip_object)
 
     # Planes
-    def edit_planes(self, plane_object, index):
+    def edit_plane(self, plane_object, index):
         return LL_Planes().edit_plane_object(plane_object, index)
     
-    def get_planes_header(self):
+    def get_plane_header(self):
         return LL_Planes().get_plane_file_headers()
     
-    def search_planes(self, plane_object):
+    def search_plane(self, plane_object):
         return LL_Planes().search_plane(plane_object)
     
-    def find_planes_index(self, plane_object):
+    def find_plane_index(self, plane_object):
         return LL_Planes().find_index_in_database(plane_object)
     
-    def new_planes(self, plane_object):
+    def new_plane(self, plane_object):
         return LL_Planes().add_plane(plane_object)

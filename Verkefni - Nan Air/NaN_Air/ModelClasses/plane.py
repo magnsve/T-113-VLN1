@@ -9,6 +9,12 @@ class Plane():
         self.set_status(input_data)
         self.set_history(input_data)
 
+    def __str__(self):
+        output = ''
+        for attr in self.__dict__.values():
+            output += '{},'.format(attr)
+        return output
+
     def set_insignia(self, input_data):
         if not input_data:
             self.__insignia = ''
@@ -23,7 +29,7 @@ class Plane():
     
     def set_typeID(self, input_data):
         if not input_data:
-            self.__typeIDe = ''
+            self.__typeID = ''
         else:
             if isinstance(input_data, dict):            
                 try:
@@ -108,3 +114,9 @@ class Plane():
 
     def get_capacity(self):
         return self.__capacity
+    
+    def get_status(self):
+        return self.__status
+    
+    def get_history(self):
+        return self.__history

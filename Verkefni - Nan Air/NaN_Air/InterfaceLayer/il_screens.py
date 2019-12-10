@@ -19,10 +19,10 @@ from .il_main_menu import IL_MainMenu
 class Screens():
     ''' Creates an instance of all Interface Layer classes to use in the main program. '''
     def __init__(self):
-        self.airplane_create = IL_AirplaneCreateMenu()
-        self.airplane = IL_AirplaneMenu()
-        self.airplane_search = IL_AirplaneSearchMenu()
-        self.airpalne_edit = IL_AirplaneEditMenu()
+        self.plane_create = IL_AirplaneCreateMenu()
+        self.plane = IL_AirplaneMenu()
+        self.plane_search = IL_AirplaneSearchMenu()
+        self.plane_edit = IL_AirplaneEditMenu()
         self.employee = IL_EmployeeMenu()
         self.employee_create = IL_EmployeeCreateMenu()
         self.employee_search = IL_EmployeeSearchMenu()

@@ -8,5 +8,5 @@ class IL_DestinationEditMenu(IL_DestinationSearchMenu):
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/DestinationEdit_graphics.txt'
     ADDRESS = 'Main Menu -> Destinations -> Find Destination -> Edit Destination'
     SCREEN_TYPE = 'Edit'
-    CATEGORY = 'Planes'
+    CATEGORY = 'Destination'
     OPTIONS = [('r','M_3_2_1','Screen'),('q','Q','Screen'),('b','M_3_2','Screen'),('x','X','Reset')]

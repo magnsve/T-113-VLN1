@@ -8,5 +8,5 @@ class IL_AirplaneCreateMenu(IL_AirplaneMenu):
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/AirplaneCreate_graphics.txt'
     ADDRESS = 'Main Menu -> Airplanes -> New Airplane'
     SCREEN_TYPE = 'Create'
-    CATEGORY = 'Planes' 
+    CATEGORY = 'Plane' 
     OPTIONS = [ ('r','M_2_1','Screen'),('q','Q','Screen'),('b','M_2','Screen'),('x','X','Reset')]    

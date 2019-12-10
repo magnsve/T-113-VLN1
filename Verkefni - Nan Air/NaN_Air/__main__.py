@@ -46,9 +46,9 @@ def main():
                 new_object = newEmployee
             elif new_screen.CATEGORY == 'Destination':
                 new_object = newDestination
-            elif new_screen.CATEGORY == 'Planes':
+            elif new_screen.CATEGORY == 'Plane':
                 new_object = newPlane
-            elif new_screen.CATEGORY == 'Trips':
+            elif new_screen.CATEGORY == 'Trip':
                 new_object = newTrip
             # This function delves into the new_screen class instancee and adds valid options to it based on what 'set' functions are in the new_object model class instance. 
             # This allows the input validation function to correctly identify valid vs. invalid input.
@@ -64,7 +64,7 @@ def main():
                     input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))
                     # Here we find the index of the file in the database.
                     index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
-                    index = index_func(new_object)                    
+                    index = index_func(new_object)
                     method_(input_)
                     # If the object is not found in the database the index is returned as 'None'. We then append the new object to the database instead of overwrite it.
                     if index == None:
@@ -91,10 +91,10 @@ def main():
             elif new_screen.CATEGORY == 'Destination':
                 search_object = destinationSearchObject
                 edit_object = destinationEditObject
-            elif new_screen.CATEGORY == 'Planes':
+            elif new_screen.CATEGORY == 'Plane':
                 search_object = planeSearchObject
                 edit_object = planeEditObject
-            elif new_screen.CATEGORY == 'Trips':
+            elif new_screen.CATEGORY == 'Trip':
                 search_object = tripSearchObject
                 edit_object = tripEditObject
             search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
@@ -109,7 +109,7 @@ def main():
             has_input = True
             while user_input[0][:1].lower() == 'e' or check_if_int(user_input) < 10 or user_input[1] == 'X' or user_input[1][:1] == 's':
                 if user_input[0][:1].lower() == 'e':
-                    if new_screen.SCREEN_TYPE == 'Edit':
+                    if new_screen.SCREEN_TYPE == 'Edit':                        
                         method_ = getattr(edit_object, user_input[1])
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
                         input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))                                                    
@@ -117,7 +117,7 @@ def main():
                         index = index_func(edit_object)
                         method_(input_)
                         edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
-                        edit_func(new_object, index)                        
+                        edit_func(edit_object, index)
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
                         user_input = new_screen.validate_selection(new_screen, edit_object, list_of_objects)
                     else:

@@ -8,5 +8,5 @@ class IL_TripsSearchMenu(IL_TripsMenu):
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/TripsSearch_graphics.txt'
     ADDRESS = 'Main Menu -> Trips -> Find Trip'
     SCREEN_TYPE = 'Search'
-    CATEGORY = 'Trips'
+    CATEGORY = 'Trip'
     OPTIONS = [('r','M_4_2','Screen'),('q','Q','Screen'),('b','M_4','Screen'),('x','X','Reset')]    

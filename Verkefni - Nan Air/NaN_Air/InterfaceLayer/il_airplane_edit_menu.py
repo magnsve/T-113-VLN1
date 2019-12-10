@@ -8,5 +8,5 @@ class IL_AirplaneEditMenu(IL_AirplaneSearchMenu):
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/AirplaneEdit_graphics.txt'
     ADDRESS = 'Main Menu -> Airplanes -> Find Airplane -> Edit Airplane'
     SCREEN_TYPE = 'Edit'
-    CATEGORY = 'Planes'
+    CATEGORY = 'Plane'
     OPTIONS = [('r','M_2_2_1','Screen'),('q','Q','Screen'),('b','M_2_2','Screen'),('x','X','Reset')]

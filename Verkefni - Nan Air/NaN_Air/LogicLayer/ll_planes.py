@@ -5,7 +5,7 @@ class LL_Planes():
 
     #nafn, tegund, framleiðandi og fjöldi farþegasæta.
     def search_plane(self, plane_object):
-        list_of_planes = DL_API().get_planes    
+        list_of_planes = DL_API().get_planes()
         insignia_search = self.search_insignia(plane_object, list_of_planes)        
         type_search = self.search_type(plane_object, insignia_search)
         manufacturer_search = self.search_manufacturer(plane_object, type_search)
@@ -29,13 +29,13 @@ class LL_Planes():
 
 
     def search_type(self, plane_object, list_of_planes):
-        Type = plane_object.get_type()
+        Type = plane_object.get_typeID()
         output = []
         if not Type:
             return list_of_planes
         elif Type != '':
             for plane in list_of_planes:
-                if Type in plane.get_type():
+                if Type in plane.get_typeID():
                     output.append(plane)
             return output
         else:

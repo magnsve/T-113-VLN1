@@ -16,11 +16,11 @@ class LL_Trips():
         available_seats_search = self.search_available_seats(trip_object, sold_seats_search)
         first_trip_search = self.search_first_trip(trip_object, available_seats_search)
         second_trip_search = self.search_second_trip(trip_object, first_trip_search)
-        depart_time_home_search = self.search_depart_time_home
-        arrival_time_dest_search = self.search_arrival_time_dest
-        depart_time_dest_search = self.search_depart_time_dest
-        arrival_time_home = self.search_arrival_time_home
-        status_search = self.search_status(trip_object, second_trip_+search)
+        depart_time_home_search = self.search_depart_time_home(trip_object, second_trip_search)
+        arrival_time_dest_search = self.search_arrival_time_dest(trip_object, depart_time_home_search)
+        depart_time_dest_search = self.search_depart_time_dest(trip_object, arrival_time_dest_search)
+        arrival_time_home_search = self.search_arrival_time_home(trip_object, depart_time_dest_search)
+        status_search = self.search_status(trip_object, arrival_time_home_search)
         history_search = self.search_history(trip_object, status_search)
         return history_search
 
@@ -30,9 +30,9 @@ class LL_Trips():
         if not destination:
             return list_of_trips
         elif destination != '':
-            for destinations in list_of_trips:
-                if destinations in trip.get_destination():
-                    output.append(destinations)
+            for trip in list_of_trips:
+                if destination in trip.get_destination():
+                    output.append(destination)
             return output
         else:
             return list_of_trips
@@ -43,9 +43,9 @@ class LL_Trips():
         if not plane:
             return list_of_trips
         elif plane != '':
-            for planes in list_of_trips:
-                if planes in trip.get_plane():
-                    output.append(planes)
+            for trip in list_of_trips:
+                if plane in trip.get_plane():
+                    output.append(plane)
             return output
         else:
             return list_of_trips
@@ -56,9 +56,9 @@ class LL_Trips():
         if not pilot:
             return list_of_trips
         elif pilot != '':
-            for pilots in list_of_trips:
-                if pilots in trip.get_pilot():
-                    output.append(pilots)
+            for trip in list_of_trips:
+                if pilot in trip.get_pilot():
+                    output.append(pilot)
             return output
         else:
             return list_of_trips
@@ -69,9 +69,9 @@ class LL_Trips():
         if not cabincrew:
             return list_of_trips
         elif cabincrew != '':
-            for cabin in list_of_trips:
-                if cabin in trip.get_cabincrew():
-                    output.append(cabin)
+            for trip in list_of_trips:
+                if cabincrew in trip.get_cabincrew():
+                    output.append(cabincrew)
             return output
         else:
             return list_of_trips
@@ -82,9 +82,9 @@ class LL_Trips():
         if not sold_seats:
             return list_of_trips
         elif sold_seats != '':
-            for seats_sold in list_of_trips:
-                if seats_sold in trip.get_sold_seats():
-                    output.append(seats_sold)
+            for trip in list_of_trips:
+                if sold_seats in trip.get_sold_seats():
+                    output.append(sold_seats)
             return output
         else:
             return list_of_trips
@@ -95,9 +95,9 @@ class LL_Trips():
         if not available_seats:
             return list_of_trips
         elif available_seats != '':
-            for seats_available in list_of_trips:
-                if seats_available in trip.get_available_seats():
-                    output.append(seats_available)
+            for trip in list_of_trips:
+                if available_seats in trip.get_available_seats():
+                    output.append(available_seats)
             return output
         else:
             return list_of_trips
@@ -180,6 +180,19 @@ class LL_Trips():
             return output
         else:
             return list_of_trips
+    
+    def search_status(self, trip_object, list_of_trips):
+        status = trip_object.get_status()
+        output = []
+        if not status:
+            return list_of_trips
+        elif status != '':
+            for trip in list_of_trips:
+                if status in trip.get_status():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
 
     def search_history(self, trip_object, list_of_trips):
         history = trip_object.get_history()
@@ -188,7 +201,7 @@ class LL_Trips():
             return list_of_trips
         elif history != '':
             for trip in list_of_trips:
-                if history in trip.get_history():
+                if history in trip_object.get_history():
                     output.append(trip)
             return output
         else:

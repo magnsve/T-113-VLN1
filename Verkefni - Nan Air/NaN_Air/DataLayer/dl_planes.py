@@ -11,7 +11,7 @@ class DL_Planes():
         3) modifyPlanes:      This method writes over an entry in the database. 
         4) getPlanesHeaders:  This method returns a list with the header row. '''
 
-    FILE_NAME = 'DataLayer\\DL_Database\\Aircraft.csv'
+    FILE_NAME = 'DataLayer\\DL_Database\\Planes.csv'
     ENCODING = 'utf-8'
 
     def getPlanes(self):
