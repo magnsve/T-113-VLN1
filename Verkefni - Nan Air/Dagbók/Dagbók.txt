@@ -228,6 +228,9 @@ Lógíkin er okkar stærsta challenge. Við erum búin að fá svo gott sem allt
 
 Ofurhetja dagsins: Lilja - Phoebe Halliwell
 
+hvað gerðist í dag:
+Erum búin að fara í gegnum A og B kröfur og tryggja að þær séu uppfylltar. Erum búin að laga mikið af lógík þar sem nöfn á föllum pössuðu ekki saman.
+Búin að bæta við fleiri og meira lýsandi kommentum í Interface layer.
 
 
 
