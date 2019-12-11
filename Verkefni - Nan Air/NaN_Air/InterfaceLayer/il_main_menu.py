@@ -3,7 +3,7 @@ from .il_printer import IL_Printer
 
 # Classes
 class IL_MainMenu(IL_Printer):
-    ''' '''
+    '''Creates menu pulling info from UI_MetaData '''
     
     FILE = 'InterfaceLayer/UI_MetaData/MainMenu.txt'
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/MainMenu_graphics.txt'

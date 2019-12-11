@@ -6,11 +6,12 @@ from LogicLayer.ll_api import LL_API
 
 # Classes
 class IL_Printer():
-    ''' '''
+    ''' Creates a window TUI experience '''
     FILE = ''
     GRAPHICS_FILE =  ''
     
     def __init__(self):
+        #Initalises window
         self.__window_width = shutil.get_terminal_size()[0]
         self.__window_height = shutil.get_terminal_size()[1]        
         self.__cross = '+'
@@ -48,6 +49,7 @@ class IL_Printer():
                         'M_1_2_1':  ('il_employee_edit_menu',       'IL_EmployeeEditMenu')}
     
     def variable_class(self, from_menu = ('','')):
+        #Returns the correct class
         module_name = 'InterfaceLayer.'+ from_menu[0]
         class_name = from_menu[1]
         module = import_module(module_name)
@@ -55,6 +57,7 @@ class IL_Printer():
         return class_()
     
     def prep_window(self, file = FILE, graphics = GRAPHICS_FILE, model_object = None, list_of_objects = None):
+        #Sets window size and look
         output = ''
         for _ in range(self.__window_height*3):
             output += '\n'
@@ -93,6 +96,7 @@ class IL_Printer():
         return output
                 
     def get_spaceing(self, file = '', graphics = '', model_object = '', list_of_objects = ''):
+        #Spacing set to determined size of terminal window
         counter = 3
         output = ''
         for line in self.get_file(file):
@@ -118,6 +122,7 @@ class IL_Printer():
         return output
 
     def get_info(self, model_object):
+        #Defines how long borders are
         output = ''
         temp = self.display_model_object(model_object).splitlines()        
         for line in temp:

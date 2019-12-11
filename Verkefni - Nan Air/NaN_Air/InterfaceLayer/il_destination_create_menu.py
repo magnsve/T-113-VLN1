@@ -3,7 +3,7 @@ from .il_destination_menu import IL_DestinationMenu
 
 # Classes
 class IL_DestinationCreateMenu(IL_DestinationMenu):
-    ''' '''
+    '''Creates menu pulling info from UI_MetaData '''
     FILE = 'InterfaceLayer/UI_MetaData/DestinationCreateMenu.txt'
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/DestinationCreate_graphics.txt'
     ADDRESS = 'Main Menu -> Destinations -> New Destination'

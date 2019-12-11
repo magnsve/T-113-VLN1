@@ -3,7 +3,7 @@ from .il_employee_menu import IL_EmployeeMenu
 
 # Classes
 class IL_EmployeeCreateMenu(IL_EmployeeMenu):
-    ''' '''
+    '''Creates menu pulling info from UI_MetaData '''
     FILE = 'InterfaceLayer/UI_MetaData/EmployeeCreateMenu.txt'
     GRAPHICS_FILE = 'InterfaceLayer/UI_MetaData/EmployeeCreate_graphics.txt'
     ADDRESS = 'Main Menu -> Employees -> New Employee'
