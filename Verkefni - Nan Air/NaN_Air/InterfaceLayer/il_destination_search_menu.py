@@ -9,4 +9,4 @@ class IL_DestinationSearchMenu(IL_DestinationMenu):
     ADDRESS = 'Main Menu -> Destinations -> Find Destination'
     SCREEN_TYPE = 'Search'
     CATEGORY = 'Destination'
-    OPTIONS = [('r','M_3_2','Screen'),('q','Q','Screen'),('b','M_3','Screen'),('x','X','Reset')]
+    OPTIONS = [('r','M_3_2','Screen'),('q','Q','Screen'),('b','M_3','Screen'),('list','L','Screen'),('x','X','Reset')]

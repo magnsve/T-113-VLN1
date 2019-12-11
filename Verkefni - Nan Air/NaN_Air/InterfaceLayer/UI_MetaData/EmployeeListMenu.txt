@@ -1,0 +1,13 @@
+--sep--
+--gra--
+--sep--
+--bre--
+--emp--
+--emp--
+--sea--
+--emp--
+--spa--
+--emp--
+--emp-- 
+--rju----ind--B - Back to Find Employee    R - Refresh Screen   Q - Exit
+--sep--

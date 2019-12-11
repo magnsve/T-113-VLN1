@@ -125,7 +125,7 @@ def main():
             print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
             user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)
             has_input = True
-            while user_input[0][:1].lower() == 'e' or check_if_int(user_input) < 10 or user_input[1] == 'X' or user_input[1][:1] == 's':
+            while user_input[0][:1].lower() == 'e' or check_if_int(user_input) < 10 or user_input[1] == 'X' or user_input[1][:1] == 's' or user_input[1] == 'L':
                 if user_input[0][:1].lower() == 'e':
                     if new_screen.SCREEN_TYPE == 'Edit':                        
                         method_ = getattr(edit_object, user_input[1])
@@ -168,7 +168,14 @@ def main():
                     edit_object = list_of_objects[int(user_input[1][1:])]                        
                     new_screen.get_edit_funcs(logic_object)
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
-                    user_input = new_screen.validate_selection(new_screen, edit_object)                    
+                    user_input = new_screen.validate_selection(new_screen, edit_object)
+                elif user_input[1] == 'L':
+                    search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
+                    list_of_objects = search_func(search_object)[:35]                    
+                    go_to_list = getattr(all_screens, new_screen.CATEGORY.lower()+'_list')
+                    new_screen = go_to_list
+                    print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:35]))
+                    user_input = new_screen.validate_selection(new_screen, search_object)
         else:
             print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE))
         if not has_input:

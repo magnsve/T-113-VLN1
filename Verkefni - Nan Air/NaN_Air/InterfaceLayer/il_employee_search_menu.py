@@ -9,4 +9,4 @@ class IL_EmployeeSearchMenu(IL_EmployeeMenu):
     ADDRESS = 'Main Menu -> Employees -> Find Employee'
     SCREEN_TYPE = 'Search'
     CATEGORY = 'Employee'
-    OPTIONS = [('r','M_1_2','Screen'),('q','Q','Screen'),('b','M_1','Screen'),('x','X','Reset')]
+    OPTIONS = [('r','M_1_2','Screen'),('q','Q','Screen'),('b','M_1','Screen'),('list','L','Screen'),('x','X','Reset')]

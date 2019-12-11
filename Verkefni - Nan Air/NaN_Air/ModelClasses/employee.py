@@ -1,5 +1,4 @@
 # Imports and constants
-from DataLayer.dl_api import DL_API
 
 # Classes
 class Employee():
@@ -17,7 +16,7 @@ class Employee():
         self.set_status(input_data)
         self.set_history(input_data)
     
-def set_ssn(self, input_data):
+    def set_ssn(self, input_data):
         if not input_data:
             self.__ssn = ''
         else:
@@ -29,20 +28,20 @@ def set_ssn(self, input_data):
             else:
                 self.__ssn = input_data
     
-def set_name(self, input_data):
-    if not input_data:
-        self.__name = ''
-    else:
-        if self.__name == '':
-            if isinstance(input_data, dict):            
-                try:
-                    self.__name = input_data["name"]
-                except KeyError:
-                    self.__name = ''
-            else:
-                self.__name = input_data
+    def set_name(self, input_data):
+        if not input_data:
+            self.__name = ''
         else:
-            pass
+            if self.__name == '':
+                if isinstance(input_data, dict):            
+                    try:
+                        self.__name = input_data["name"]
+                    except KeyError:
+                        self.__name = ''
+                else:
+                    self.__name = input_data
+            else:
+                pass
     
     def set_role(self, input_data):
         if not input_data:
