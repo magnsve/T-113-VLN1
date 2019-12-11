@@ -1,4 +1,5 @@
 # Imports and constants
+from DataLayer.dl_api import DL_API
 
 # Classes
 class Employee():
@@ -11,6 +12,8 @@ class Employee():
         self.set_licence(input_data)
         self.set_address(input_data)
         self.set_phonenumber(input_data)
+        self.set_gsm(input_data)
+        self.set_e_mail(input_data)
         self.set_status(input_data)
         self.set_history(input_data)
     
@@ -18,13 +21,25 @@ class Employee():
         if not input_data:
             self.__ssn = ''
         else:
+            list_of_employees = DL_API().get_employees()
+            ssn = True
             if isinstance(input_data, dict):            
                 try:
-                    self.__ssn = input_data["ssn"]
+                    for employee in list_of_employees:
+                        if employee.get_ssn() == input['ssn']:
+                            ssn = False
+                    if ssn:
+                        self.__ssn = input_data["ssn"]
+                    else:
+                        self.__ssn = ''
                 except KeyError:
                     self.__ssn = ''        
             else:
-                self.__ssn = input_data
+                for employee in list_of_employees:
+                    if employee.get_ssn() == input_data:
+                        self.__ssn = ''
+                    else:
+                        self.__ssn = input_data
     
     def set_name(self, input_data):
         if not input_data:
@@ -98,6 +113,30 @@ class Employee():
             else:
                 self.__phonenumber = input_data
     
+    def set_gsm(self, input_data):
+        if not input_data:
+            self.__gsm = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__gsm = input_data["gsm"]
+                except KeyError:
+                    self.__gsm = ''
+            else:
+                self.__gsm = input_data
+
+    def set_e_mail(self, input_data):
+        if not input_data:
+            self.__e_mail = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__e_mail = input_data["e-mail"]
+                except KeyError:
+                    self.__e_mail = ''
+            else:
+                self.__e_mail = input_data
+
     def set_status(self, input_data):
         if not input_data:
             self.__status = ''
@@ -148,6 +187,12 @@ class Employee():
 
     def get_phonenumber(self):
         return self.__phonenumber
+
+    def get_gsm(self):
+        return self.__gsm
+    
+    def get_e_mail(self):
+        return self.__e_mail
     
     def get_status(self):
         return self.__status

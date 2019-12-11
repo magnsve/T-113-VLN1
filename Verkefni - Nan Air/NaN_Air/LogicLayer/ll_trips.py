@@ -21,8 +21,7 @@ class LL_Trips():
         depart_time_dest_search = self.search_depart_time_dest(trip_object, arrival_time_dest_search)
         arrival_time_home_search = self.search_arrival_time_home(trip_object, depart_time_dest_search)
         status_search = self.search_status(trip_object, arrival_time_home_search)
-        history_search = self.search_history(trip_object, status_search)
-        return history_search
+        return status_search
 
     def search_destination(self, trip_object, list_of_trips):
         destination = trip_object.get_destination()
@@ -31,7 +30,7 @@ class LL_Trips():
             return list_of_trips
         elif destination != '':
             for trip in list_of_trips:
-                if destination in trip.get_destination():
+                if destination.lower() in trip.get_destination().lower():
                     output.append(destination)
             return output
         else:
@@ -44,7 +43,7 @@ class LL_Trips():
             return list_of_trips
         elif plane != '':
             for trip in list_of_trips:
-                if plane in trip.get_plane():
+                if plane.lower() in trip.get_plane().lower():
                     output.append(plane)
             return output
         else:
@@ -57,7 +56,7 @@ class LL_Trips():
             return list_of_trips
         elif pilot != '':
             for trip in list_of_trips:
-                if pilot in trip.get_pilot():
+                if pilot.lower() in trip.get_pilot().lower():
                     output.append(pilot)
             return output
         else:
@@ -70,7 +69,7 @@ class LL_Trips():
             return list_of_trips
         elif cabincrew != '':
             for trip in list_of_trips:
-                if cabincrew in trip.get_cabincrew():
+                if cabincrew.lower() in trip.get_cabincrew().lower():
                     output.append(cabincrew)
             return output
         else:
@@ -83,7 +82,7 @@ class LL_Trips():
             return list_of_trips
         elif sold_seats != '':
             for trip in list_of_trips:
-                if sold_seats in trip.get_sold_seats():
+                if sold_seats.lower() in trip.get_sold_seats().lower():
                     output.append(sold_seats)
             return output
         else:
@@ -96,7 +95,7 @@ class LL_Trips():
             return list_of_trips
         elif available_seats != '':
             for trip in list_of_trips:
-                if available_seats in trip.get_available_seats():
+                if available_seats.lower() in trip.get_available_seats().lower():
                     output.append(available_seats)
             return output
         else:
@@ -109,7 +108,7 @@ class LL_Trips():
             return list_of_trips
         elif first_trip != '':
             for trip in list_of_trips:
-                if first_trip in trip.get_first_trip():
+                if first_trip.lower() in trip.get_first_trip().lower():
                     output.append(trip)
             return output
         else:
@@ -122,7 +121,7 @@ class LL_Trips():
             return list_of_trips
         elif second_trip != '':
             for trip in list_of_trips:
-                if second_trip in trip.get_second_trip():
+                if second_trip.lower() in trip.get_second_trip().lower():
                     output.append(trip)
             return output
         else:
@@ -136,7 +135,7 @@ class LL_Trips():
             return list_of_trips
         elif depart_time_home != '':
             for trip in list_of_trips:
-                if depart_time_home in trip.get_depart_time_home():
+                if depart_time_home.lower() in trip.get_depart_time_home().lower():
                     output.append(trip)
             return output
         else:
@@ -149,7 +148,7 @@ class LL_Trips():
             return list_of_trips
         elif arrival_time_dest != '':
             for trip in list_of_trips:
-                if arrival_time_dest in trip.get_arrival_time_dest():
+                if arrival_time_dest.lower() in trip.get_arrival_time_dest().lower():
                     output.append(trip)
             return output
         else:
@@ -162,7 +161,7 @@ class LL_Trips():
             return list_of_trips
         elif depart_time_dest != '':
             for trip in list_of_trips:
-                if depart_time_dest in trip.get_depart_time_dest():
+                if depart_time_dest.lower() in trip.get_depart_time_dest().lower():
                     output.append(trip)
             return output
         else:
@@ -175,7 +174,7 @@ class LL_Trips():
             return list_of_trips
         elif arrival_time_home != '':
             for trip in list_of_trips:
-                if arrival_time_home in trip.get_arrival_time_home():
+                if arrival_time_home.lower() in trip.get_arrival_time_home().lower():
                     output.append(trip)
             return output
         else:
@@ -188,20 +187,7 @@ class LL_Trips():
             return list_of_trips
         elif status != '':
             for trip in list_of_trips:
-                if status in trip.get_status():
-                    output.append(trip)
-            return output
-        else:
-            return list_of_trips
-
-    def search_history(self, trip_object, list_of_trips):
-        history = trip_object.get_history()
-        output = []
-        if not history:
-            return list_of_trips
-        elif history != '':
-            for trip in list_of_trips:
-                if history in trip_object.get_history():
+                if status.lower() in trip.get_status().lower():
                     output.append(trip)
             return output
         else:

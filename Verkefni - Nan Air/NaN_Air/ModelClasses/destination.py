@@ -13,6 +13,8 @@ class Destination():
         self.set_emergencyContactNumber(input_data)
         self.set_status(input_data)
         self.set_history(input_data)
+
+        airportId,destination,country,flightTime,distance,emergencyContact,emergencyContactNumber,status,history
     
     def __str__(self):
         output = ''

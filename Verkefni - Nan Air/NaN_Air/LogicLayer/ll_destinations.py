@@ -27,9 +27,7 @@ class LL_Destinations():
         distance_search = self.search_distance(destination_object, flightTime)
         emergencyContact_search = self.search_emergencyContact(destination_object, distance_search)
         emergencyContactNumber_search = self.search_emergencyContactNumber(destination_object, emergencyContact_search)
-        status_search = self.search_status(destination_object, emergencyContactNumber_search)
-        history_search = self.search_history(destination_object, status_search)
-        return history_search
+        return emergencyContactNumber_search
 
     def search_airportId(self, destination_object, list_of_destinations):
         airportId = destination_object.get_airportId()
@@ -38,7 +36,7 @@ class LL_Destinations():
             return list_of_destinations
         elif airportId != '':
             for destination in list_of_destinations:
-                if destination in destination.get_airportId():
+                if destination.lower() in destination.get_airportId().lower():
                     output.append(destination)
             return output
         else:
@@ -51,7 +49,7 @@ class LL_Destinations():
             return list_of_destinations
         elif country != '':
             for destination in list_of_destinations:
-                if destination in destination.get_country():
+                if destination.lower() in destination.get_country().lower():
                     output.append(destination)
             return output
         else:
@@ -64,7 +62,7 @@ class LL_Destinations():
             return list_of_destinations
         elif flightTime != '':
             for destination in list_of_destinations:
-                if destination in destination.get_flightTime():
+                if destination.lower() in destination.get_flightTime().lower():
                     output.append(destination)
             return output
         else:
@@ -77,7 +75,7 @@ class LL_Destinations():
             return list_of_destinations
         elif destination != '':
             for destinations in list_of_destinations:
-                if destinations in destination.get_destinations():
+                if destinations.lower() in destination.get_destinations().lower():
                     output.append(destinations)
             return output
         else:
@@ -90,7 +88,7 @@ class LL_Destinations():
             return list_of_destinations
         elif distance != '':
             for destinations in list_of_destinations:
-                if destinations in destinations.get_distance():
+                if destinations.lower() in destinations.get_distance().lower():
                     output.append(destinations)
             return output
         else:
@@ -103,7 +101,7 @@ class LL_Destinations():
             return list_of_destinations
         elif emergencyContact != '':
             for destination in list_of_destinations:
-                if destination in destination.get_emergencyContact():
+                if destination.lower() in destination.get_emergencyContact().lower():
                     output.append(destination)
             return output
         else:
@@ -116,33 +114,7 @@ class LL_Destinations():
             return list_of_destinations
         elif emergencyContactNumber != '':
             for destination in list_of_destinations:
-                if destination in destination.get_emergencyContactNumber():
-                    output.append(destination)
-            return output
-        else:
-            return list_of_destinations
-
-    def search_history(self, destination_object, list_of_destinations):
-        history = destination_object.get_history()
-        output = []
-        if not history:
-            return list_of_destinations
-        elif history != '':
-            for destination in list_of_destinations:
-                if history in destination.get_history():
-                    output.append(destination)
-            return output
-        else:
-            return list_of_destinations
-
-    def search_status(self, destination_object, list_of_destinations):
-        status = destination_object.get_status()
-        output = []
-        if not status:
-            return list_of_destinations
-        elif status != '':
-            for destination in list_of_destinations:
-                if status in destination.get_status():
+                if destination.lower() in destination.get_emergencyContactNumber().lower():
                     output.append(destination)
             return output
         else:

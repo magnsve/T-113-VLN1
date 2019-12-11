@@ -10,9 +10,7 @@ class LL_Planes():
         type_search = self.search_type(plane_object, insignia_search)
         manufacturer_search = self.search_manufacturer(plane_object, type_search)
         capacity_search = self.search_capacity(plane_object, manufacturer_search)
-        status_search = self.search_status(plane_object, capacity_search)
-        history_search = self.search_history(plane_object, status_search)
-        return history_search
+        return capacity_search
 
     def search_insignia(self, plane_object, list_of_planes):
         insignia = plane_object.get_insignia()
@@ -21,7 +19,7 @@ class LL_Planes():
             return list_of_planes
         elif insignia != '':
             for plane in list_of_planes:
-                if insignia in plane.get_insignia():
+                if insignia.lower() in plane.get_insignia().lower():
                     output.append(plane)
             return output
         else:
@@ -35,7 +33,7 @@ class LL_Planes():
             return list_of_planes
         elif Type != '':
             for plane in list_of_planes:
-                if Type in plane.get_typeID():
+                if Type.lower() in plane.get_typeID().lower():
                     output.append(plane)
             return output
         else:
@@ -48,7 +46,7 @@ class LL_Planes():
             return list_of_planes
         elif capacity != '':
             for plane in list_of_planes:
-                if capacity in plane.capacity():
+                if capacity.lower() in plane.capacity().lower():
                     output.append(plane)
             return output
         else:
@@ -62,33 +60,7 @@ class LL_Planes():
             return list_of_planes
         elif manufacturer != '':
             for plane in list_of_planes:
-                if manufacturer in plane.get_type():
-                    output.append(plane)
-            return output
-        else:
-            return list_of_planes
-
-    def search_history(self, plane_object, list_of_planes):
-        history = plane_object.get_history()
-        output = []
-        if not history:
-            return list_of_planes
-        elif history != '':
-            for plane in list_of_planes:
-                if history in plane.get_history():
-                    output.append(plane)
-            return output
-        else:
-            return list_of_planes
-
-    def search_status(self, plane_object, list_of_planes):
-        status = plane_object.get_status()
-        output = []
-        if not status:
-            return list_of_planes
-        elif status != '':
-            for plane in list_of_planes:
-                if status in plane.get_status():
+                if manufacturer.lower() in plane.get_type().lower():
                     output.append(plane)
             return output
         else:
