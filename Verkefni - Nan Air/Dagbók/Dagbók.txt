@@ -211,6 +211,23 @@ Hvað gerðist í dag:
 Fórum yfir datalayer og logic layer, datalayer or 95% kominn og logiclayer kominn langleiðina, interface kominn langt á leið.
 
 
+Mánudagur 12.11.2019 - 17:50
+
+Fundarstjóri: Stefán Ingi Árnason
+
+Fyrsti hluti: So far.
+Á mánudaginn hittumst við í HR og sátum í góðan tíma með Gylfa og Friðriki Snæ. Gylfi hafði þó nokkrar athugasemdir en lokaákvörðun var sú að
+við höldum okkar stefnu og klárum forritið með þeirr lógík sem við höfum notað hingað til. Þriðjudaginn unnum við heima vegna veðurs og ræddum okkar 
+á milli í Teams.
+
+Annar hluti: What now.
+Ætlum að klára eins mikið og við getum í dag. Fókusum á A kröfur og ef þær klárast færum við okkur í B kröfur.
+
+Þriðji hluti: Challenges.
+Lógíkin er okkar stærsta challenge. Við erum búin að fá svo gott sem allt til að virka fyrir Employee klasann og þurfum að útfæra það á aðra klasa.
+
+Ofurhetja dagsins: Lilja - Phoebe Halliwell
+
 
 
 
