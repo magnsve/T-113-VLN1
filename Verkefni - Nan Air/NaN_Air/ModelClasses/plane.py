@@ -6,8 +6,6 @@ class Plane():
         self.set_manufacturer(input_data)
         self.set_model(input_data)
         self.set_capacity(input_data)
-        self.set_status(input_data)
-        self.set_history(input_data)
 
     def __str__(self):
         output = ''
@@ -74,30 +72,6 @@ class Plane():
                     self.__capacity = ''
             else:
                 self.__licence = input_data   
-
-    def set_status(self, input_data):
-        if not input_data:
-            self.__status = ''
-        else:
-            if isinstance(input_data, dict):
-                try:
-                    self.__status = input_data["status"]
-                except KeyError:
-                    self.__status = 'incomplete'
-            else: 
-                self.__status = input_data
-
-    def set_history(self, input_data):
-        if not input_data:
-            self.__history = ''
-        else:
-            if isinstance(input_data, dict):
-                try:
-                    self.__history = input_data["history"]
-                except KeyError:
-                    self.__history = ''
-            else:
-                self.__history = input_data
 
 
     def get_insignia(self):

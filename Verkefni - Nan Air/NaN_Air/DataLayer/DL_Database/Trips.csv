@@ -1,2 +1,2 @@
-destination,plane,pilot,cabincrew,sold_seats,available_seats,first_trip,second_trip,depart_time_home,arrival_time_dest,depart_time_dest,arrival_time_home,status,history
-,,,,,,,,,,,,,
+destination,out. dep,in. dep,plane,capacity,flight nr,captain,copilot,fsm,fa1,fa2,fa3,fa4,fa5,status
+

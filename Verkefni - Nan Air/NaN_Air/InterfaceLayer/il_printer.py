@@ -283,14 +283,14 @@ class IL_Printer():
     def list_of_get_functions(self, model_class_object):
         return [func for func in dir(model_class_object) if callable(getattr(model_class_object, func)) and func.startswith("get")]
     
-    def list_of_set_functions(self, model_class_object):
-        return [func for func in dir(model_class_object) if callable(getattr(model_class_object, func)) and func.startswith("set")]
+    def list_of_set_functions(self, logic_layer_object):
+        return [func for func in dir(logic_layer_object) if callable(getattr(logic_layer_object, func)) and func.startswith("ll_set")]
     
-    def get_edit_funcs(self, model_class_object):
+    def get_edit_funcs(self, logic_layer_object):
         ''' This function adds options to the self.OPTIONS of the class that calls it. 
         The options correspond to the available 'set' functions for the model_class_object. '''
         options_list = []
-        options = self.list_of_set_functions(model_class_object)
+        options = self.list_of_set_functions(logic_layer_object)
         for index, item in enumerate(options):
             options_list.append(('e' + str(index + 1), item,'Func'))
         for item in options_list:
