@@ -9,13 +9,9 @@ class Destination():
         self.set_country(input_data)
         self.set_flightTime(input_data)
         self.set_distance(input_data)
-        self.set_emergencyContact(input_data)
-        self.set_emergencyContactNumber(input_data)
-        self.set_status(input_data)
-        self.set_history(input_data)
+        self.set_ice(input_data)
+        self.set_iceNumber(input_data)
 
-        airportId,destination,country,flightTime,distance,emergencyContact,emergencyContactNumber,status,history
-    
     def __str__(self):
         output = ''
         for attr in self.__dict__.values():

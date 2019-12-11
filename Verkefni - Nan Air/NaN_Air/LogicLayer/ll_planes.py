@@ -7,9 +7,10 @@ class LL_Planes():
     def search_plane(self, plane_object):
         list_of_planes = DL_API().get_planes()
         insignia_search = self.search_insignia(plane_object, list_of_planes)        
-        type_search = self.search_type(plane_object, insignia_search)
-        manufacturer_search = self.search_manufacturer(plane_object, type_search)
-        capacity_search = self.search_capacity(plane_object, manufacturer_search)
+        typeID_search = self.search_typeID(plane_object, insignia_search)
+        manufacturer_search = self.search_manufacturer(plane_object, typeID_search)
+        model_search = self.search_model(plane_object, manufacturer_search)
+        capacity_search = self.search_capacity(plane_object, model_search)
         return capacity_search
 
     def search_insignia(self, plane_object, list_of_planes):
@@ -26,14 +27,14 @@ class LL_Planes():
             return list_of_planes
 
 
-    def search_type(self, plane_object, list_of_planes):
-        Type = plane_object.get_typeID()
+    def search_typeID(self, plane_object, list_of_planes):
+        typeID = plane_object.get_typeID()
         output = []
-        if not Type:
+        if not typeID:
             return list_of_planes
-        elif Type != '':
+        elif typeID != '':
             for plane in list_of_planes:
-                if Type.lower() in plane.get_typeID().lower():
+                if typeID.lower() in plane.get_typeID().lower():
                     output.append(plane)
             return output
         else:
@@ -60,7 +61,20 @@ class LL_Planes():
             return list_of_planes
         elif manufacturer != '':
             for plane in list_of_planes:
-                if manufacturer.lower() in plane.get_type().lower():
+                if manufacturer.lower() in plane.get_manufacturer().lower():
+                    output.append(plane)
+            return output
+        else:
+            return list_of_planes
+
+    def search_model(self, plane_object, list_of_planes):
+        model = plane_object.get_model()
+        output = []
+        if not model:
+            return list_of_planes
+        elif model != '':
+            for plane in list_of_planes:
+                if model.lower() in plane.get_model().lower():
                     output.append(plane)
             return output
         else:

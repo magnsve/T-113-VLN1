@@ -21,13 +21,13 @@ class LL_Destinations():
     def search_destination(self, destination_object):        
         list_of_destinations = DL_API().get_destinations()
         airportId_search = self.search_airportId(destination_object, list_of_destinations)        
-        destination_search = self.searchDestination(destination_object, airportId_search)
+        destination_search = self.searchdestination(destination_object, airportId_search)
         country_search = self.search_country(destination_object, destination_search)
         flightTime = self.search_flightTime(destination_object, country_search)
         distance_search = self.search_distance(destination_object, flightTime)
-        emergencyContact_search = self.search_emergencyContact(destination_object, distance_search)
-        emergencyContactNumber_search = self.search_emergencyContactNumber(destination_object, emergencyContact_search)
-        return emergencyContactNumber_search
+        ice_search = self.search_ice(destination_object, distance_search)
+        iceNumber_search = self.search_iceNumber(destination_object, ice_search)
+        return iceNumber_search
 
     def search_airportId(self, destination_object, list_of_destinations):
         airportId = destination_object.get_airportId()
@@ -94,27 +94,27 @@ class LL_Destinations():
         else:
             return list_of_destinations
 
-    def search_emergencyContact(self, destination_object, list_of_destinations):
-        emergencyContact = destination_object.get_emergencyContact()
+    def search_ice(self, destination_object, list_of_destinations):
+        ice = destination_object.get_ice()
         output = []
-        if not emergencyContact:
+        if not ice:
             return list_of_destinations
-        elif emergencyContact != '':
+        elif ice != '':
             for destination in list_of_destinations:
-                if destination.lower() in destination.get_emergencyContact().lower():
+                if destination.lower() in destination.get_ice().lower():
                     output.append(destination)
             return output
         else:
             return list_of_destinations
 
-    def search_emergencyContactNumber(self, destination_object, list_of_destinations):
-        emergencyContactNumber = destination_object.get_emergencyContactNumber()
+    def search_iceNumber(self, destination_object, list_of_destinations):
+        iceNumber = destination_object.get_emergencyiceNumber()
         output = []
-        if not emergencyContactNumber:
+        if not iceNumber:
             return list_of_destinations
-        elif emergencyContactNumber != '':
+        elif iceNumber != '':
             for destination in list_of_destinations:
-                if destination.lower() in destination.get_emergencyContactNumber().lower():
+                if destination.lower() in destination.get_iceNumber().lower():
                     output.append(destination)
             return output
         else:
