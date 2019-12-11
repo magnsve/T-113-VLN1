@@ -8,6 +8,18 @@ from DataLayer.dl_api import DL_API
 # Classes
 class LL_API():
     ''' Logic layer calls on methods in it's subclasses and returns them over to the interface layer'''
+    # Logic Layer classes
+    def logic_employee(self):
+        return LL_Employee()
+    
+    def logic_trip(self):
+        return LL_Trips()
+    
+    def logic_destinations(self):
+        return LL_Destinations()
+    
+    def logic_planes(self):
+        return LL_Planes()
 
     # Emmployees
     def edit_employee(self, employeeEditObject, index):

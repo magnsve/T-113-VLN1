@@ -21,6 +21,9 @@ def check_if_int(tuple_object):
 def model_class_objects():
     return (Employee(), Destination(), Plane(), Trip())
 
+def logic_layer_objects():
+    return (LL_API().logic_employee(), LL_API().logic_destinations(), LL_API().logic_planes(), LL_API().logic_trip())
+
 def main():
     # We start by forcing the shell to predefined size.
     os.system('mode con: cols=180 lines=50')
@@ -29,7 +32,9 @@ def main():
     # Same here, only for editing entries.
     employeeEditObject, destinationEditObject, planeEditObject, tripEditObject = model_class_objects()
     # And again, now for creating new entries into the database.
-    newEmployee, newDestination, newPlane, newTrip = model_class_objects()    
+    newEmployee, newDestination, newPlane, newTrip = model_class_objects()
+    # Here we create an instance of all logic layer classes. We use those instances to get the 'set' functions from them.
+    logic_employee, logic_destinations, logic_planes, logic_trip = logic_layer_objects()
     all_screens = Screens()
     current_screen = all_screens.main_menu
     print(current_screen.prep_window(current_screen.FILE,current_screen.GRAPHICS_FILE))
@@ -52,7 +57,15 @@ def main():
                 new_object = newTrip
             # This function delves into the new_screen class instancee and adds valid options to it based on what 'set' functions are in the new_object model class instance. 
             # This allows the input validation function to correctly identify valid vs. invalid input.
-            new_screen.get_edit_funcs(new_object)
+            if new_screen.CATEGORY == 'Employee':
+                logic_object = logic_employee
+            elif new_screen.CATEGORY == 'Destination':
+                logic_object = logic_destinations
+            elif new_screen.CATEGORY == 'Plane':
+                logic_object = logic_planes
+            elif new_screen.CATEGORY == 'Trip':
+                logic_object = logic_trip
+            new_screen.get_edit_funcs(logic_object)
             print(new_screen.prep_window(new_screen.FILE, new_screen.GRAPHICS_FILE, new_object))
             user_input = new_screen.validate_selection(new_screen, new_object)
             has_input = True
@@ -61,7 +74,7 @@ def main():
                     # Using getattr gives us the option to dynamically call the desired function instead of having to create the site map.
                     method_ = getattr(new_object, user_input[1])
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
-                    input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))
+                    input_ = input("Enter value for {}: ".format(user_input[1].replace('edit_','')))
                     # Here we find the index of the file in the database.
                     index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
                     index = index_func(new_object)
@@ -75,6 +88,7 @@ def main():
                         edit_func(new_object, index)
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
                     user_input = new_screen.validate_selection(new_screen, new_object)
+                    print()
                 # Option for resetting the object, i.e. when the user wants to start a new entry.
                 elif user_input[1] == 'X':
                     new_screen.reset_object(new_object)
@@ -88,20 +102,24 @@ def main():
             if new_screen.CATEGORY == 'Employee':
                 search_object = employeeSearchObject
                 edit_object = employeeEditObject
+                logic_object = logic_employee
             elif new_screen.CATEGORY == 'Destination':
                 search_object = destinationSearchObject
                 edit_object = destinationEditObject
+                logic_object = logic_destinations
             elif new_screen.CATEGORY == 'Plane':
                 search_object = planeSearchObject
                 edit_object = planeEditObject
+                logic_object = logic_planes
             elif new_screen.CATEGORY == 'Trip':
                 search_object = tripSearchObject
                 edit_object = tripEditObject
+                logic_object = logic_trip
             search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
             list_of_objects = search_func(search_object)[:10]
             # Here we add options to the new_screen instance to allow for 'set' functions, to set an object from the search results as the current search parameters 
             # and to select an item from the list to open in an edit window.
-            new_screen.get_edit_funcs(search_object)
+            new_screen.get_edit_funcs(logic_object)
             new_screen.get_list_options(list_of_objects)
             new_screen.get_select_options(list_of_objects)
             print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
@@ -148,7 +166,7 @@ def main():
                     go_to_edit = getattr(all_screens, new_screen.CATEGORY.lower()+'_edit')
                     new_screen = go_to_edit
                     edit_object = list_of_objects[int(user_input[1][1:])]                        
-                    new_screen.get_edit_funcs(edit_object)
+                    new_screen.get_edit_funcs(logic_object)
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
                     user_input = new_screen.validate_selection(new_screen, edit_object)                    
         else:

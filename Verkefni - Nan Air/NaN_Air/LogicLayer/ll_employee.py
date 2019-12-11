@@ -1,5 +1,6 @@
 # Imports and constants
 from DataLayer.dl_api import DL_API
+import string
 
 # Classes
 class LL_Employee():
@@ -137,3 +138,43 @@ class LL_Employee():
         
     def add_employee(self, employee_object):
         return DL_API().append_employee(employee_object)
+
+    def ll_set_ssn(self, employee_object, input_data):
+        if employee_object.get_ssn() == '':
+            ssn = input_data
+            ssn.translate(ssn.maketrans('',''), string.punctuation)
+            ssn.strip()
+            if len(ssn) == 10:
+                return employee_object.set_ssn(ssn)
+            else:
+                return 'Invalid SSN, please try again.'
+        else:
+            return 'This employee already has an SSN.'
+
+    def ll_set_name(self, employee_object, input_data):
+        if employee_object.get_name() == '':
+            return employee_object.set_name(input_data)
+        else:
+            return 'This employee already has a name.'
+    
+    def ll_set_role(self, employee_object, input_data):
+        return employee_object.set_role(input_data)
+    
+    def ll_set_rank(self, employe_object, input_data):
+        return employe_object.set_rank(input_data)
+    
+    def ll_set_licence(self, employee_object, input_data):
+        return employee_object.set_licence(input_data)
+    
+    def ll_set_address(self, employee_object, input_data):
+        return employee_object.set_address(input_data)
+    
+    def ll_set_phonenumber(self, employee_object, input_data):
+        return employee_object.set_phonenumber(input_data)
+    
+    def ll_set_gsm(self, employee_object, input_data):
+        return employee_object.set_gsm(input_data)
+    
+    def ll_set_e_mail(self, employee_object, input_data):
+        if '@' in input_data:
+            return employee_object.set_e_mail(input_data)

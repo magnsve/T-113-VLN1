@@ -17,34 +17,23 @@ class Employee():
         self.set_status(input_data)
         self.set_history(input_data)
     
-    def set_ssn(self, input_data):
+def set_ssn(self, input_data):
         if not input_data:
             self.__ssn = ''
         else:
-            list_of_employees = DL_API().get_employees()
-            ssn = True
             if isinstance(input_data, dict):            
                 try:
-                    for employee in list_of_employees:
-                        if employee.get_ssn() == input['ssn']:
-                            ssn = False
-                    if ssn:
-                        self.__ssn = input_data["ssn"]
-                    else:
-                        self.__ssn = ''
+                    self.__ssn = input_data["ssn"]
                 except KeyError:
                     self.__ssn = ''        
             else:
-                for employee in list_of_employees:
-                    if employee.get_ssn() == input_data:
-                        self.__ssn = ''
-                    else:
-                        self.__ssn = input_data
+                self.__ssn = input_data
     
-    def set_name(self, input_data):
-        if not input_data:
-            self.__name = ''
-        else:
+def set_name(self, input_data):
+    if not input_data:
+        self.__name = ''
+    else:
+        if self.__name == '':
             if isinstance(input_data, dict):            
                 try:
                     self.__name = input_data["name"]
@@ -52,6 +41,8 @@ class Employee():
                     self.__name = ''
             else:
                 self.__name = input_data
+        else:
+            pass
     
     def set_role(self, input_data):
         if not input_data:
