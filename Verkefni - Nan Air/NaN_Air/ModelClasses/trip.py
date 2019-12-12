@@ -2,9 +2,9 @@ class Trip():
 
     def __init__(self, input_data = None):        
         self.set_destination(input_data)
-        self.set_out_flight_nr(input_data)
+        self.set_out_flight_no(input_data)
         self.set_out_dep(input_data)
-        self.set_in_flight_nr(input_data)
+        self.set_in_flight_no(input_data)
         self.set_in_dep(input_data)
         self.set_plane(input_data)
         self.set_capacity(input_data)
@@ -72,15 +72,15 @@ class Trip():
             else:
                 self.__captain = input_data
 
-    def set_out_flight_nr(self, input_data):
+    def set_out_flight_no(self, input_data):
         if not input_data:
-            self.__out_flight_nr = ''
+            self.__out_flight_no = ''
         else:
             if isinstance(input_data, dict):            
                 try:
-                    self.__out_flight_nr = input_data["out. flight nr"]
+                    self.__out_flight_no = input_data["out. flight no"]
                 except KeyError:
-                    self.__out_flight_nr = ''        
+                    self.__out_flight_no = ''        
             else:
                 self.__out_flight_nr = input_data
 
@@ -96,17 +96,17 @@ class Trip():
             else:
                 self.__out_dep = input_data
 
-    def set_in_flight_nr(self, input_data):
+    def set_in_flight_no(self, input_data):
         if not input_data:
-            self.__in_flight_nr = ''
+            self.__in_flight_no = ''
         else:
             if isinstance(input_data, dict):            
                 try:
-                    self.__in_flight_nr = input_data["in. flight nr"]
+                    self.__in_flight_no = input_data["in. flight no"]
                 except KeyError:
-                    self.__in_flight_nr = ''        
+                    self.__in_flight_no = ''        
             else:
-                self.__in_flight_nr = input_data
+                self.__in_flight_no = input_data
     
     def set_in_dep(self, input_data):
         if not input_data:
@@ -220,14 +220,14 @@ class Trip():
     def get_destination(self):
         return self.__destination
     
-    def get_out_flight_nr(self):
-        return self.__out_flight_nr
+    def get_out_flight_no(self):
+        return self.__out_flight_no
 
     def get_out_dep(self):
         return self.__out_dep
     
-    def get_in_flight_nr(self):
-        return self.__in_flight_nr
+    def get_in_flight_no(self):
+        return self.__in_flight_no
     
     def get_in_dep(self):
         return self.__in_dep

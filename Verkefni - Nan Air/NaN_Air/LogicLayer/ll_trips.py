@@ -12,20 +12,18 @@ class LL_Trips():
         plane_search = self.search_plane(trip_object, destination_search)        
         captain_search = self.search_pilot(trip_object, plane_search)
         copilot_search = self.search_copilot(trip_object, captain_search)
-        cabincrew_search = self.search_cabincrew(trip_object, copilot_search)
-        availableSeats_search = self.search_availableSeats(trip_object, cabincrew_search)
-        outDep_search = self.search_out_dep(trip_object, availableSeats_search)
+        outDep_search = self.search_out_dep(trip_object, copilot_search)
         inDep_search = self.search_in_dep(trip_object, outDep_search)
         capacity_search = self.search_capacity(trip_object, inDep_search)
-        flightNr_search = self.search_flightNr(trip_object, capacity_search)
-        fsm_search = self.search_fsm(trip_object, flightNr_search)
+        inFlightNo_search = self.search_inFlightNo(trip_object, capacity_search)
+        outFlightNo_search = self.search_outFlightNo(trip_object, inFlightNo_search)
+        fsm_search = self.search_fsm(trip_object, outFlightNo_search)
         fa1_search = self.search_fa1(trip_object, fsm_search)
         fa2_search = self.search_fa2(trip_object, fa1_search)
         fa3_search = self.search_fa3(trip_object, fa2_search)
         fa4_search = self.search_fa4(trip_object, fa3_search)
         fa5_search = self.search_fa5(trip_object, fa4_search)
-
-        status_search = self.search_status(trip_object, flightNr_search)
+        status_search = self.search_status(trip_object, fa5_search)
         return status_search
 
     def search_destination(self, trip_object, list_of_trips):
@@ -67,123 +65,163 @@ class LL_Trips():
         else:
             return list_of_trips
 
-    def search_cabincrew(self, trip_object, list_of_trips):
-        cabincrew = trip_object.get_cabincrew()
+    def search_copilot(self, trip_object, list_of_trips):
+        copilot = trip_object.get_copilot()
         output = []
-        if not cabincrew:
+        if not copilot:
             return list_of_trips
-        elif cabincrew != '':
+        elif copilot != '':
             for trip in list_of_trips:
-                if cabincrew.lower() in trip.get_cabincrew().lower():
-                    output.append(cabincrew)
+                if copilot.lower() in trip.get_copilot().lower():
+                    output.append(copilot)
             return output
         else:
             return list_of_trips
 
-    def search_sold_seats(self, trip_object, list_of_trips):
-        sold_seats = trip_object.get_sold_seats()
+    def search_capacity(self, trip_object, list_of_trips):
+        capacity = trip_object.get_capacity()
         output = []
-        if not sold_seats:
+        if not capacity:
             return list_of_trips
-        elif sold_seats != '':
+        elif capacity != '':
             for trip in list_of_trips:
-                if sold_seats.lower() in trip.get_sold_seats().lower():
-                    output.append(sold_seats)
+                if capacity.lower() in trip.get_capacity().lower():
+                    output.append(capacity)
             return output
         else:
             return list_of_trips
 
-    def search_available_seats(self, trip_object, list_of_trips):
-        available_seats = trip_object.get_available_seats()
+    def search_in_dep(self, trip_object, list_of_trips):
+        in_dep = trip_object.get_in_dep()
         output = []
-        if not available_seats:
+        if not in_dep:
             return list_of_trips
-        elif available_seats != '':
+        elif in_dep != '':
             for trip in list_of_trips:
-                if available_seats.lower() in trip.get_available_seats().lower():
-                    output.append(available_seats)
+                if in_dep.lower() in trip.get_in_dep().lower():
+                    output.append(in_dep)
             return output
         else:
             return list_of_trips
 
-    def search_first_trip(self, trip_object, list_of_trips):
-        first_trip = trip_object.get_first_trip()
+    def search_out_dep(self, trip_object, list_of_trips):
+        out_dep = trip_object.get_out_dep()
         output = []
-        if not first_trip:
+        if not out_dep:
             return list_of_trips
-        elif first_trip != '':
+        elif out_dep != '':
             for trip in list_of_trips:
-                if first_trip.lower() in trip.get_first_trip().lower():
+                if out_dep.lower() in trip.get_out_dep().lower():
                     output.append(trip)
             return output
         else:
             return list_of_trips
 
-    def search_second_trip(self, trip_object, list_of_trips):
-        second_trip = trip_object.get_second_trip()
+    def search_in_flight_no(self, trip_object, list_of_trips):
+        in_flight_no = trip_object.get_in_flight_no()
         output = []
-        if not second_trip:
+        if not in_flight_no:
             return list_of_trips
-        elif second_trip != '':
+        elif in_flight_no != '':
             for trip in list_of_trips:
-                if second_trip.lower() in trip.get_second_trip().lower():
+                if in_flight_no.lower() in trip.get_in_flight_no().lower():
                     output.append(trip)
             return output
         else:
             return list_of_trips
 
     
-    def search_depart_time_home(self, trip_object, list_of_trips):
-        depart_time_home = trip_object.get_depart_time_home()
+    def search_out_flight_no(self, trip_object, list_of_trips):
+        out_flight_no = trip_object.get_out_flight_no()
         output = []
-        if not depart_time_home:
+        if not out_flight_no:
             return list_of_trips
-        elif depart_time_home != '':
+        elif out_flight_no != '':
             for trip in list_of_trips:
-                if depart_time_home.lower() in trip.get_depart_time_home().lower():
+                if out_flight_no.lower() in trip.get_out_flight_no().lower():
                     output.append(trip)
             return output
         else:
             return list_of_trips
     
-    def search_arrival_time_dest(self, trip_object, list_of_trips):
-        arrival_time_dest = trip_object.get_arrival_time_dest()
+    def search_fsm(self, trip_object, list_of_trips):
+        fsm = trip_object.get_fsm()
         output = []
-        if not arrival_time_dest:
+        if not fsm:
             return list_of_trips
-        elif arrival_time_dest != '':
+        elif fsm != '':
             for trip in list_of_trips:
-                if arrival_time_dest.lower() in trip.get_arrival_time_dest().lower():
+                if fsm.lower() in trip.get_fsm().lower():
                     output.append(trip)
             return output
         else:
             return list_of_trips
     
-    def search_depart_time_dest(self, trip_object, list_of_trips):
-        depart_time_dest = trip_object.get_depart_time_dest()
+    def search_fa1(self, trip_object, list_of_trips):
+        fa1 = trip_object.get_fa1()
         output = []
-        if not depart_time_dest:
+        if not fa1:
             return list_of_trips
-        elif depart_time_dest != '':
+        elif fa1 != '':
             for trip in list_of_trips:
-                if depart_time_dest.lower() in trip.get_depart_time_dest().lower():
+                if fa1.lower() in trip.get_fa1().lower():
                     output.append(trip)
             return output
         else:
             return list_of_trips
     
-    def search_arrival_time_home(self, trip_object, list_of_trips):
-        arrival_time_home = trip_object.get_arrival_time_home()
+    def search_fa2(self, trip_object, list_of_trips):
+        fa2 = trip_object.get_fa2()
         output = []
-        if not arrival_time_home:
+        if not fa2:
             return list_of_trips
-        elif arrival_time_home != '':
+        elif fa2 != '':
             for trip in list_of_trips:
-                if arrival_time_home.lower() in trip.get_arrival_time_home().lower():
+                if fa2.lower() in trip.get_fa2().lower():
                     output.append(trip)
             return output
         else:
             return list_of_trips
+
+    def search_fa3(self, trip_object, list_of_trips):
+        fa3 = trip_object.get_fa3()
+        output = []
+        if not fa3:
+            return list_of_trips
+        elif fa3 != '':
+            for trip in list_of_trips:
+                if fa3.lower() in trip.get_fa3().lower():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
+
+    def search_fa4(self, trip_object, list_of_trips):
+        fa4 = trip_object.get_fa4()
+        output = []
+        if not fa4:
+            return list_of_trips
+        elif fa4 != '':
+            for trip in list_of_trips:
+                if fa4.lower() in trip.get_fa4().lower():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
+
+    def search_fa5(self, trip_object, list_of_trips):
+        fa5 = trip_object.get_fa5()
+        output = []
+        if not fa5:
+            return list_of_trips
+        elif fa5 != '':
+            for trip in list_of_trips:
+                if fa5.lower() in trip.get_fa5().lower():
+                    output.append(trip)
+            return output
+        else:
+            return list_of_trips
+
     
     def search_status(self, trip_object, list_of_trips):
         status = trip_object.get_status()
@@ -260,10 +298,10 @@ class LL_Trips():
         for index, departure in enumerate(list_of_departures):
             if departure == trip_object.get_out_dep():
                 no = str(index)
-        out_flight_nr = name + dest + no
-        in_flight_nr = name + dest + str(int(no)+1)
-        trip_object.set_out_flight_nr(out_flight_nr)
-        trip_object.set_in_flight_nr(in_flight_nr)
+        out_flight_no = name + dest + no
+        in_flight_no = name + dest + str(int(no)+1)
+        trip_object.set_out_flight_no(out_flight_no)
+        trip_object.set_in_flight_no(in_flight_no)
 
     def ll_set_out_dep(self, trip_object, input_data):
         if dateutil.parser.parse(input_data) == dateutil.parser.parse(input_data, yearFirst=True) == dateutil.parser.parse(input_data, dayFirst=True):
