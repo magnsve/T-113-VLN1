@@ -95,3 +95,18 @@ class LL_Planes():
         
     def add_plane(self, plane_object):
         return DL_API().append_planes(plane_object)
+
+    def ll_set_insignia(self, plane_object, input_data):
+        return plane_object.set_insignia(input_data)
+
+    def ll_set_typeID(self, plane_object, input_data):
+        return plane_object.set_typeID(input_data)
+        
+    def ll_set_manufacturer(self, plane_object, input_data):
+        return plane_object.set_manufacturer(input_data)
+
+    def ll_set_model(self, plane_object, input_data):
+        return plane_object.set_model(input_data)
+
+    def ll_set_capacity(self, plane_object, input_data):
+        return plane_object.set_capacity(input_data)

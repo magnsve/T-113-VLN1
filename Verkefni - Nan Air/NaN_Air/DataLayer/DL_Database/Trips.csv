@@ -1,2 +1,1 @@
-destination,out. dep,in. dep,plane,capacity,flight nr,captain,copilot,fsm,fa1,fa2,fa3,fa4,fa5,status
-
+destination,out. flight nr,out. dep,in. flight nr,in. dep,plane,capacity,captain,copilot,fsm,fa1,fa2,fa3,fa4,fa5,status

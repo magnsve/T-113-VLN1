@@ -1,7 +1,7 @@
+import datetime
+import dateutil.parser
 from DataLayer.dl_api import DL_API
 from ModelClasses.trip import Trip
-from .ll_employee import LL_Employee
-
 
 class LL_Trips():
     
@@ -213,3 +213,199 @@ class LL_Trips():
         
     def add_trip(self, trip_object):
         return DL_API().append_trips(trip_object)
+
+    def ll_set_destination(self, trip_object, input_data):
+        list_of_destinations = DL_API().get_destinations()
+        valid = False
+        for destination in list_of_destinations:
+            if destination.get_destinations() == input_data:
+                trip_object.set_destination(input_data)
+                valid = True
+        if not valid:
+            return 'Destination not found. Please try again.'
+
+    def ll_set_plane(self, trip_object, input_data):
+        list_of_planes = DL_API().get_planes()
+        valid = False
+        for plane in list_of_planes:
+            if plane.get_insignia() == input_data:                
+                trip_object.set_plane(input_data)
+                capacity = plane.get_capacity()
+                trip_object.set_capacity(capacity)
+                if not trip_object.get_captain() == '' or not trip_object.get_copilot() == '':
+                    trip_object.set_captain('')
+                    trip_object.set_copilot('')
+                    valid = True
+                    return 'Plane changed, pilots reset.'
+        if valid:
+            if trip_object.get_destination() != '' and trip_object.get_out_dep() != '':
+                LL_Trips().create_flight_no(trip_object)
+        if not valid:
+            return 'Plane not found. Please try again.'
+    
+    def create_flight_no(self, trip_object):
+        name = 'NA'
+        dest = ''
+        no = ''
+        list_of_trips = DL_API().get_trips()
+        list_of_departures = []
+        list_of_destinations = DL_API().get_destinations()
+        for index, destination in enumerate(list_of_destinations):
+            if destination.get_airportId() == trip_object.get_destination():
+              dest =   '{:02d}'.format(index)
+        for trip in list_of_trips:
+            if trip.get_destination() == trip_object.get_destination():
+                list_of_destinations.append(trip.get_out_dep())
+        list_of_departures.sort()
+        for index, departure in enumerate(list_of_departures):
+            if departure == trip_object.get_out_dep():
+                no = str(index)
+        out_flight_nr = name + dest + no
+        in_flight_nr = name + dest + str(int(no)+1)
+        trip_object.set_out_flight_nr(out_flight_nr)
+        trip_object.set_in_flight_nr(in_flight_nr)
+
+    def ll_set_out_dep(self, trip_object, input_data):
+        if dateutil.parser.parse(input_data) == dateutil.parser.parse(input_data, yearFirst=True) == dateutil.parser.parse(input_data, dayFirst=True):
+            dateutil.parser.parse(input_data)
+        else:
+            return "Could not understand date, plese use the format 'yyyy-mm-dd hh:mmm:ss'."
+        departure = dateutil.parser.parse(input_data)
+        list_of_destinations = DL_API().get_destinations()
+        flight_time = ''        
+        for destination in list_of_destinations:
+            if destination.get_airportId() == trip_object.get_destination():
+                flight_time = destination.get_flightTime()
+        flight = dateutil.parser.parse(flight_time)
+        iso_flight = datetime.datetime(flight.year,flight.month,flight.day,flight.hour,flight.minute,0).isoformat()
+        stop = '01:00:00'
+        iso_stop = datetime.datetime(stop.year, stop.month, stop.day, stop.hour, stop.minute, 0).isoformat()
+        iso_out_dep = datetime.datetime(departure.year,departure.month,departure.day,departure.hour,departure.minute,0).isoformat()
+        iso_in_dep = iso_out_dep + iso_flight + iso_stop
+        departure_buffer = datetime.timedelta(minutes=15)
+        list_of_trips = DL_API().get_trips()
+        list_of_departures = []
+        for trip in list_of_trips:
+            temp = trip.get_out_dep()
+            list_of_departures.append(dateutil.parser.parse(temp))
+        for date_time in list_of_departures:
+            if date_time - departure_buffer <= departure <= date_time + departure_buffer:
+                return 'Another flight is scheduled for this timeslot. Please select another.'
+            else:
+                trip_object.set_out_dep(iso_out_dep)
+                trip_object.set_in_flight_dep(iso_in_dep)
+    
+    def get_list_of_trips_by_employee(self, input_data):
+        list_of_trips = DL_API().get_trips()
+        list_of_this_employee = []
+        for trip in list_of_trips:
+            if trip.get_captain() == input_data:
+                list_of_this_employee.append(trip)
+            elif trip.get_copilot() == input_data:
+                list_of_this_employee.append(trip)
+            elif trip.get_fsm() == input_data:
+                list_of_this_employee.append(trip)
+            elif trip.get_fa1() == input_data:
+                list_of_this_employee.append(trip)
+            elif trip.get_fa2() == input_data:
+                list_of_this_employee.append(trip)
+            elif trip.get_fa3() == input_data:
+                list_of_this_employee.append(trip)
+            elif trip.get_fa4() == input_data:
+                list_of_this_employee.append(trip)
+            elif trip.get_fa5() == input_data:
+                list_of_this_employee.append(trip)
+        return list_of_this_employee
+    
+    def check_dates(self, input_data, trip_object):
+        dep_out = dateutil.parser.parse(trip_object.get_out_dep())
+        out_day = datetime.datetime(dep_out.year, dep_out.month, dep_out.day)
+        list_of_destinations = DL_API().get_destinations()
+        flight_time = ''        
+        for destination in list_of_destinations:
+            if destination.get_airportId() == trip_object.get_destination():
+                flight_time = destination.get_flightTime()
+        flight = dateutil.parser.parse(flight_time)
+        dep_in = dateutil.parser.parse(trip_object.get_in_dep()) + datetime.timedelta(flight)
+        in_day = datetime.datetime(dep_in.year, dep_in.month, dep_in.day)        
+        list_of_trips = self.get_list_of_trips_by_employee(input_data)
+        for trip in list_of_trips:
+            test_dep_out = trip.get_out_dep()
+            test_out_day = datetime.datetime(test_dep_out.year, test_dep_out.month, test_dep_out.day)
+            flight_time = ''        
+            for destination in list_of_destinations:
+                if destination.get_airportId() == trip_object.get_destination():
+                    flight_time = destination.get_flightTime()
+            flight = dateutil.parser.parse(flight_time)
+            test_dep_in = trip.get_in_dep() + datetime.timedelta(flight)
+            test_in_day = datetime.datetime(dep_in.year, dep_in.month, dep_in.day)
+            if test_out_day < input_data < test_in_day:
+                return 'This employee is already registerd for a trip on this day.'
+            else:
+                return True
+        
+    def ll_set_captain(self, trip_object, input_data):
+        list_of_employees = DL_API().get_employees()        
+        list_of_captains = []
+        list_of_planes = DL_API().get_planes()
+        licence = ''
+        list_of_licenced = []
+        for plane in list_of_planes:
+            if plane.get_insignia() == trip_object.get_plane():
+                licence = plane.get_typeID()
+        for employee in list_of_employees:
+            if employee.get_rank() == 'Captain':
+                list_of_captains.append(employee)
+        for captain in list_of_captains:
+            if captain.get_licence() == licence:
+                list_of_licenced.append(captain)
+        for licenced_cap in list_of_licenced:
+            if licenced_cap.get_ssn() == input_data:
+                if 
+                trip_object.set_captain(input_data)
+            else:
+                return 'This is not a licenced captain. Please try again.'
+
+    def ll_set_copilot(self, trip_object, input_data):
+        list_of_employees = DL_API().get_employees()        
+        list_of_copilots = []
+        list_of_planes = DL_API().get_planes()
+        licence = ''
+        list_of_licenced = []
+        for plane in list_of_planes:
+            if plane.get_insignia() == trip_object.get_plane():
+                licence = plane.get_typeID()
+        for employee in list_of_employees:
+            if employee.get_rank() == 'Copilot':
+                list_of_copilots.append(employee)
+        for copilot in list_of_copilots:
+            if copilot.get_licence() == licence:
+                list_of_licenced.append(copilot)
+        for licenced_cop in list_of_licenced:
+            if licenced_cop.get_ssn() == input_data:
+                trip_object.set_copilot(input_data)
+            else:
+                return 'This is not a licenced copilot. Please try again.'
+
+    def ll_set_fsm(self, trip_object, input_data):
+        list_of_employees = DL_API().get_employees()        
+        list_of_fsm = []
+        for employee in list_of_employees:
+            if employee.get_rank() == 'Flight Service Manager':
+                list_of_fsm.append(employee)
+        for fsm in list_of_fsm:
+            if licenced_cop.get_ssn() == input_data:
+                trip_object.set_copilot(input_data)
+            else:
+                return 'This is not a licenced copilot. Please try again.'
+        
+        
+        self.set_captain(input_data)
+        self.set_copilot(input_data)
+        self.set_fsm(input_data)
+        self.set_fa1(input_data)
+        self.set_fa2(input_data)
+        self.set_fa3(input_data)
+        self.set_fa4(input_data)
+        self.set_fa5(input_data)
+        self.set_status(input_data)
