@@ -18,29 +18,29 @@ class Destination():
             output += '{},'.format(attr)
         return output
 
-    def set_emergencyContactNumber(self, input_data):
+    def set_iceNumber(self, input_data):
         if not input_data:
-            self.__emergencyContactNumber = ''
+            self.__iceNumber = ''
         else:
             if isinstance(input_data, dict):
                 try:
-                    self.__emergencyContactNumber = input_data['emergencyContactNumber']
+                    self.__iceNumber = input_data['iceNumber']
                 except KeyError:
-                    self.__emergencyContactNumber = ''
+                    self.__iceNumber = ''
             else:
-                self.__emergencyContactNumber = input_data
+                self.__iceNumber = input_data
     
-    def set_emergencyContact(self, input_data):
+    def set_ice(self, input_data):
         if not input_data:
-            self.__emergencyContact = ''
+            self.__ice = ''
         else:
             if isinstance(input_data, dict):
                 try:
-                    self.__emergencyContact = input_data['emergencyContact']
+                    self.__ice = input_data['ice']
                 except KeyError:
-                    self.__emergencyContact = ''
+                    self.__ice = ''
             else:
-                self.__emergencyContact = input_data
+                self.__ice = input_data
     
     def set_distance(self, input_data):
         if not input_data:
@@ -102,29 +102,6 @@ class Destination():
             else:
                 self.__airportId = input_data
 
-    def set_status(self, input_data):
-        if not input_data:
-            self.__status = ''
-        else:
-            if isinstance(input_data, dict):
-                try:
-                    self.__status = input_data["status"]
-                except KeyError:
-                    self.__status = 'incomplete'
-            else: 
-                self.__status = input_data
-    
-    def set_history(self, input_data):
-        if not input_data:
-            self.__history = ''
-        else:
-            if isinstance(input_data, dict):
-                try:
-                    self.__history = input_data["history"]
-                except KeyError:
-                    self.__history = ''
-            else:
-                self.__history = input_data
 
     def get_airportId(self):        
         return self.__airportId
@@ -141,14 +118,9 @@ class Destination():
     def get_distance(self):
         return self.__distance
 
-    def get_emergencyContact(self):
-        return self.__emergencyContact
+    def get_ice(self):
+        return self.__ice
 
-    def get_emergencyContactNumber(self):
-        return self.__emergencyContactNumber
+    def get_iceNumber(self):
+        return self.__iceNumber
     
-    def get_status(self):
-        return self.__status
-    
-    def get_history(self):
-        return self.__history

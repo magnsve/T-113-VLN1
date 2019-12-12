@@ -89,8 +89,3 @@ class Plane():
     def get_capacity(self):
         return self.__capacity
     
-    def get_status(self):
-        return self.__status
-    
-    def get_history(self):
-        return self.__history

@@ -10,17 +10,22 @@ class LL_Trips():
         list_of_trips = DL_API().get_trips
         destination_search = self.search_destination(trip_object, list_of_trips)
         plane_search = self.search_plane(trip_object, destination_search)        
-        pilot_search = self.search_pilot(trip_object, plane_search)
-        cabincrew_search = self.search_cabincrew(trip_object, pilot_search)
-        sold_seats_search = self.search_sold_seats(trip_object, cabincrew_search)
-        available_seats_search = self.search_available_seats(trip_object, sold_seats_search)
-        first_trip_search = self.search_first_trip(trip_object, available_seats_search)
-        second_trip_search = self.search_second_trip(trip_object, first_trip_search)
-        depart_time_home_search = self.search_depart_time_home(trip_object, second_trip_search)
-        arrival_time_dest_search = self.search_arrival_time_dest(trip_object, depart_time_home_search)
-        depart_time_dest_search = self.search_depart_time_dest(trip_object, arrival_time_dest_search)
-        arrival_time_home_search = self.search_arrival_time_home(trip_object, depart_time_dest_search)
-        status_search = self.search_status(trip_object, arrival_time_home_search)
+        captain_search = self.search_pilot(trip_object, plane_search)
+        copilot_search = self.search_copilot(trip_object, captain_search)
+        cabincrew_search = self.search_cabincrew(trip_object, copilot_search)
+        availableSeats_search = self.search_availableSeats(trip_object, cabincrew_search)
+        outDep_search = self.search_out_dep(trip_object, availableSeats_search)
+        inDep_search = self.search_in_dep(trip_object, outDep_search)
+        capacity_search = self.search_capacity(trip_object, inDep_search)
+        flightNr_search = self.search_flightNr(trip_object, capacity_search)
+        fsm_search = self.search_fsm(trip_object, flightNr_search)
+        fa1_search = self.search_fa1(trip_object, fsm_search)
+        fa2_search = self.search_fa2(trip_object, fa1_search)
+        fa3_search = self.search_fa3(trip_object, fa2_search)
+        fa4_search = self.search_fa4(trip_object, fa3_search)
+        fa5_search = self.search_fa5(trip_object, fa4_search)
+
+        status_search = self.search_status(trip_object, flightNr_search)
         return status_search
 
     def search_destination(self, trip_object, list_of_trips):
@@ -49,15 +54,15 @@ class LL_Trips():
         else:
             return list_of_trips
 
-    def search_pilot(self, trip_object, list_of_trips):
-        pilot = trip_object.get_pilot()
+    def search_captain(self, trip_object, list_of_trips):
+        captain = trip_object.get_captain()
         output = []
-        if not pilot:
+        if not captain:
             return list_of_trips
-        elif pilot != '':
+        elif captain != '':
             for trip in list_of_trips:
-                if pilot.lower() in trip.get_pilot().lower():
-                    output.append(pilot)
+                if captain.lower() in trip.get_captain().lower():
+                    output.append(captain)
             return output
         else:
             return list_of_trips
