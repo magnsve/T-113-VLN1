@@ -1,4 +1,4 @@
-ssn,name,role,rank,licence,address,phonenumber,gsm,e-mail
+name,ssn,role,rank,licence,address,phonenumber,gsm,e-mail
 William Carillo,3009907461,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8998801,,,
 Virginia Ho,2910858778,Pilot,Captain,NABAE146,Fellsmúli 2,8998802,,,
 Gerard Nelson,2706838569,Pilot,Captain,NAFokkerF100,Fellsmúli 3,8998803,,,

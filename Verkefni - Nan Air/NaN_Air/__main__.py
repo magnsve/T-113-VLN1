@@ -71,22 +71,23 @@ def main():
             has_input = True
             while user_input[0][:1].lower() == 'e' or user_input[1] == 'X':
                 if user_input[0][:1].lower() == 'e':
+                    # Here we find the index of the file in the database.
+                    index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
+                    index = index_func(new_object)
                     # Using getattr gives us the option to dynamically call the desired function instead of having to create the site map.
                     method_ = getattr(logic_object, user_input[1])
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
                     print()
-                    input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))
-                    # Here we find the index of the file in the database.
-                    index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
-                    index = index_func(new_object)
+                    input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','').replace('_',' ')))                    
                     excecute_method = method_(new_object,input_)                    
                     # If the object is not found in the database the index is returned as 'None'. We then append the new object to the database instead of overwrite it.
-                    if index == None:
-                        new_func = getattr(LL_API(), "new_"+new_screen.CATEGORY.lower())
-                        new_func(new_object)
-                    else:
-                        edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
-                        edit_func(new_object, index)
+                    if excecute_method == None:
+                        if index == None:
+                            new_func = getattr(LL_API(), "new_"+new_screen.CATEGORY.lower())
+                            new_func(new_object)
+                        else:
+                            edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
+                            edit_func(new_object, index)
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
                     if excecute_method != None:
                         print(excecute_method)
@@ -137,10 +138,13 @@ def main():
                         input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))                                                    
                         index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
                         index = index_func(edit_object)
-                        method_(edit_object, input_)
-                        edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
-                        edit_func(edit_object, index)
+                        excecute_method = method_(edit_object,input_)
+                        if excecute_method == None:
+                            edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
+                            edit_func(edit_object, index)
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
+                        if excecute_method != None:
+                            print(excecute_method)                        
                         user_input = new_screen.validate_selection(new_screen, edit_object, list_of_objects)
                     else:
                         method_ = getattr(logic_object, user_input[1])
@@ -149,9 +153,11 @@ def main():
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
                         print()
                         input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))
-                        method_(search_object, input_)
+                        excecute_method = method_(search_object,input_)
                         list_of_objects = search_func(search_object)[:10]
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
+                        if excecute_method != None:
+                            print(excecute_method) 
                         user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)
                 # This check is to determine if the user entered an intager.
                 elif check_if_int(user_input) < 10:

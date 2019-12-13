@@ -4,13 +4,13 @@
 class Destination():
     ''' '''
     def __init__(self, input_data = None):
-        self.set_airportId(input_data)
+        self.set_airport_id(input_data)
         self.set_destination(input_data)
         self.set_country(input_data)
-        self.set_flightTime(input_data)
+        self.set_flight_time(input_data)
         self.set_distance(input_data)
         self.set_ice(input_data)
-        self.set_iceNumber(input_data)
+        self.set_ice_number(input_data)
 
     def __str__(self):
         output = ''
@@ -18,17 +18,17 @@ class Destination():
             output += '{},'.format(attr)
         return output
 
-    def set_iceNumber(self, input_data):
+    def set_ice_number(self, input_data):
         if not input_data:
-            self.__iceNumber = ''
+            self.__ice_number = ''
         else:
             if isinstance(input_data, dict):
                 try:
-                    self.__iceNumber = input_data['iceNumber']
+                    self.__ice_number = input_data['ice number']
                 except KeyError:
-                    self.__iceNumber = ''
+                    self.__ice_number = ''
             else:
-                self.__iceNumber = input_data
+                self.__ice_number = input_data
     
     def set_ice(self, input_data):
         if not input_data:
@@ -54,17 +54,17 @@ class Destination():
             else:
                 self.__distance = input_data
     
-    def set_flightTime(self, input_data):
+    def set_flight_time(self, input_data):
         if not input_data:
-            self.__flightTime = ''
+            self.__flight_time = ''
         else:
             if isinstance(input_data, dict):
                 try:
-                    self.__flightTime = input_data['flightTime']
+                    self.__flight_time = input_data['flight time']
                 except KeyError:
-                    self.__flightTime = ''
+                    self.__flight_time = ''
             else:
-                self.__flightTime = input_data
+                self.__flight_time = input_data
 
     def set_country(self, input_data):
         if not input_data:
@@ -90,21 +90,21 @@ class Destination():
             else:
                 self.__destination = input_data
 
-    def set_airportId(self, input_data):
+    def set_airport_id(self, input_data):
         if not input_data:
-            self.__airportId = ''
+            self.__airport_id = ''
         else:
             if isinstance(input_data, dict):
                 try:
-                    self.__airportId = input_data["airportId"]
+                    self.__airport_id = input_data["airport id"]
                 except KeyError:
-                    self.__airportId = ''
+                    self.__airport_id = ''
             else:
-                self.__airportId = input_data
+                self.__airport_id = input_data
 
 
-    def get_airportId(self):        
-        return self.__airportId
+    def get_airport_id(self):        
+        return self.__airport_id
 
     def get_destinations(self):
         return self.__destination
@@ -112,8 +112,8 @@ class Destination():
     def get_country(self):
         return self.__country
 
-    def get_flightTime(self):
-        return self.__flightTime
+    def get_flight_time(self):
+        return self.__flight_time
 
     def get_distance(self):
         return self.__distance
@@ -121,6 +121,6 @@ class Destination():
     def get_ice(self):
         return self.__ice
 
-    def get_iceNumber(self):
-        return self.__iceNumber
+    def get_ice_number(self):
+        return self.__ice_number
     

@@ -3,10 +3,9 @@
 # Classes
 class Employee():
     ''' '''
-    def __init__(self, input_data = None):
-        self.__name =''
-        self.set_ssn(input_data)
+    def __init__(self, input_data = None):        
         self.set_name(input_data)
+        self.set_ssn(input_data)
         self.set_role(input_data)
         self.set_rank(input_data)
         self.set_licence(input_data)
@@ -31,16 +30,13 @@ class Employee():
         if not input_data:
             self.__name = ''
         else:
-            if self.__name == '':
-                if isinstance(input_data, dict):            
-                    try:
-                        self.__name = input_data["name"]
-                    except KeyError:
-                        self.__name = ''
-                else:
-                    self.__name = input_data
+            if isinstance(input_data, dict):            
+                try:
+                    self.__name = input_data["name"]
+                except KeyError:
+                    self.__name = ''
             else:
-                pass
+                self.__name = input_data
     
     def set_role(self, input_data):
         if not input_data:

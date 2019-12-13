@@ -21,7 +21,7 @@ class LL_Destinations():
     def search_destination(self, destination_object):        
         list_of_destinations = DL_API().get_destinations()
         airportId_search = self.search_airportId(destination_object, list_of_destinations)        
-        destination_search = self.searchdestination(destination_object, airportId_search)
+        destination_search = self.searchDestination(destination_object, airportId_search)
         country_search = self.search_country(destination_object, destination_search)
         flightTime = self.search_flightTime(destination_object, country_search)
         distance_search = self.search_distance(destination_object, flightTime)
@@ -30,7 +30,7 @@ class LL_Destinations():
         return iceNumber_search
 
     def search_airportId(self, destination_object, list_of_destinations):
-        airportId = destination_object.get_airportId()
+        airportId = destination_object.get_airport_id()
         output = []
         if not airportId:
             return list_of_destinations
@@ -56,7 +56,7 @@ class LL_Destinations():
             return list_of_destinations
 
     def search_flightTime(self, destination_object, list_of_destinations):
-        flightTime = destination_object.get_flightTime()
+        flightTime = destination_object.get_flight_time()
         output = []
         if not flightTime:
             return list_of_destinations
@@ -68,7 +68,7 @@ class LL_Destinations():
         else:
             return list_of_destinations
 
-    def search_destination(self, destination_object, list_of_destinations):
+    def searchDestination(self, destination_object, list_of_destinations):
         destination = destination_object.get_destinations()
         output = []
         if not destination:
@@ -108,7 +108,7 @@ class LL_Destinations():
             return list_of_destinations
 
     def search_iceNumber(self, destination_object, list_of_destinations):
-        iceNumber = destination_object.get_emergencyiceNumber()
+        iceNumber = destination_object.get_ice_number()
         output = []
         if not iceNumber:
             return list_of_destinations

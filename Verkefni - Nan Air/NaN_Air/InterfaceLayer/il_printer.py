@@ -335,8 +335,8 @@ class IL_Printer():
         counter = 0
         for index, item in enumerate(header_row):
             if item == 'e-mail':
-                item = 'e_mail'
-            output += 'E{} {}: {}'.format(index+1,item.replace('e_mail','e-mail').upper(),item_values['_'+self.CATEGORY+"__"+item]).ljust(column_width)
+                item = 'e_mail'            
+            output += 'E{} {}: {}'.format(index+1,item.replace('e_mail','e-mail').upper(),item_values['_'+self.CATEGORY+"__"+item.replace(' ','_').replace('.','')]).ljust(column_width)
             counter += 1
             if counter == 3:
                 output += '\n'
@@ -350,7 +350,10 @@ class IL_Printer():
         column_width = (self.__window_width - 30) // (len(header_row))
         output = 'No'.center(10)
         for item in header_row:
-            output += item.upper().ljust(column_width)
+            if len(item) > (column_width - 1):
+                output += (item.upper()[0:(column_width-5)] + '...').ljust(column_width)
+            else:
+                output += item.upper().ljust(column_width)            
         output += '{}{}{}'.format('\n','-'*(self.__window_width - 20),'\n')
         for index, item in enumerate(list_of_objects):
             item_values = item.__dict__.values()            

@@ -1,6 +1,7 @@
 # Imports and constants
 import csv, codecs, dateutil.parser, datetime
 from ModelClasses.trip import Trip
+from .dl_destinations import DL_Destinations
 
 # Classes
 class DL_Trips():
@@ -19,6 +20,15 @@ class DL_Trips():
         with codecs.open(self.FILE_NAME, 'r', self.ENCODING) as _file:
             reader = csv.reader(_file)
             headers = next(reader)
+            for item in headers:
+                if item == 'out. flight nr':
+                    item = 'out_flight_nr'
+                elif item == 'out. dep':
+                    item = 'out_dep'
+                elif item == 'in. flight nr':
+                    item = 'in_flight_nr'
+                elif item == 'in. dep':
+                    item = 'in_dep'
             for row in reader:
                 row_dict = dict(zip(headers,row))
                 trip_from_row = Trip(row_dict)
@@ -50,22 +60,25 @@ class DL_Trips():
             return dict_reader.fieldnames
     
     def setStatus(self, trip):
-        out_departure = dateutil.parser.parse(trip.get_out_dep())        
-        in_departure = dateutil.parser.parse(trip.get_in_dep())
-        stop = dateutil.parser.parse('01:00:00')
-        flight_time = in_departure - out_departure - stop
-        out_arrival = out_departure + flight_time
-        in_arrival = in_departure + flight_time
-        now = datetime.datetime.now()
-        status = ''
-        if now < out_departure:
-             status = 'Not started'
-        elif out_departure <= now < out_arrival:
-            status = 'In the air'
-        elif out_arrival <= now < in_departure:
-            status = 'At destination'
-        elif in_departure <= now < in_arrival:
-            status = 'In the air'
-        else:
-            status = 'Flight completed'
-        return trip.set_status(status)
+        if trip.get_out_dep() == '':
+            pass
+        else:            
+            out_departure = dateutil.parser.parse(trip.get_out_dep())        
+            in_departure = dateutil.parser.parse(trip.get_in_dep())
+            stop = datetime.timedelta(hours=1)            
+            flight_time = in_departure - out_departure - stop
+            out_arrival = out_departure + flight_time
+            in_arrival = in_departure + flight_time
+            now = datetime.datetime.now()
+            status = ''
+            if now < out_departure:
+                status = 'Not started'
+            elif out_departure <= now < out_arrival:
+                status = 'In the air'
+            elif out_arrival <= now < in_departure:
+                status = 'At destination'
+            elif in_departure <= now < in_arrival:
+                status = 'In the air'
+            else:
+                status = 'Flight completed'
+            return trip.set_status(status)
