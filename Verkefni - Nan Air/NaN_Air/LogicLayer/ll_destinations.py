@@ -21,7 +21,7 @@ class LL_Destinations():
     def search_destination(self, destination_object):        
         list_of_destinations = DL_API().get_destinations()
         airportId_search = self.search_airportId(destination_object, list_of_destinations)        
-        destination_search = self.searchDestination(destination_object, airportId_search)
+        destination_search = self.searchdestination(destination_object, airportId_search)
         country_search = self.search_country(destination_object, destination_search)
         flightTime = self.search_flightTime(destination_object, country_search)
         distance_search = self.search_distance(destination_object, flightTime)
@@ -30,7 +30,7 @@ class LL_Destinations():
         return iceNumber_search
 
     def search_airportId(self, destination_object, list_of_destinations):
-        airportId = destination_object.get_airport_id()
+        airportId = destination_object.get_airportId()
         output = []
         if not airportId:
             return list_of_destinations
@@ -56,7 +56,7 @@ class LL_Destinations():
             return list_of_destinations
 
     def search_flightTime(self, destination_object, list_of_destinations):
-        flightTime = destination_object.get_flight_time()
+        flightTime = destination_object.get_flightTime()
         output = []
         if not flightTime:
             return list_of_destinations
@@ -68,7 +68,7 @@ class LL_Destinations():
         else:
             return list_of_destinations
 
-    def searchDestination(self, destination_object, list_of_destinations):
+    def search_destination(self, destination_object, list_of_destinations):
         destination = destination_object.get_destinations()
         output = []
         if not destination:
@@ -108,13 +108,13 @@ class LL_Destinations():
             return list_of_destinations
 
     def search_iceNumber(self, destination_object, list_of_destinations):
-        iceNumber = destination_object.get_ice_number()
+        iceNumber = destination_object.get_emergencyiceNumber()
         output = []
         if not iceNumber:
             return list_of_destinations
         elif iceNumber != '':
             for destination in list_of_destinations:
-                if destination.lower() in destination.get_ice_number().lower():
+                if destination.lower() in destination.get_iceNumber().lower():
                     output.append(destination)
             return output
         else:
@@ -136,17 +136,14 @@ class LL_Destinations():
     def add_destination(self, destination_object):
         return DL_API().append_destinations(destination_object)
     
-    def ll_set_airport_id(self, destination_object, input_data):
-        return destination_object.set_airport_id(input_data)
+    def ll_set_airportId(self, destination_object, input_data):
+        return destination_object.set_airportId(input_data)
     
     def ll_set_destination(self, destination_object, input_data):
         return destination_object.set_destination(input_data)
-    
-    def ll_set_distance(self, destination_object, input_data):
-        return destination_object.set_distance(input_data)
 
-    def ll_set_flight_time(self,destination_object, input_data):
-        return destination_object.set_flight_time(input_data)
+    def ll_set_flightTime(self,destination_object, input_data):
+        return destination_object.set_flightTime(input_data)
 
     def ll_set_country(self, destination_object, input_data):
         return destination_object.set_country(input_data)
@@ -154,5 +151,5 @@ class LL_Destinations():
     def ll_set_ice(self, destination_object, input_data):
         return destination_object.set_ice(input_data)
         
-    def ll_set_ice_number(self, destination_object, input_data):
-        return destination_object.set_ice_number(input_data)
+    def ll_set_iceNumber(self, destination_object, input_data):
+        return destination_object.set_iceNumber(input_data)

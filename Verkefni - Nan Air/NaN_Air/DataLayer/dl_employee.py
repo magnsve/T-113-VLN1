@@ -19,7 +19,7 @@ class DL_Employee():
         with codecs.open(self.FILE_NAME, 'r', self.ENCODING) as _file:
             reader = csv.reader(_file)
             headers = next(reader)
-            for row in reader:                
+            for row in reader:
                 row_dict = dict(zip(headers,row))
                 employee_from_row = Employee(row_dict)
                 output.append(employee_from_row)

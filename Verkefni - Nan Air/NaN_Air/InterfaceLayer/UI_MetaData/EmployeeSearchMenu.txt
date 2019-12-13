@@ -17,5 +17,5 @@
 --emp--
 --lju----ind--To select an employee from the list and edit him, type 'S' followed by the line number. Then hit enter.
 --emp-- 
---rju----ind--List - Enter list view    X - Reset Search Parameters    B - Back to Employees    R - Refresh Screen   Q - Exit
+--rju----ind--X - Reset Search Parameters    B - Back to Employees    R - Refresh Screen   Q - Exit
 --sep--

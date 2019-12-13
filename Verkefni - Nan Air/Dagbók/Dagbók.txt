@@ -211,7 +211,7 @@ Hvað gerðist í dag:
 Fórum yfir datalayer og logic layer, datalayer or 95% kominn og logiclayer kominn langleiðina, interface kominn langt á leið.
 
 
-Miðvikudagur 11.12.2019 - 17:50
+Mánudagur 12.11.2019 - 17:50
 
 Fundarstjóri: Stefán Ingi Árnason
 
@@ -231,21 +231,6 @@ Ofurhetja dagsins: Lilja - Phoebe Halliwell
 hvað gerðist í dag:
 Erum búin að fara í gegnum A og B kröfur og tryggja að þær séu uppfylltar. Erum búin að laga mikið af lógík þar sem nöfn á föllum pössuðu ekki saman.
 Búin að bæta við fleiri og meira lýsandi kommentum í Interface layer.
-
-Fimmtudagur 12.12.2019	- 17:50
-
-Fundarstjóri: Guðmundur Árni Magnússon
-Fyrsti hluti: So far.
-Mest öll virkni er kominn inn. Erum að vinna í villuprófunum og gerð lokaskýrslu. Einnig er verið að vinna í klasa- og stöðuritum. 
-
-Annar hluti: What now.
-Markmiðið er að fara sem lengst með prófanir og ritin. Vonum til þess að klára þetta í kvöld. 
-
-Þriðji hluti: Challenges
-Eiga við ófyrirséð vandamál. 
-
-Ofuhetja dagsins: Jón Ísak- Batman
-
 
 
 

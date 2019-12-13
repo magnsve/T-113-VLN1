@@ -1,5 +1,5 @@
 # Imports and constants
-import sys, os, shutil, random, datetime
+import sys, os, shutil, random
 from msvcrt import getch
 from importlib import import_module, invalidate_caches
 from LogicLayer.ll_api import LL_API
@@ -34,8 +34,30 @@ class IL_Printer():
         self.__facts = '--fact--'
         self.__create = '--cre--'
         self.__search = '--sea--'
-        self.__info = '--inf--'        
-        self.__menus = {'M':('il_main_menu','IL_MainMenu'),'M_1':('il_employee_menu','IL_EmployeeMenu'),'M_1_1':('il_employee_create_menu','IL_EmployeeCreateMenu'),'M_1_2':('il_employee_search_menu','IL_EmployeeSearchMenu'),'M_1_2_1':('il_employee_edit_menu','IL_EmployeeEditMenu'),'M_1_2_2':('il_employee_list_menu','IL_EmployeeListMenu'),'M_2':('il_airplane_menu','IL_AirplaneMenu'),'M_2_1':('il_airplane_create_menu','IL_AirplaneCreateMenu'),'M_2_2':('il_airplane_search_menu','IL_AirplaneSearchMenu'),'M_2_2_1':('il_airplane_edit_menu','IL_AirplaneEditMenu'),'M_2_2_2':('il_airplane_list_menu','IL_AirplaneListMenu'),'M_3':('il_destination_menu','IL_DestinationMenu'),'M_3_1':('il_destination_create_menu','IL_DestinationCreateMenu'),'M_3_2':('il_destination_search_menu','IL_DestinationSearchMenu'),'M_3_2_1':('il_destination_edit_menu','IL_DestinationEditMenu'),'M_3_2_2':('il_destination_list_menu','IL_DestinationListMenu'),'M_4':('il_trips_menu','IL_TripsMenu'),'M_4_1':('il_trips_create_menu','IL_TripsCreateMenu'),'M_4_2':('il_trips_search_menu','IL_TripsSearchMenu'),'M_4_2_1':('il_trips_edit_menu','IL_TripsEditMenu'),'M_4_2_2':('il_trips_list_menu','IL_TripsListMenu'),'Q':('il_quit_screen','IL_QuitScreen'),'M_1_2_1':('il_employee_edit_menu','IL_EmployeeEditMenu')}
+        self.__info = '--inf--'
+        self.__menus = {'M':        ('il_main_menu',                'IL_MainMenu'),             \
+                        'M_1':      ('il_employee_menu',            'IL_EmployeeMenu'),         \
+                        'M_1_1':    ('il_employee_create_menu',     'IL_EmployeeCreateMenu'),   \
+                        'M_1_2':    ('il_employee_search_menu',     'IL_EmployeeSearchMenu'),   \
+                        'M_1_2_1':  ('il_employee_edit_menu',       'IL_EmployeeEditMenu'),     \
+                        'M_1_2_2':  ('il_employee_list_menu',       'IL_EmployeeListMenu'),     \
+                        'M_2':      ('il_airplane_menu',            'IL_AirplaneMenu'),         \
+                        'M_2_1':    ('il_airplane_create_menu',     'IL_AirplaneCreateMenu'),   \
+                        'M_2_2':    ('il_airplane_search_menu',     'IL_AirplaneSearchMenu'),   \
+                        'M_2_2_1':  ('il_airplane_edit_menu',       'IL_AirplaneEditMenu'),     \
+                        'M_2_2_2':  ('il_airplane_list_menu',       'IL_AirplaneListMenu'),     \
+                        'M_3':      ('il_destination_menu',         'IL_DestinationMenu'),      \
+                        'M_3_1':    ('il_destination_create_menu',  'IL_DestinationCreateMenu'),\
+                        'M_3_2':    ('il_destination_search_menu',  'IL_DestinationSearchMenu'),\
+                        'M_3_2_1':  ('il_destination_edit_menu',    'IL_DestinationEditMenu'),  \
+                        'M_3_2_2':  ('il_destination_list_menu',    'IL_DestinationListMenu'),  \
+                        'M_4':      ('il_trips_menu',               'IL_TripsMenu'),            \
+                        'M_4_1':    ('il_trips_create_menu',        'IL_TripsCreateMenu'),      \
+                        'M_4_2':    ('il_trips_search_menu',        'IL_TripsSearchMenu'),      \
+                        'M_4_2_1':  ('il_trips_edit_menu',          'IL_TripsEditMenu'),        \
+                        'M_4_2_2':  ('il_trips_list_menu',          'IL_TripsListMenu'),        \
+                        'Q':        ('il_quit_screen',              'IL_QuitScreen'),           \
+                        'M_1_2_1':  ('il_employee_edit_menu',       'IL_EmployeeEditMenu')}
     
     def variable_class(self, from_menu = ('','')):
         module_name = 'InterfaceLayer.'+ from_menu[0]
@@ -44,7 +66,7 @@ class IL_Printer():
         class_ = getattr(module, class_name)        
         return class_()
     
-    def prep_window(self, file = FILE, graphics = GRAPHICS_FILE, model_object = None, list_of_objects = None, period = None):
+    def prep_window(self, file = FILE, graphics = GRAPHICS_FILE, model_object = None, list_of_objects = None):
         output = ''
         for _ in range(self.__window_height*3):
             output += '\n'
@@ -80,8 +102,6 @@ class IL_Printer():
                 output += self.get_search(list_of_objects)
             elif self.__info in line:
                 output += self.get_info(model_object)
-            elif self.__criteria in line:
-                output += self.get_criteria(period)
         return output
                 
     def get_spaceing(self, file = '', graphics = '', model_object = '', list_of_objects = ''):
@@ -132,7 +152,7 @@ class IL_Printer():
     def get_search(self, list_of_objects):
         output = ''      
         temp = self.search_model_object(list_of_objects).splitlines()
-        for line in temp:            
+        for line in temp:
             left_border = (self.__space * 4) + self.__vertical
             contents = (self.__space * 5) + line.ljust(self.__window_width - 15)
             right_border = self.__vertical
@@ -310,13 +330,10 @@ class IL_Printer():
         header_row.sort()
         item_values = model_class_object.__dict__
         sorted(item_values)
-        #column_width = (self.__window_width - 30) // (len(header_row)+1)
         column_width = 40
         counter = 0
         for index, item in enumerate(header_row):
-            if item == 'e-mail':
-                item = 'e_mail'            
-            output += 'E{} {}: {}'.format(index+1,item.replace('e_mail','e-mail').upper(),item_values['_'+self.CATEGORY+"__"+item.replace(' ','_').replace('.','')]).ljust(column_width)
+            output += 'E{} {}: {}'.format(index+1,item.upper(),item_values['_'+self.CATEGORY+"__"+item]).ljust(column_width)
             counter += 1
             if counter == 3:
                 output += '\n'
@@ -327,13 +344,10 @@ class IL_Printer():
         ''' This function creates a string to display the search results from the list_of_objects. '''
         method_ = getattr(LL_API(), "get_"+self.CATEGORY.lower()+"_header")
         header_row = method_()
-        column_width = (self.__window_width - 30) // (len(header_row))
+        column_width = (self.__window_width - 30) // (len(header_row)+1)
         output = 'No'.center(10)
         for item in header_row:
-            if len(item) > (column_width - 1):
-                output += (item.upper()[0:(column_width-5)] + '...').ljust(column_width)
-            else:
-                output += item.upper().ljust(column_width)            
+            output += item.upper().ljust(column_width)
         output += '{}{}{}'.format('\n','-'*(self.__window_width - 20),'\n')
         for index, item in enumerate(list_of_objects):
             item_values = item.__dict__.values()            

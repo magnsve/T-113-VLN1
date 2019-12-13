@@ -19,7 +19,10 @@ class Trip():
         self.set_status(input_data)
 
     def __str__(self):
-        return '{},{},{},{},{},{},{},{},{},{},{},{},'.format(self.__destination, self.__plane, self.__capacity, self.__captain, self.__copilot, self.__fsm, self.__fa1, self.__fa2, self.__fa3, self.__fa4, self.__fa5, self.__status)
+        output = ''
+        for attr in self.__dict__.values():
+            output += '{},'.format(attr)
+        return output
 
     def set_destination(self, input_data):
         if not input_data:
@@ -75,7 +78,7 @@ class Trip():
         else:
             if isinstance(input_data, dict):            
                 try:
-                    self.__out_flight_nr = input_data["out_flight_nr"]
+                    self.__out_flight_nr = input_data["out. flight nr"]
                 except KeyError:
                     self.__out_flight_nr = ''        
             else:
@@ -87,7 +90,7 @@ class Trip():
         else:
             if isinstance(input_data, dict):            
                 try:
-                    self.__out_dep = input_data["out_dep"]
+                    self.__out_dep = input_data["out. dep"]
                 except KeyError:
                     self.__out_dep = ''        
             else:
@@ -99,7 +102,7 @@ class Trip():
         else:
             if isinstance(input_data, dict):            
                 try:
-                    self.__in_flight_nr = input_data["in_flight_nr"]
+                    self.__in_flight_nr = input_data["in. flight nr"]
                 except KeyError:
                     self.__in_flight_nr = ''        
             else:
@@ -111,7 +114,7 @@ class Trip():
         else:
             if isinstance(input_data, dict):            
                 try:
-                    self.__in_dep = input_data["in_dep"]
+                    self.__in_dep = input_data["in. dep"]
                 except KeyError:
                     self.__in_dep = ''        
             else:

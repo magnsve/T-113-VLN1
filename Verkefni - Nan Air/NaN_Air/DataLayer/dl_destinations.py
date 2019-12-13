@@ -19,11 +19,6 @@ class DL_Destinations():
         with codecs.open(self.FILE_NAME, 'r', self.ENCODING) as _file:
             reader = csv.reader(_file)
             headers = next(reader)
-            for item in headers:
-                if item == 'flight time':
-                    item = 'flight_time'
-                elif item == 'ice number':
-                    item = 'ice_number'
             for row in reader:
                 row_dict = dict(zip(headers,row))
                 destinations_from_row = Destination(row_dict)

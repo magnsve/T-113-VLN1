@@ -3,9 +3,9 @@
 # Classes
 class Employee():
     ''' '''
-    def __init__(self, input_data = None):        
-        self.set_name(input_data)
+    def __init__(self, input_data = None):
         self.set_ssn(input_data)
+        self.set_name(input_data)
         self.set_role(input_data)
         self.set_rank(input_data)
         self.set_licence(input_data)
@@ -13,6 +13,8 @@ class Employee():
         self.set_phonenumber(input_data)
         self.set_gsm(input_data)
         self.set_e_mail(input_data)
+        self.set_status(input_data)
+        self.set_history(input_data)
     
     def set_ssn(self, input_data):
         if not input_data:
@@ -30,13 +32,16 @@ class Employee():
         if not input_data:
             self.__name = ''
         else:
-            if isinstance(input_data, dict):            
-                try:
-                    self.__name = input_data["name"]
-                except KeyError:
-                    self.__name = ''
+            if self.__name == '':
+                if isinstance(input_data, dict):            
+                    try:
+                        self.__name = input_data["name"]
+                    except KeyError:
+                        self.__name = ''
+                else:
+                    self.__name = input_data
             else:
-                self.__name = input_data
+                pass
     
     def set_role(self, input_data):
         if not input_data:
@@ -122,6 +127,30 @@ class Employee():
             else:
                 self.__e_mail = input_data
 
+    def set_status(self, input_data):
+        if not input_data:
+            self.__status = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__status = input_data["status"]
+                except KeyError:
+                    self.__status = ''
+            else: 
+                self.__status = input_data
+
+    def set_history(self, input_data):
+        if not input_data:
+            self.__history = ''
+        else:
+            if isinstance(input_data, dict):
+                try:
+                    self.__history = input_data["history"]
+                except KeyError:
+                    self.__history = ''
+            else:
+                self.__history = input_data
+
     def __str__(self):
         output = ''
         for attr in self.__dict__.values():
@@ -154,3 +183,9 @@ class Employee():
     
     def get_e_mail(self):
         return self.__e_mail
+    
+    def get_status(self):
+        return self.__status
+    
+    def get_history(self):
+        return self.__history

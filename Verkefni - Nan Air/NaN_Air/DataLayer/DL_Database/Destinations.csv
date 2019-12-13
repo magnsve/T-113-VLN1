@@ -1,6 +1,7 @@
-airport id,destination,country,flight time,distance,ice,ice number
+airportId,destination,country,flight time,distance,ICE,ICE number
 LYR,Longyearbyean,Norway,04:00:00,2.201 km,
 GOH,Nuuk,Greenland,03:00:00,1.399 km,
 KUS,Kulusuk,Greenland,02:00:00,710 km,
 FAE,Thorshavn,Faroe Islands,01:00:00,795 km,
 LWK,Tingwall,Scotland,02:00:00,1.182 km
+
