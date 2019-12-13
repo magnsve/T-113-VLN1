@@ -21,9 +21,9 @@ class DL_Destinations():
             headers = next(reader)
             for item in headers:
                 if item == 'flight time':
-                    item = 'flightTime'
+                    item = 'flight_time'
                 elif item == 'ice number':
-                    item = 'iceNumber'
+                    item = 'ice_number'
             for row in reader:
                 row_dict = dict(zip(headers,row))
                 destinations_from_row = Destination(row_dict)
