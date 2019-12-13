@@ -7,7 +7,6 @@
 --emp--
 --lju----ind--1 - New Trip
 --lju----ind--2 - Find Trip
---lju----ind--3 - Trips Summary
 --emp--
 --lju----ind--B - Back to Main menu
 --spa-- 

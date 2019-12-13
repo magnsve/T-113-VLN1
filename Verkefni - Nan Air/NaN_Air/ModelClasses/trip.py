@@ -20,17 +20,21 @@ class Trip():
 
     def __str__(self):
         output = ''
-        for attr in self.__dict__.values():
-            if attr == 'Not started':
+        for key, value in self.__dict__.items():
+            if value == 'Not started':
                 pass
-            elif attr == 'In the air':
+            elif value == 'In the air':
                 pass
-            elif attr == 'At destination':
+            elif value == 'At destination':
                 pass
-            elif attr == 'Flight completed':
+            elif value == 'Flight completed':
+                pass
+            elif key == 'out_flight_nr':
+                pass
+            elif key == 'in_flight_nr':
                 pass
             else:
-                output += '{},'.format(attr)
+                output += '{},'.format(value)
         return output
 
     def set_destination(self, input_data):
