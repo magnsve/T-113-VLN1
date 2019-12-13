@@ -72,13 +72,14 @@ def main():
             while user_input[0][:1].lower() == 'e' or user_input[1] == 'X':
                 if user_input[0][:1].lower() == 'e':
                     # Using getattr gives us the option to dynamically call the desired function instead of having to create the site map.
-                    method_ = getattr(new_object, user_input[1])
+                    method_ = getattr(logic_object, user_input[1])
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
-                    input_ = input("Enter value for {}: ".format(user_input[1].replace('edit_','')))
+                    print()
+                    input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))
                     # Here we find the index of the file in the database.
                     index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
                     index = index_func(new_object)
-                    method_(input_)
+                    excecute_method = method_(new_object,input_)                    
                     # If the object is not found in the database the index is returned as 'None'. We then append the new object to the database instead of overwrite it.
                     if index == None:
                         new_func = getattr(LL_API(), "new_"+new_screen.CATEGORY.lower())
@@ -87,6 +88,8 @@ def main():
                         edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
                         edit_func(new_object, index)
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
+                    if excecute_method != None:
+                        print(excecute_method)
                     user_input = new_screen.validate_selection(new_screen, new_object)
                     print()
                 # Option for resetting the object, i.e. when the user wants to start a new entry.
@@ -130,21 +133,23 @@ def main():
                     if new_screen.SCREEN_TYPE == 'Edit':                        
                         method_ = getattr(edit_object, user_input[1])
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
-                        input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))                                                    
+                        print()
+                        input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))                                                    
                         index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
                         index = index_func(edit_object)
-                        method_(input_)
+                        method_(edit_object, input_)
                         edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
                         edit_func(edit_object, index)
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
                         user_input = new_screen.validate_selection(new_screen, edit_object, list_of_objects)
                     else:
-                        method_ = getattr(search_object, user_input[1])
+                        method_ = getattr(logic_object, user_input[1])
                         search_func = getattr(LL_API(), "search_"+new_screen.CATEGORY.lower())
                         list_of_objects = search_func(search_object)[:10]
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
-                        input_ = input("Enter value for {}: ".format(user_input[1].replace('set_','')))
-                        method_(input_)
+                        print()
+                        input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))
+                        method_(search_object, input_)
                         list_of_objects = search_func(search_object)[:10]
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
                         user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)

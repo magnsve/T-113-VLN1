@@ -1,5 +1,5 @@
 # Imports and constants
-import csv, codecs
+import csv, codecs, dateutil.parser, datetime
 from ModelClasses.trip import Trip
 
 # Classes
@@ -22,12 +22,14 @@ class DL_Trips():
             for row in reader:
                 row_dict = dict(zip(headers,row))
                 trip_from_row = Trip(row_dict)
+                self.setStatus(trip_from_row)
                 output.append(trip_from_row)
         return output
 
     def appendTrips(self, trip_object):
         with codecs.open(self.FILE_NAME, 'a', self.ENCODING) as _file:
-            _file.write(trip_object.__str__())        
+            _file.write(trip_object.__str__())
+        self.getTrips()
 
     def modifyTrip(self, trip_object, index):
         list_of_trips = self.getTrips()
@@ -46,3 +48,24 @@ class DL_Trips():
         with open(self.FILE_NAME, encoding="utf-8-sig") as _file:
             dict_reader = csv.DictReader(_file)            
             return dict_reader.fieldnames
+    
+    def setStatus(self, trip):
+        out_departure = dateutil.parser.parse(trip.get_out_dep())        
+        in_departure = dateutil.parser.parse(trip.get_in_dep())
+        stop = dateutil.parser.parse('01:00:00')
+        flight_time = in_departure - out_departure - stop
+        out_arrival = out_departure + flight_time
+        in_arrival = in_departure + flight_time
+        now = datetime.datetime.now()
+        status = ''
+        if now < out_departure:
+             status = 'Not started'
+        elif out_departure <= now < out_arrival:
+            status = 'In the air'
+        elif out_arrival <= now < in_departure:
+            status = 'At destination'
+        elif in_departure <= now < in_arrival:
+            status = 'In the air'
+        else:
+            status = 'Flight completed'
+        return trip.set_status(status)

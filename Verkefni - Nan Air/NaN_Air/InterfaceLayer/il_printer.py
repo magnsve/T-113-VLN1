@@ -152,7 +152,7 @@ class IL_Printer():
     def get_search(self, list_of_objects):
         output = ''      
         temp = self.search_model_object(list_of_objects).splitlines()
-        for line in temp:
+        for line in temp:            
             left_border = (self.__space * 4) + self.__vertical
             contents = (self.__space * 5) + line.ljust(self.__window_width - 15)
             right_border = self.__vertical
@@ -330,10 +330,13 @@ class IL_Printer():
         header_row.sort()
         item_values = model_class_object.__dict__
         sorted(item_values)
+        #column_width = (self.__window_width - 30) // (len(header_row)+1)
         column_width = 40
         counter = 0
         for index, item in enumerate(header_row):
-            output += 'E{} {}: {}'.format(index+1,item.upper(),item_values['_'+self.CATEGORY+"__"+item]).ljust(column_width)
+            if item == 'e-mail':
+                item = 'e_mail'
+            output += 'E{} {}: {}'.format(index+1,item.replace('e_mail','e-mail').upper(),item_values['_'+self.CATEGORY+"__"+item]).ljust(column_width)
             counter += 1
             if counter == 3:
                 output += '\n'
@@ -344,7 +347,7 @@ class IL_Printer():
         ''' This function creates a string to display the search results from the list_of_objects. '''
         method_ = getattr(LL_API(), "get_"+self.CATEGORY.lower()+"_header")
         header_row = method_()
-        column_width = (self.__window_width - 30) // (len(header_row)+1)
+        column_width = (self.__window_width - 30) // (len(header_row))
         output = 'No'.center(10)
         for item in header_row:
             output += item.upper().ljust(column_width)
