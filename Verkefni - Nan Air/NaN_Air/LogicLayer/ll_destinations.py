@@ -114,7 +114,7 @@ class LL_Destinations():
             return list_of_destinations
         elif iceNumber != '':
             for destination in list_of_destinations:
-                if destination.lower() in destination.get_iceNumber().lower():
+                if destination.lower() in destination.get_ice_number().lower():
                     output.append(destination)
             return output
         else:

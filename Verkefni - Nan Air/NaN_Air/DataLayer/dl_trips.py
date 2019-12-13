@@ -20,17 +20,20 @@ class DL_Trips():
         with codecs.open(self.FILE_NAME, 'r', self.ENCODING) as _file:
             reader = csv.reader(_file)
             headers = next(reader)
+            headers2 = []
             for item in headers:
                 if item == 'out. flight nr':
-                    item = 'out_flight_nr'
+                    headers2.append('out_flight_nr')
                 elif item == 'out. dep':
-                    item = 'out_dep'
+                    headers2.append('out_dep')
                 elif item == 'in. flight nr':
-                    item = 'in_flight_nr'
+                    headers2.append('in_flight_nr')
                 elif item == 'in. dep':
-                    item = 'in_dep'
+                    headers2.append('in_dep')
+                else:
+                    headers2.append(item)
             for row in reader:
-                row_dict = dict(zip(headers,row))
+                row_dict = dict(zip(headers2,row))
                 trip_from_row = Trip(row_dict)
                 self.setStatus(trip_from_row)
                 output.append(trip_from_row)

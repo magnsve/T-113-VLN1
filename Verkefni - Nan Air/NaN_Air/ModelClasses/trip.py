@@ -75,7 +75,7 @@ class Trip():
         else:
             if isinstance(input_data, dict):            
                 try:
-                    self.__out_flight_nr = input_data["out_flight_no"]
+                    self.__out_flight_nr = input_data["out_flight_nr"]
                 except KeyError:
                     self.__out_flight_nr = ''        
             else:
@@ -99,7 +99,7 @@ class Trip():
         else:
             if isinstance(input_data, dict):            
                 try:
-                    self.__in_flight_nr = input_data["in_flight_no"]
+                    self.__in_flight_nr = input_data["in_flight_nr"]
                 except KeyError:
                     self.__in_flight_nr = ''        
             else:
