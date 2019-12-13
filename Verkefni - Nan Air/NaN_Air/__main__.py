@@ -134,7 +134,7 @@ def main():
                 index = index_func(edit_object)
                 if user_input[0][:1].lower() == 'e':
                     if new_screen.SCREEN_TYPE == 'Edit':                        
-                        method_ = getattr(edit_object, user_input[1])
+                        method_ = getattr(logic_object, user_input[1])
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
                         print()
                         input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))                           

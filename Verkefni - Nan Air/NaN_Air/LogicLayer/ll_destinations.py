@@ -136,14 +136,17 @@ class LL_Destinations():
     def add_destination(self, destination_object):
         return DL_API().append_destinations(destination_object)
     
-    def ll_set_airportId(self, destination_object, input_data):
-        return destination_object.set_airportId(input_data)
+    def ll_set_airport_id(self, destination_object, input_data):
+        return destination_object.set_airport_id(input_data)
     
     def ll_set_destination(self, destination_object, input_data):
         return destination_object.set_destination(input_data)
+    
+    def ll_set_distance(self, destination_object, input_data):
+        return destination_object.set_distance(input_data)
 
-    def ll_set_flightTime(self,destination_object, input_data):
-        return destination_object.set_flightTime(input_data)
+    def ll_set_flight_time(self,destination_object, input_data):
+        return destination_object.set_flight_time(input_data)
 
     def ll_set_country(self, destination_object, input_data):
         return destination_object.set_country(input_data)
@@ -151,5 +154,5 @@ class LL_Destinations():
     def ll_set_ice(self, destination_object, input_data):
         return destination_object.set_ice(input_data)
         
-    def ll_set_iceNumber(self, destination_object, input_data):
-        return destination_object.set_iceNumber(input_data)
+    def ll_set_ice_number(self, destination_object, input_data):
+        return destination_object.set_ice_number(input_data)
