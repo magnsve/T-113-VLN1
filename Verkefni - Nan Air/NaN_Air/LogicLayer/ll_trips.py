@@ -318,13 +318,13 @@ class LL_Trips():
             if valid:
                 if trip_object.get_destination() != '' and trip_object.get_out_dep() != '':
                     self.create_flight_nr(trip_object)
-            if not valid:
+            else:
                 return 'Plane not found. Please try again.'
         else:
             return 'You need to set the date before you can set the plane.'
     
     def create_flight_nr(self, trip_object):
-        name, dest, no = 'NA', '', ''
+        name, dest, no = 'NA', 0, 0
         list_of_destinations, list_of_trips, list_of_departures = DL_API().get_destinations(), DL_API().get_trips(), []
         for index, destination in enumerate(list_of_destinations):
             if destination.get_airport_id().lower() == trip_object.get_destination().lower():
@@ -433,13 +433,14 @@ class LL_Trips():
             return True
         
     def ll_set_captain(self, trip_object, input_data):
-        list_of_employees = DL_API().get_employees()        
+        list_of_employees = DL_API().get_employees()
         list_of_captains = []
         list_of_planes = DL_API().get_planes()
         licence = ''
+        valid = False
         list_of_licenced = []
         for plane in list_of_planes:
-            if plane.get_insignia() == trip_object.get_plane():
+            if plane.get_insignia() == trip_object.get_plane():                
                 licence = plane.get_typeID()
         for employee in list_of_employees:
             if employee.get_rank() == 'Captain':
@@ -451,9 +452,12 @@ class LL_Trips():
             if licenced_cap.get_ssn() == input_data:
                 if self.check_dates(input_data, trip_object):
                     trip_object.set_captain(input_data)
-                    self.setStatus(trip_object)
-            else:
-                return 'This is not a licenced captain. Please try again.'
+                    self.setStatus(trip_object)                    
+                    valid = True
+                else:
+                    return 'This captain is working on this day.'
+        if not valid:
+            return 'This is not a licenced captain. Please try again.'
 
     def ll_set_copilot(self, trip_object, input_data):
         list_of_employees = DL_API().get_employees()        

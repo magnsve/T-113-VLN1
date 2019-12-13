@@ -67,14 +67,14 @@ def main():
                 logic_object = logic_trip
             new_screen.get_edit_funcs(logic_object)
             print(new_screen.prep_window(new_screen.FILE, new_screen.GRAPHICS_FILE, new_object))
-            user_input = new_screen.validate_selection(new_screen, new_object)
+            user_input = new_screen.validate_selection(new_screen, new_object)            
             has_input = True
             while user_input[0][:1].lower() == 'e' or user_input[1] == 'X':
-                if user_input[0][:1].lower() == 'e':
-                    # Here we find the index of the file in the database.
-                    index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
-                    index = index_func(new_object)
-                    # Using getattr gives us the option to dynamically call the desired function instead of having to create the site map.
+                # Here we find the index of the file in the database.
+                index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
+                index = index_func(new_object)
+                if user_input[0][:1].lower() == 'e':                    
+                    # Using getattr gives us the option to dynamically call the desired function instead of having to write code for every eventuality.
                     method_ = getattr(logic_object, user_input[1])
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, new_object))
                     print()
@@ -127,17 +127,18 @@ def main():
             new_screen.get_list_options(list_of_objects)
             new_screen.get_select_options(list_of_objects)
             print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:10]))
-            user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)
+            user_input = new_screen.validate_selection(new_screen, search_object, list_of_objects)            
             has_input = True
             while user_input[0][:1].lower() == 'e' or check_if_int(user_input) < 10 or user_input[1] == 'X' or user_input[1][:1] == 's' or user_input[1] == 'L':
+                index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
+                index = index_func(edit_object)
                 if user_input[0][:1].lower() == 'e':
                     if new_screen.SCREEN_TYPE == 'Edit':                        
                         method_ = getattr(edit_object, user_input[1])
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
                         print()
                         input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))                                                    
-                        index_func = getattr(LL_API(), "find_"+new_screen.CATEGORY.lower()+"_index")
-                        index = index_func(edit_object)
+                        
                         excecute_method = method_(edit_object,input_)
                         if excecute_method == None:
                             edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())

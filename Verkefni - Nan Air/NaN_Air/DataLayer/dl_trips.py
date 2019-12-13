@@ -50,9 +50,9 @@ class DL_Trips():
             output = [headers]
             for trip in list_of_trips:
                 value_list = trip.__str__().split(',')
-                output.append(value_list)
+                output.append(value_list)            
             for row in output:
-                writer.writerow(row)
+                writer.writerow(row)                
 
     def getTripsHeaders(self):
         with open(self.FILE_NAME, encoding="utf-8-sig") as _file:
