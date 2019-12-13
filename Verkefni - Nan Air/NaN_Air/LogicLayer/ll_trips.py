@@ -281,7 +281,7 @@ class LL_Trips():
     def find_index_in_database(self, trip_object):
         list_of_trips = DL_API().get_trips()
         for index, trip in enumerate(list_of_trips):
-            if trip.__str__() == trip_object.__str__():
+            if trip.__str__().lower() == trip_object.__str__().lower():
                 return index
         return None
     

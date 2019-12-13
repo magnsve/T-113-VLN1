@@ -19,23 +19,7 @@ class Trip():
         self.set_status(input_data)
 
     def __str__(self):
-        output = ''
-        for key, value in self.__dict__.items():
-            if value == 'Not started':
-                pass
-            elif value == 'In the air':
-                pass
-            elif value == 'At destination':
-                pass
-            elif value == 'Flight completed':
-                pass
-            elif key == 'out_flight_nr':
-                pass
-            elif key == 'in_flight_nr':
-                pass
-            else:
-                output += '{},'.format(value)
-        return output
+        return '{},{},{},{},{},{},{},{},{},{},{},{},'.format(self.__destination, self.__plane, self.__capacity, self.__captain, self.__copilot, self.__fsm, self.__fa1, self.__fa2, self.__fa3, self.__fa4, self.__fa5, self.__status)
 
     def set_destination(self, input_data):
         if not input_data:

@@ -38,21 +38,63 @@ class DL_Trips():
 
     def appendTrips(self, trip_object):
         with codecs.open(self.FILE_NAME, 'a', self.ENCODING) as _file:
-            _file.write(trip_object.__str__())
-        self.getTrips()
+            header = self.getTripsHeaders()
+            for item in header:
+                if item == 'out. flight nr':
+                    item = 'out_flight_nr'
+                elif item == 'out. dep':
+                    item = 'out_dep'
+                elif item == 'in. flight nr':
+                    item = 'in_flight_nr'
+                elif item == 'in. dep':
+                    item = 'in_dep'
+            new_row = trip_object.__dict__
+            output = ''
+            for key, value in new_row.items():
+                for item in header:
+                    if key.replace('_Trip__','') == item:
+                        output += '{},'.format(value)
+            _file.write(output)
 
     def modifyTrip(self, trip_object, index):
         list_of_trips = self.getTrips()
         headers = self.getTripsHeaders()
+        headers2 = []
+        for item in headers:
+            if item == 'out. flight nr':
+                headers2.append('out_flight_nr')
+            elif item == 'out. dep':
+                headers2.append('out_dep')
+            elif item == 'in. flight nr':
+                headers2.append('in_flight_nr')
+            elif item == 'in. dep':
+                headers2.append('in_dep')
+            else:
+                headers2.append(item)
         with codecs.open(self.FILE_NAME, 'w', self.ENCODING) as _file:
             writer = csv.writer(_file)
             list_of_trips[index] = trip_object
             output = [headers]
-            for trip in list_of_trips:
-                value_list = trip.__str__().split(',')
+            for trip in list_of_trips:                
+                for index, item in enumerate(headers2):
+                    if item == 'out. flight nr':
+                        item = 'out_flight_nr'
+                    elif item == 'out. dep':
+                        item = 'out_dep'
+                    elif item == 'in. flight nr':
+                        item = 'in_flight_nr'
+                    elif item == 'in. dep':
+                        item = 'in_dep'
+                new_row = trip.__dict__
+                temp = ''
+                for key, value in new_row.items():
+                    for item in headers2:
+                        if key.replace('_Trip__','') == item:
+                            temp += '{},'.format(value)
+                value_list = temp.split(',')
                 output.append(value_list)            
             for row in output:
-                writer.writerow(row)                
+                writer.writerow(row)                     
 
     def getTripsHeaders(self):
         with open(self.FILE_NAME, encoding="utf-8-sig") as _file:

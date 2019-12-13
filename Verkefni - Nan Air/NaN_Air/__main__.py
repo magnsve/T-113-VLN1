@@ -137,8 +137,7 @@ def main():
                         method_ = getattr(edit_object, user_input[1])
                         print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, edit_object))
                         print()
-                        input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))                                                    
-                        
+                        input_ = input("Enter value for {}: ".format(user_input[1].replace('ll_set_','')))                           
                         excecute_method = method_(edit_object,input_)
                         if excecute_method == None:
                             edit_func = getattr(LL_API(), "edit_"+new_screen.CATEGORY.lower())
