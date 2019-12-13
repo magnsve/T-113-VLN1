@@ -141,6 +141,9 @@ class LL_Destinations():
     
     def ll_set_destination(self, destination_object, input_data):
         return destination_object.set_destination(input_data)
+    
+    def ll_set_distance(self, destination_object, input_data):
+        return destination_object.set_distance(input_data)
 
     def ll_set_flight_time(self,destination_object, input_data):
         return destination_object.set_flight_time(input_data)
