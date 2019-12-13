@@ -35,29 +35,7 @@ class IL_Printer():
         self.__create = '--cre--'
         self.__search = '--sea--'
         self.__info = '--inf--'        
-        self.__menus = {'M':        ('il_main_menu',                'IL_MainMenu'),             \
-                        'M_1':      ('il_employee_menu',            'IL_EmployeeMenu'),         \
-                        'M_1_1':    ('il_employee_create_menu',     'IL_EmployeeCreateMenu'),   \
-                        'M_1_2':    ('il_employee_search_menu',     'IL_EmployeeSearchMenu'),   \
-                        'M_1_2_1':  ('il_employee_edit_menu',       'IL_EmployeeEditMenu'),     \
-                        'M_1_2_2':  ('il_employee_list_menu',       'IL_EmployeeListMenu'),     \
-                        'M_2':      ('il_airplane_menu',            'IL_AirplaneMenu'),         \
-                        'M_2_1':    ('il_airplane_create_menu',     'IL_AirplaneCreateMenu'),   \
-                        'M_2_2':    ('il_airplane_search_menu',     'IL_AirplaneSearchMenu'),   \
-                        'M_2_2_1':  ('il_airplane_edit_menu',       'IL_AirplaneEditMenu'),     \
-                        'M_2_2_2':  ('il_airplane_list_menu',       'IL_AirplaneListMenu'),     \
-                        'M_3':      ('il_destination_menu',         'IL_DestinationMenu'),      \
-                        'M_3_1':    ('il_destination_create_menu',  'IL_DestinationCreateMenu'),\
-                        'M_3_2':    ('il_destination_search_menu',  'IL_DestinationSearchMenu'),\
-                        'M_3_2_1':  ('il_destination_edit_menu',    'IL_DestinationEditMenu'),  \
-                        'M_3_2_2':  ('il_destination_list_menu',    'IL_DestinationListMenu'),  \
-                        'M_4':      ('il_trips_menu',               'IL_TripsMenu'),            \
-                        'M_4_1':    ('il_trips_create_menu',        'IL_TripsCreateMenu'),      \
-                        'M_4_2':    ('il_trips_search_menu',        'IL_TripsSearchMenu'),      \
-                        'M_4_2_1':  ('il_trips_edit_menu',          'IL_TripsEditMenu'),        \
-                        'M_4_2_2':  ('il_trips_list_menu',          'IL_TripsListMenu'),        \                        
-                        'Q':        ('il_quit_screen',              'IL_QuitScreen'),           \
-                        'M_1_2_1':  ('il_employee_edit_menu',       'IL_EmployeeEditMenu')}
+        self.__menus = {'M':('il_main_menu','IL_MainMenu'),'M_1':('il_employee_menu','IL_EmployeeMenu'),'M_1_1':('il_employee_create_menu','IL_EmployeeCreateMenu'),'M_1_2':('il_employee_search_menu','IL_EmployeeSearchMenu'),'M_1_2_1':('il_employee_edit_menu','IL_EmployeeEditMenu'),'M_1_2_2':('il_employee_list_menu','IL_EmployeeListMenu'),'M_2':('il_airplane_menu','IL_AirplaneMenu'),'M_2_1':('il_airplane_create_menu','IL_AirplaneCreateMenu'),'M_2_2':('il_airplane_search_menu','IL_AirplaneSearchMenu'),'M_2_2_1':('il_airplane_edit_menu','IL_AirplaneEditMenu'),'M_2_2_2':('il_airplane_list_menu','IL_AirplaneListMenu'),'M_3':('il_destination_menu','IL_DestinationMenu'),'M_3_1':('il_destination_create_menu','IL_DestinationCreateMenu'),'M_3_2':('il_destination_search_menu','IL_DestinationSearchMenu'),'M_3_2_1':('il_destination_edit_menu','IL_DestinationEditMenu'),'M_3_2_2':('il_destination_list_menu','IL_DestinationListMenu'),'M_4':('il_trips_menu','IL_TripsMenu'),'M_4_1':('il_trips_create_menu','IL_TripsCreateMenu'),'M_4_2':('il_trips_search_menu','IL_TripsSearchMenu'),'M_4_2_1':('il_trips_edit_menu','IL_TripsEditMenu'),'M_4_2_2':('il_trips_list_menu','IL_TripsListMenu'),'Q':('il_quit_screen','IL_QuitScreen'),'M_1_2_1':('il_employee_edit_menu','IL_EmployeeEditMenu')}
     
     def variable_class(self, from_menu = ('','')):
         module_name = 'InterfaceLayer.'+ from_menu[0]
