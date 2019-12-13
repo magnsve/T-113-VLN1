@@ -21,7 +21,7 @@ class LL_Employee():
         5)  add_employee: This method calls to the DL_API to append an object to the database. '''
 
     def searchEmployee(self, employee_object):        
-        list_of_employees = DL_API().get_employees()        
+        list_of_employees = DL_API().get_employees()
         ssn_search = self.search_ssn(employee_object, list_of_employees)        
         name_search = self.search_name(employee_object, ssn_search)
         role_search = self.search_role(employee_object, name_search)
@@ -140,18 +140,30 @@ class LL_Employee():
         return DL_API().append_employee(employee_object)
 
     def ll_set_ssn(self, employee_object, input_data):
-        if employee_object.get_ssn() == '':
-            ssn = input_data
-            ssn.translate(ssn.maketrans('',''), string.punctuation)
-            ssn.strip()
-            if len(ssn) == 10:
-                return employee_object.set_ssn(ssn)
+        list_of_employees = DL_API().get_employees()
+        valid = True
+        for employee in list_of_employees:
+            if employee.get_ssn() == input_data:
+                valid = False
+                break
+        if valid:            
+            if employee_object.get_ssn() == '':
+                ssn = ''
+                for char in input_data:                
+                    if char in string.punctuation or char == ' ':
+                        pass
+                    else:
+                        ssn += char
+                if len(ssn) == 10:
+                    return employee_object.set_ssn(ssn)
+                else:
+                    return 'Invalid SSN, please try again.'
             else:
-                return 'Invalid SSN, please try again.'
+                return 'This employee already has an SSN.'
         else:
-            return 'This employee already has an SSN.'
+            return 'This SSN is already in use.'
 
-    def ll_set_name(self, employee_object, input_data):
+    def ll_set_name(self, employee_object, input_data):        
         if employee_object.get_name() == '':
             return employee_object.set_name(input_data)
         else:
@@ -178,3 +190,5 @@ class LL_Employee():
     def ll_set_e_mail(self, employee_object, input_data):
         if '@' in input_data:
             return employee_object.set_e_mail(input_data)
+        else:
+            return 'Invalid e-mail, please try again.'

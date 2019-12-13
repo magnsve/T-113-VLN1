@@ -39,7 +39,7 @@ class LL_API():
     
     # Destination
     def edit_destination(self, destination_object, index):
-        return LL_Destinations().edit_employee_object(destination_object, index)
+        return LL_Destinations().edit_destination_object(destination_object, index)
 
     def get_destination_header(self):
         return LL_Destinations().get_destination_file_headers()
@@ -68,6 +68,9 @@ class LL_API():
     
     def new_trip(self, trip_object):
         return LL_Trips().add_trip(trip_object)
+    
+    def list_of_trips_criteria(self, input_data):
+        return LL_Trips().list_of_trips(input_data)
 
     # Planes
     def edit_plane(self, plane_object, index):

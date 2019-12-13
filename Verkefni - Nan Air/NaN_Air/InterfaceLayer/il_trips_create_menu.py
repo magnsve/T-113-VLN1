@@ -9,4 +9,4 @@ class IL_TripsCreateMenu(IL_TripsMenu):
     ADDRESS = 'Main Menu -> Trips -> New Trip'
     SCREEN_TYPE = 'Create'
     CATEGORY = 'Trip'    
-    OPTIONS = [('r','M_4_1','Screen'),('q','Q','Screen'),('b','M_3','Screen'),('x','X','Reset')]
+    OPTIONS = [('r','M_4_1','Screen'),('q','Q','Screen'),('b','M_4','Screen'),('x','X','Reset')]
