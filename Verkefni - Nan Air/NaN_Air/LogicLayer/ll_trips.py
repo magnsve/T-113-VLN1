@@ -1,4 +1,4 @@
-import datetime
+import datetime, time
 import dateutil.parser
 from DataLayer.dl_api import DL_API
 from ModelClasses.trip import Trip

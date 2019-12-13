@@ -68,6 +68,9 @@ class LL_API():
     
     def new_trip(self, trip_object):
         return LL_Trips().add_trip(trip_object)
+    
+    def list_of_trips_criteria(self, input_data):
+        return LL_Trips().list_of_trips(input_data)
 
     # Planes
     def edit_plane(self, plane_object, index):

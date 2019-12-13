@@ -187,7 +187,7 @@ def main():
                     go_to_list = getattr(all_screens, new_screen.CATEGORY.lower()+'_list')
                     new_screen = go_to_list
                     print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE, search_object, list_of_objects[0:35]))
-                    user_input = new_screen.validate_selection(new_screen, search_object)
+                    user_input = new_screen.validate_selection(new_screen, search_object)        
         else:
             print(new_screen.prep_window(new_screen.FILE,new_screen.GRAPHICS_FILE))
         if not has_input:

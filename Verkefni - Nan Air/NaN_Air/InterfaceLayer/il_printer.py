@@ -1,5 +1,5 @@
 # Imports and constants
-import sys, os, shutil, random
+import sys, os, shutil, random, datetime
 from msvcrt import getch
 from importlib import import_module, invalidate_caches
 from LogicLayer.ll_api import LL_API
@@ -34,7 +34,7 @@ class IL_Printer():
         self.__facts = '--fact--'
         self.__create = '--cre--'
         self.__search = '--sea--'
-        self.__info = '--inf--'
+        self.__info = '--inf--'        
         self.__menus = {'M':        ('il_main_menu',                'IL_MainMenu'),             \
                         'M_1':      ('il_employee_menu',            'IL_EmployeeMenu'),         \
                         'M_1_1':    ('il_employee_create_menu',     'IL_EmployeeCreateMenu'),   \
@@ -55,7 +55,7 @@ class IL_Printer():
                         'M_4_1':    ('il_trips_create_menu',        'IL_TripsCreateMenu'),      \
                         'M_4_2':    ('il_trips_search_menu',        'IL_TripsSearchMenu'),      \
                         'M_4_2_1':  ('il_trips_edit_menu',          'IL_TripsEditMenu'),        \
-                        'M_4_2_2':  ('il_trips_list_menu',          'IL_TripsListMenu'),        \
+                        'M_4_2_2':  ('il_trips_list_menu',          'IL_TripsListMenu'),        \                        
                         'Q':        ('il_quit_screen',              'IL_QuitScreen'),           \
                         'M_1_2_1':  ('il_employee_edit_menu',       'IL_EmployeeEditMenu')}
     
@@ -66,7 +66,7 @@ class IL_Printer():
         class_ = getattr(module, class_name)        
         return class_()
     
-    def prep_window(self, file = FILE, graphics = GRAPHICS_FILE, model_object = None, list_of_objects = None):
+    def prep_window(self, file = FILE, graphics = GRAPHICS_FILE, model_object = None, list_of_objects = None, period = None):
         output = ''
         for _ in range(self.__window_height*3):
             output += '\n'
@@ -102,6 +102,8 @@ class IL_Printer():
                 output += self.get_search(list_of_objects)
             elif self.__info in line:
                 output += self.get_info(model_object)
+            elif self.__criteria in line:
+                output += self.get_criteria(period)
         return output
                 
     def get_spaceing(self, file = '', graphics = '', model_object = '', list_of_objects = ''):
